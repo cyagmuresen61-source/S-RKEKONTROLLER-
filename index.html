@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="apple">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>EC Karacadağ Sirke Kontrolleri &amp; ERP</title>
+
+    <!-- Doğrudan Mobil Uygulama ve Standalone Yapılandırması & PWA İkonları -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="EC Karacadağ">
+    <meta name="theme-color" content="#06140E">
+
+    <!-- CDN Kütüphaneleri -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+    <style>
+        :root[data-theme="apple"] {
+            --bg-main: #F4F1EA; --bg-card: rgba(255, 255, 255, 0.98); --primary: #3B5A5C; --primary-hover: #2F484A;
+            --accent: #B37D14; --text: #1A2524; --text-muted: #526362; --border: rgba(179, 125, 20, 0.4); --input-bg: #ECE8E0;
+            --sidebar-bg: #F8F6F0; --sidebar-header: #3B5A5C; --sidebar-text: #233332; --sidebar-hover: #E3DDD1;
+            --glow-1: rgba(59, 90, 92, 0.15); --glow-2: rgba(179, 125, 20, 0.2);
+            --ring-opacity: 0.85; --ring-color-1: #B37D14; --ring-color-2: #3B5A5C;
+        }
+
+        :root[data-theme="grape"] {
+            --bg-main: #E8F5E9; --bg-card: rgba(255, 255, 255, 0.98); --primary: #2E7D32; --primary-hover: #1B5E20;
+            --accent: #43A047; --text: #1B3320; --text-muted: #388E3C; --border: rgba(67, 160, 71, 0.4); --input-bg: #DCEDC8;
+            --sidebar-bg: #E8F5E9; --sidebar-header: #2E7D32; --sidebar-text: #1B3320; --sidebar-hover: #C8E6C9;
+            --glow-1: rgba(46, 125, 50, 0.15); --glow-2: rgba(67, 160, 71, 0.2);
+            --ring-opacity: 0.8; --ring-color-1: #43A047; --ring-color-2: #2E7D32;
+        }
+
+        :root[data-theme="hawthorn"] {
+            --bg-main: #1A0C08; --bg-card: rgba(40, 20, 14, 0.96); --primary: #C2410C; --primary-hover: #9A3412;
+            --accent: #FDBA74; --text: #FFF7ED; --text-muted: #FB923C; --border: rgba(251, 146, 60, 0.5); --input-bg: #24120C;
+            --sidebar-bg: #1E0E0A; --sidebar-header: #7C2D12; --sidebar-text: #FFEDD5; --sidebar-hover: #361A12;
+            --glow-1: rgba(194, 65, 12, 0.2); --glow-2: rgba(251, 146, 60, 0.15);
+            --ring-opacity: 0.75; --ring-color-1: #FB923C; --ring-color-2: #EA580C;
+        }
+
+        :root[data-theme="rose"] {
+            --bg-main: #1C0A12; --bg-card: rgba(42, 16, 28, 0.96); --primary: #BE185D; --primary-hover: #9D174D;
+            --accent: #FBCFE8; --text: #FDF2F8; --text-muted: #F472B6; --border: rgba(244, 114, 182, 0.5); --input-bg: #28101C;
+            --sidebar-bg: #200C16; --sidebar-header: #831843; --sidebar-text: #FCE7F3; --sidebar-hover: #3B1629;
+            --glow-1: rgba(190, 24, 93, 0.2); --glow-2: rgba(244, 114, 182, 0.15);
+            --ring-opacity: 0.75; --ring-color-1: #F472B6; --ring-color-2: #DB2777;
+        }
+
+        :root[data-theme="pomegranate"] {
+            --bg-main: #18080A; --bg-card: rgba(38, 14, 18, 0.96); --primary: #991B1B; --primary-hover: #7F1D1D;
+            --accent: #FECACA; --text: #FEF2F2; --text-muted: #F87171; --border: rgba(248, 113, 113, 0.5); --input-bg: #220A0E;
+            --sidebar-bg: #1C0A0E; --sidebar-header: #7F1D1D; --sidebar-text: #FEE2E2; --sidebar-hover: #341016;
+            --glow-1: rgba(153, 27, 27, 0.2); --glow-2: rgba(248, 113, 113, 0.15);
+            --ring-opacity: 0.75; --ring-color-1: #F87171; --ring-color-2: #DC2626;
+        }
+
+        :root[data-theme="artichoke"] {
+            --bg-main: #06140E; --bg-card: rgba(12, 36, 26, 0.96); --primary: #047857; --primary-hover: #065F46;
+            --accent: #A7F3D0; --text: #ECFDF5; --text-muted: #34D399; --border: rgba(52, 211, 153, 0.5); --input-bg: #0A2117;
+            --sidebar-bg: #081A12; --sidebar-header: #064E3B; --sidebar-text: #D1FAE5; --sidebar-hover: #123324;
+            --glow-1: rgba(4, 120, 87, 0.2); --glow-2: rgba(52, 211, 153, 0.15);
+            --ring-opacity: 0.75; --ring-color-1: #34D399; --ring-color-2: #059669;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body, html { width: 100%; height: 100%; background-color: var(--bg-main); color: var(--text); overflow: hidden; will-change: contents; }
+
+        #toast-container { position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .toast {
+            background: var(--bg-card); border: 1.5px solid var(--accent); color: var(--text); padding: 12px 18px;
+            border-radius: 14px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 10px; animation: toastIn 0.25s ease-out forwards; pointer-events: auto;
+        }
+        @keyframes toastIn { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .global-bg-decor { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; transform: translateZ(0); }
+        .ring-container { position: absolute; width: 600px; height: 600px; border-radius: 50%; opacity: var(--ring-opacity); top: -100px; right: -100px; will-change: transform; }
+        .ring { position: absolute; inset: 0; border-radius: 50%; border: 3px dashed var(--ring-color-1); animation: rotateRing 30s linear infinite; }
+        .ring-2 { inset: 70px; border: 2.5px solid var(--ring-color-2); animation: rotateRing 20s linear infinite reverse; }
+        @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .aura-orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.5; will-change: transform; }
+        .aura-1 { width: 350px; height: 350px; background: var(--glow-1); top: -50px; left: -50px; }
+        .aura-2 { width: 300px; height: 300px; background: var(--glow-2); bottom: -50px; right: -50px; }
+
+        body.pause-animations *, body.pause-animations *:before, body.pause-animations *:after {
+            animation-play-state: paused !important;
+        }
+
+        #auth-screen {
+            position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px;
+            background: #050B14; overflow: hidden;
+        }
+
+        .auth-splash-ring {
+            position: absolute; width: 120px; height: 120px; border-radius: 50%;
+            border: 2px solid #D97706; box-shadow: 0 0 25px rgba(217, 119, 6, 0.5);
+            animation: splashRingExpand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; pointer-events: none;
+        }
+        @keyframes splashRingExpand {
+            0% { transform: scale(0.3); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .auth-aurora-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .aurora-layer { position: absolute; border-radius: 50%; filter: blur(50px); opacity: 0.4; will-change: transform; animation: auroraFloat 15s ease-in-out infinite alternate; }
+        .aurora-1 { width: 500px; height: 500px; background: radial-gradient(circle, #0284C7 0%, transparent 70%); top: -100px; left: -100px; }
+        .aurora-2 { width: 450px; height: 450px; background: radial-gradient(circle, #D97706 0%, transparent 70%); bottom: -100px; right: -100px; animation-direction: alternate-reverse; animation-duration: 18s; }
+        
+        @keyframes auroraFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        .auth-card-3d-wrap {
+            width: 100%; max-width: 440px; will-change: transform;
+            animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .auth-card-main {
+            width: 100%; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12); border-top: 1px solid rgba(245, 158, 11, 0.4); border-radius: 28px; padding: 36px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.15);
+            position: relative; overflow: hidden;
+        }
+
+        .auth-brand-area { text-align: center; margin-bottom: 24px; position: relative; }
+        .auth-logo-box {
+            width: 76px; height: 76px; background: rgba(15, 23, 42, 0.9);
+            border: 1.5px solid #F59E0B; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center;
+            color: #F59E0B; margin-bottom: 12px; box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); overflow: hidden;
+            animation: floatingLogo 4s ease-in-out infinite; will-change: transform;
+        }
+        @keyframes floatingLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .auth-logo-box img, .auth-logo-box svg { width: 100%; height: 100%; object-fit: cover; }
+
+        .auth-brand-area h1 { font-size: 20px; font-weight: 900; color: #F8FAFC; letter-spacing: 1px; }
+        .auth-brand-area p { font-size: 11px; color: #38BDF8; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        .auth-tab-group { display: flex; background: rgba(2, 6, 23, 0.6); padding: 4px; border-radius: 14px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .auth-tab-btn { flex: 1; text-align: center; padding: 10px; font-size: 12px; font-weight: 800; color: #94A3B8; cursor: pointer; border-radius: 10px; transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .auth-tab-btn.active { background: #0284C7; color: #FFF; box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3); }
+
+        .auth-field { margin-bottom: 16px; text-align: left; position: relative; }
+        .auth-field label { display: block; font-size: 10px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+        .auth-input-wrap { position: relative; display: flex; align-items: center; }
+        .auth-input-wrap i { position: absolute; left: 14px; color: #F59E0B; width: 18px; height: 18px; }
+        .auth-input-wrap input {
+            width: 100%; padding: 12px 14px 12px 44px; background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px; color: #F8FAFC; font-size: 14px; outline: none; transition: border-color 0.2s;
+        }
+        .auth-input-wrap input:focus { border-color: #38BDF8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); }
+        .auth-field.error input { border-color: #EF4444 !important; }
+
+        .btn-portal-submit {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #050B14;
+            border: none; border-radius: 14px; font-size: 14px; font-weight: 900; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.15s, opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); margin-top: 8px;
+        }
+        .btn-portal-submit:hover { transform: translateY(-1px); opacity: 0.95; }
+        .btn-portal-submit:active { transform: translateY(1px); }
+        .btn-portal-submit.success { background: #10B981 !important; color: #FFF !important; }
+
+        .auth-screen-fadeout { animation: authFadeOut 0.4s ease-out forwards; }
+        @keyframes authFadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
+        }
+
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; }
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-wrapper i { position: absolute; left: 14px; color: var(--accent); width: 18px; height: 18px; }
+        input, select, textarea { width: 100%; padding: 12px 14px 12px 42px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; outline: none; }
+        textarea { padding-left: 14px; min-height: 70px; }
+        select { cursor: pointer; }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+
+        .btn { width: 100%; padding: 12px; background: var(--primary); color: #FFF; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.15s, opacity 0.2s; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn:active { transform: translateY(1px); }
+        .btn-secondary { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
+        .btn-secondary:hover { background: var(--input-bg); }
+        .btn-danger { background: #991B1B; color: #FFF; border: none; }
+        .btn-sm { padding: 8px 12px; font-size: 12px; border-radius: 8px; width: auto; }
+
+        #app-screen { display: none; width: 100%; height: 100%; flex-direction: column; position: relative; z-index: 10; }
+        .topbar { height: 60px; background: var(--bg-card); border-bottom: 1.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; z-index: 20; }
+        .topbar-title { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; }
+
+        .app-body { flex: 1; display: flex; overflow: hidden; position: relative; }
+
+        .sidebar {
+            position: absolute; top: 0; left: 0; width: 280px; height: 100%;
+            background: var(--sidebar-bg); color: var(--sidebar-text); z-index: 100;
+            transform: translateX(-100%);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column; border-right: 1.5px solid var(--border);
+            will-change: transform;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+        }
+        .sidebar.open { transform: translateX(0); }
+
+        .sidebar-header-custom { background: var(--sidebar-header); padding: 18px 16px; color: #FFF; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); }
+        .sidebar-header-custom .logo-box { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--accent); }
+        .sidebar-header-custom .logo-box img, .sidebar-header-custom .logo-box svg { width: 100%; height: 100%; object-fit: cover; }
+
+        .sidebar-menu { flex: 1; padding: 8px 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .nav-group { border-bottom: 1px solid var(--border); }
+        .nav-group-header { padding: 12px 16px 6px 16px; font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+        .nav-group-items { display: none; padding: 4px 10px 8px 10px; }
+        .nav-group.open .nav-group-items { display: block; }
+
+        .menu-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; color: var(--sidebar-text); font-weight: 600; font-size: 13px; margin-bottom: 2px; cursor: pointer; transition: background 0.15s; }
+        .menu-item:hover { background: var(--sidebar-hover); color: var(--accent); }
+        .menu-item.active { background: var(--primary); color: #FFF; font-weight: 800; }
+
+        .sidebar-backdrop {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 90;
+            opacity: 0; pointer-events: none; transition: opacity 0.28s ease-out;
+        }
+        .sidebar-backdrop.show { opacity: 1; pointer-events: auto; }
+
+        .main-content { flex: 1; padding: 16px; overflow-y: auto; -webkit-overflow-scrolling: touch; max-width: 900px; margin: 0 auto; width: 100%; }
+
+        .card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .card-title { font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--accent); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        @media(max-width: 768px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
+        @media(max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .kpi-card { background: var(--input-bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px 12px; text-align: center; position: relative; }
+        .kpi-icon { position: absolute; top: 10px; right: 10px; color: var(--accent); opacity: 0.5; width: 22px; height: 22px; }
+        .kpi-title { font-size: 10.5px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+        .kpi-value { font-size: 22px; font-weight: 900; color: var(--accent); }
+
+        .vinegar-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 16px; -webkit-overflow-scrolling: touch; }
+        .v-tab { padding: 8px 14px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 18px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+        .v-tab.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+        .data-card { background: var(--input-bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
+        .data-card-header { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 6px; font-size: 13px; }
+
+        #ai-widget-container { display: none; }
+        #ai-widget-btn {
+            position: fixed; bottom: 20px; right: 20px; z-index: 500;
+            width: 54px; height: 54px; border-radius: 50%; background: var(--primary);
+            color: var(--accent); border: 2px solid var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+
+        #ai-widget-box {
+            position: fixed; bottom: 84px; right: 16px; z-index: 500; width: 360px; max-width: calc(100vw - 32px); height: 500px;
+            background: var(--bg-card); border: 1.5px solid var(--accent); border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; flex-direction: column; overflow: hidden;
+        }
+        .ai-widget-header { padding: 14px; background: var(--primary); color: #FFF; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 13.5px; }
+        .ai-widget-body { flex: 1; padding: 12px; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 8px; }
+        .ai-widget-footer { padding: 10px; background: var(--input-bg); border-top: 1px solid var(--border); display: flex; gap: 6px; flex-direction: column; }
+        .ai-input-row { display: flex; gap: 6px; }
+
+        .msg { padding: 10px 14px; border-radius: 12px; max-width: 88%; line-height: 1.4; font-size: 13px; word-break: break-word; }
+        .msg-user { background: var(--primary); color: #FFF; align-self: flex-end; }
+        .msg-ai { background: var(--input-bg); border: 1px solid var(--border); color: var(--text); align-self: flex-start; }
+
+        .ai-quick-chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+        .ai-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 4px 8px; font-size: 11px; white-space: nowrap; cursor: pointer; color: var(--accent); font-weight: 700; }
+
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 600; display: none; align-items: center; justify-content: center; padding: 16px; }
+        .modal-content { background: var(--bg-card); border: 1.5px solid var(--accent); border-radius: 20px; width: 100%; max-width: 480px; padding: 22px; max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    </style>
+</head>
+<body>
+
+    <div class="global-bg-decor">
+        <div class="ring-container"><div class="ring"></div><div class="ring ring-2"></div></div>
+        <div class="aura-orb aura-1"></div><div class="aura-orb aura-2"></div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <!-- GİRİŞ PORTALI -->
+    <div id="auth-screen">
+        <div class="auth-splash-ring"></div>
+
+        <div class="auth-aurora-bg">
+            <div class="aurora-layer aurora-1"></div>
+            <div class="aurora-layer aurora-2"></div>
+        </div>
+
+        <div class="auth-card-3d-wrap" id="auth-card-wrap">
+            <div class="auth-card-main">
+                <div class="auth-brand-area">
+                    <div class="auth-logo-box">
+                        <img src="icon.png" alt="Logo" onerror="this.onerror=null; this.src='';">
+                    </div>
+                    <h1>EC KARACADAĞ</h1>
+                    <p>SİRKE KONTROLLERİ &amp; ERP</p>
+                </div>
+
+                <div class="auth-tab-group">
+                    <div class="auth-tab-btn active" id="tab-login" onclick="switchAuthTab('login')"><i data-lucide="log-in" style="width:14px;"></i> Sistem Girişi</div>
+                    <div class="auth-tab-btn" id="tab-register" onclick="switchAuthTab('register')"><i data-lucide="user-plus" style="width:14px;"></i> Yeni Kayıt</div>
+                </div>
+
+                <form id="auth-form" onsubmit="handleAuth(event)">
+                    <div class="auth-field" id="field-username">
+                        <label>KULLANICI ADI</label>
+                        <div class="auth-input-wrap">
+                            <i data-lucide="user"></i>
+                            <input type="text" id="auth-username" required placeholder="Kullanıcı adınızı girin">
+                        </div>
+                    </div>
+
+                    <div class="auth-field" id="group-email" style="display: none;">
+                        <label>E-POSTA ADRESİ</label>
+                        <div class="auth-input-wrap">
+                            <i data-lucide="mail"></i>
+                            <input type="email" id="auth-email" placeholder="kalite@sirke.com">
+                        </div>
+                    </div>
+
+                    <div class="auth-field" id="field-password">
+                        <label>ŞİFRE</label>
+                        <div class="auth-input-wrap">
+                            <i data-lucide="lock"></i>
+                            <input type="password" id="auth-pass" required placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-portal-submit" id="auth-submit-btn">
+                        <span>PORTALA GİRİŞ YAP</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- UYGULAMA İÇİ SİSTEM -->
+    <div id="app-screen">
+        <div class="topbar">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button class="btn btn-secondary btn-sm" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+                <div class="topbar-title">
+                    <span id="page-title">Dashboard</span>
+                </div>
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted); display:flex; align-items:center; gap:6px;" id="user-badge">
+                <i data-lucide="user" style="width:14px; color:var(--accent);"></i><span style="font-weight:700;">Kullanıcı</span>
+            </div>
+        </div>
+
+        <div class="app-body">
+            <div class="sidebar-backdrop" id="backdrop" onclick="toggleSidebar()"></div>
+            
+            <!-- YAN MENÜ -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header-custom">
+                    <div class="logo-box">
+                        <img src="icon.png" alt="Logo" onerror="this.onerror=null; this.src='';">
+                    </div>
+                    <div><h2 style="font-size:13.5px;">EC KARACADAĞ</h2><p style="font-size:10px;">Sirke Kontrolleri</p></div>
+                </div>
+
+                <div class="sidebar-menu">
+                    <div class="menu-item active" style="margin: 4px 10px;" onclick="nav('dashboard', 'Dashboard', this)"><i data-lucide="layout-grid"></i> Dashboard</div>
+                    <div class="menu-item" id="menu-control" style="margin: 4px 10px;" onclick="nav('control', 'Kontrol Sayfası & Listesi', this)"><i data-lucide="clipboard-list"></i> Kontrol Sayfası</div>
+                    <div class="menu-item" style="margin: 4px 10px;" onclick="nav('reports', 'Raporlama Merkezi', this)"><i data-lucide="bar-chart-2"></i> Raporlama</div>
+                    <div class="menu-item" style="margin: 4px 10px;" onclick="nav('archived-data', 'Sistem Arşivi', this)"><i data-lucide="archive"></i> Arşiv Sayfası</div>
+
+                    <div class="nav-group">
+                        <div class="nav-group-header" onclick="toggleNavGroup(this)"><span>ÜRETİM</span><i data-lucide="chevron-down"></i></div>
+                        <div class="nav-group-items">
+                            <div class="menu-item" onclick="nav('tanks', 'Tank / Fıçı / Varil', this)"><i data-lucide="box"></i> Tank / Fıçı / Varil</div>
+                            <div class="menu-item" onclick="nav('batches', 'Üretim Partileri', this)"><i data-lucide="flask-conical"></i> Üretim Partileri</div>
+                            <div class="menu-item" onclick="nav('fermentation', 'Fermantasyon', this)"><i data-lucide="microscope"></i> Fermantasyon</div>
+                        </div>
+                    </div>
+
+                    <div class="nav-group">
+                        <div class="nav-group-header" onclick="toggleNavGroup(this)"><span>ÜRÜN</span><i data-lucide="chevron-down"></i></div>
+                        <div class="nav-group-items">
+                            <div class="menu-item" onclick="nav('bottling-ready', 'Şişelemeye Hazır', this)"><i data-lucide="glass-water"></i> Şişelemeye Hazır</div>
+                            <div class="menu-item" onclick="nav('bottling', 'Şişeleme', this)"><i data-lucide="list-checks"></i> Şişeleme</div>
+                        </div>
+                    </div>
+
+                    <!-- PLANLAMA ALTINDA BİLDİRİMLER VE TAKVİM -->
+                    <div class="nav-group open">
+                        <div class="nav-group-header" onclick="toggleNavGroup(this)"><span>PLANLAMA</span><i data-lucide="chevron-down"></i></div>
+                        <div class="nav-group-items" style="display: block;">
+                            <div class="menu-item" onclick="nav('calendar', 'Kontrol Plan Listesi (Takvim)', this)"><i data-lucide="calendar"></i> Kontrol Plan Listesi</div>
+                            <div class="menu-item" onclick="nav('reminders', 'Hatırlatıcılar & Planlama', this)"><i data-lucide="bell"></i> Hatırlatıcı Kur</div>
+                            <div class="menu-item" onclick="nav('notifications-center', 'Bildirim Merkezi', this)"><i data-lucide="bell-ring"></i> Bildirimler</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" style="margin: 10px 10px 4px 10px; border-top: 1px solid var(--border); padding-top: 10px;" onclick="nav('settings', 'Ayarlar & Profil', this)"><i data-lucide="settings"></i> Ayarlar & Profil</div>
+                </div>
+
+                <div style="padding: 12px; border-top: 1px solid var(--border);"><button class="btn btn-danger" onclick="logout()"><i data-lucide="log-out"></i> Çıkış Yap</button></div>
+            </div>
+
+            <div class="main-content">
+
+                <!-- DASHBOARD -->
+                <div id="view-dashboard" class="view-panel">
+                    <div class="card" style="background: linear-gradient(135deg, var(--primary), var(--bg-card)); border-color: var(--accent);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                            <div>
+                                <h3 style="font-size:17px; font-weight:900; color:var(--text); margin-bottom:2px;">EC Karacadağ Sirke Tesisleri</h3>
+                                <p style="font-size:11.5px; color:var(--text-muted);">Canlı Fermantasyon & Kalite Kontrol Portalı</p>
+                            </div>
+                            <button class="btn btn-sm" style="background:var(--accent); color:#000; font-weight:900;" onclick="openQuickAddFromDashboard()">
+                                <i data-lucide="plus-circle"></i> Hızlı Analiz Gir
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid-4" style="margin-bottom: 16px;">
+                        <div class="kpi-card"><i data-lucide="clipboard-list" class="kpi-icon"></i><div class="kpi-title">Toplam Kontrol</div><div class="kpi-value" id="kpi-total-ins">0</div></div>
+                        <div class="kpi-card"><i data-lucide="container" class="kpi-icon"></i><div class="kpi-title">Aktif Tanklar</div><div class="kpi-value" id="kpi-total-tanks">0</div></div>
+                        <div class="kpi-card"><i data-lucide="percent" class="kpi-icon"></i><div class="kpi-title">Ortalama Brix</div><div class="kpi-value" id="kpi-avg-brix">0.0°Bx</div></div>
+                        <div class="kpi-card"><i data-lucide="droplet" class="kpi-icon"></i><div class="kpi-title">Toplam Hacim</div><div class="kpi-value" id="kpi-total-volume">0 Lt</div></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="history"></i> Son Kaydedilen Analizler</div>
+                            <button class="btn btn-secondary btn-sm" onclick="nav('control', 'Kontrol Sayfası & Listesi', null)">Tümünü Gör</button>
+                        </div>
+                        <div id="dashboard-recent-list"></div>
+                    </div>
+                </div>
+
+                <!-- KONTROL SAYFASI -->
+                <div id="view-control" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="clipboard-list"></i> Kontrol Sayfası & Analiz Kaydı</div>
+                            <button class="btn btn-sm" style="background:var(--accent); color:#000; font-weight:900;" onclick="toggleControlForm()">
+                                <i data-lucide="plus-circle"></i> Yeni Analiz Ekle
+                            </button>
+                        </div>
+
+                        <div id="control-form-box" style="display:none; margin-bottom:16px; background:var(--input-bg); padding:16px; border-radius:14px; border:1px solid var(--border);">
+                            <form id="inspection-form" onsubmit="saveInspection(event)">
+                                <div class="grid-2">
+                                    <div class="form-group"><label>TANK SEÇİMİ</label><div class="input-wrapper"><i data-lucide="box"></i><select id="ctrl-tank" required></select></div></div>
+                                    <div class="form-group"><label>SİRKE TÜRÜ</label><div class="input-wrapper"><i data-lucide="droplet"></i>
+                                        <select id="ctrl-type" required onchange="autoSwitchThemeByVinegar(this.value)">
+                                            <option value="Elma Sirkesi">Elma Sirkesi</option>
+                                            <option value="Yeşil Üzüm Sirkesi">Yeşil Üzüm Sirkesi</option>
+                                            <option value="Alıç Sirkesi">Alıç Sirkesi</option>
+                                            <option value="Gül Sirkesi">Gül Sirkesi</option>
+                                            <option value="Nar Sirkesi">Nar Sirkesi</option>
+                                            <option value="Enginar Sirkesi">Enginar Sirkesi</option>
+                                            <option value="Diğer">Diğer</option>
+                                        </select>
+                                    </div></div>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label>ÜRETİM YILI</label><div class="input-wrapper"><i data-lucide="calendar"></i><input type="number" id="ctrl-year" value="2026" required></div></div>
+                                    <div class="form-group"><label>BRİX (°BX)</label><div class="input-wrapper"><i data-lucide="percent"></i><input type="number" step="0.1" id="ctrl-brix" placeholder="1,3" required></div></div>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label>TAT / AROMA</label><div class="input-wrapper"><i data-lucide="smile"></i><select id="ctrl-taste" required><option>Keskin & Dengeli</option><option>Hafif & Meyvemsi</option><option>Aşırı Asidik</option><option>Hafif Acımsı / Takipte</option></select></div></div>
+                                    <div class="form-group"><label>KAPAMA BİÇİMİ</label><div class="input-wrapper"><i data-lucide="lock"></i>
+                                        <select id="ctrl-closing" required>
+                                            <option>Mantar Tıpa</option>
+                                            <option>Tülbent / Bez Kapak</option>
+                                            <option>Ahşap Tıpa</option>
+                                            <option>Vidalı Kapak</option>
+                                            <option>Silikon Tıpa</option>
+                                        </select>
+                                    </div></div>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label>SİRKE ANASI</label><div class="input-wrapper"><i data-lucide="layers"></i><select id="ctrl-mother"><option>Oluşmadı</option><option>İnce İnce Oluşuyor</option><option>Kalın & Sağlıklı</option></select></div></div>
+                                    <div class="form-group"><label>TANK HACMİ (LİTRE)</label><div class="input-wrapper"><i data-lucide="droplet"></i><input type="number" id="ctrl-volume" placeholder="500" required></div></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>DURUM ETİKETİ (ISO/HACCP)</label>
+                                    <div class="input-wrapper"><i data-lucide="shield-check"></i>
+                                        <select id="ctrl-status">
+                                            <option value="Uygun">Uygun</option>
+                                            <option value="Takip Ediliyor">Takip Ediliyor</option>
+                                            <option value="Kritik">Kritik</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label>ÖZEL NOTLAR & GÖZLEMLER</label><textarea id="ctrl-notes" placeholder="Berraklık, koku, asitlik gözlemleri..."></textarea></div>
+                                <button type="submit" class="btn"><i data-lucide="save"></i> Kaydet ve Sıfırla</button>
+                            </form>
+                        </div>
+
+                        <div class="vinegar-tabs">
+                            <div class="v-tab active" onclick="setVinegarTab('Elma Sirkesi', this)"><i data-lucide="apple" style="width:14px;"></i> Elma Sirkesi</div>
+                            <div class="v-tab" onclick="setVinegarTab('Yeşil Üzüm Sirkesi', this)"><i data-lucide="grape" style="width:14px;"></i> Yeşil Üzüm</div>
+                            <div class="v-tab" onclick="setVinegarTab('Alıç Sirkesi', this)"><i data-lucide="leaf" style="width:14px;"></i> Alıç Sirkesi</div>
+                            <div class="v-tab" onclick="setVinegarTab('Gül Sirkesi', this)"><i data-lucide="flower2" style="width:14px;"></i> Gül Sirkesi</div>
+                            <div class="v-tab" onclick="setVinegarTab('Nar Sirkesi', this)"><i data-lucide="citrus" style="width:14px;"></i> Nar Sirkesi</div>
+                            <div class="v-tab" onclick="setVinegarTab('Enginar Sirkesi', this)"><i data-lucide="sprout" style="width:14px;"></i> Enginar Sirkesi</div>
+                        </div>
+
+                        <div id="archive-list"></div>
+                    </div>
+                </div>
+
+                <!-- RAPORLAMA SAYFASI -->
+                <div id="view-reports" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="bar-chart-2"></i> Kalite Kontrol Raporlama Merkezi</div></div>
+                        <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:14px;">
+                            Aktif kontrol verilerinden kurumsal ISO 22000 & HACCP standartlarında PDF raporu alabilirsiniz.
+                        </p>
+                        <div class="grid-2">
+                            <button class="btn" style="background:var(--accent); color:#000; font-weight:900;" onclick="exportArchiveToPDF()"><i data-lucide="file-text"></i> Kurumsal PDF Raporu Al</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="list"></i> Aktif Rapordaki Veriler</div></div>
+                        <div id="reports-live-list"></div>
+                    </div>
+                </div>
+
+                <!-- ARŞİV SAYFASI -->
+                <div id="view-archived-data" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="archive"></i> Arşivlenmiş Kontrol Kayıtları</div>
+                        </div>
+                        <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+                            Kontrol sayfasında "Arşive Aktar" butonuna basarak arşive taşıdığınız veriler türlerine göre burada saklanır.
+                        </p>
+                        
+                        <div class="vinegar-tabs">
+                            <div class="v-tab active" onclick="setArchivedVinegarTab('Elma Sirkesi', this)"><i data-lucide="apple" style="width:14px;"></i> Elma Sirkesi</div>
+                            <div class="v-tab" onclick="setArchivedVinegarTab('Yeşil Üzüm Sirkesi', this)"><i data-lucide="grape" style="width:14px;"></i> Yeşil Üzüm</div>
+                            <div class="v-tab" onclick="setArchivedVinegarTab('Alıç Sirkesi', this)"><i data-lucide="leaf" style="width:14px;"></i> Alıç Sirkesi</div>
+                            <div class="v-tab" onclick="setArchivedVinegarTab('Gül Sirkesi', this)"><i data-lucide="flower2" style="width:14px;"></i> Gül Sirkesi</div>
+                            <div class="v-tab" onclick="setArchivedVinegarTab('Nar Sirkesi', this)"><i data-lucide="citrus" style="width:14px;"></i> Nar Sirkesi</div>
+                            <div class="v-tab" onclick="setArchivedVinegarTab('Enginar Sirkesi', this)"><i data-lucide="sprout" style="width:14px;"></i> Enginar Sirkesi</div>
+                        </div>
+
+                        <div id="archived-items-container"></div>
+                    </div>
+                </div>
+
+                <!-- DİNAMİK DÜZENLENEBİLİR MODÜLLER -->
+                <div id="view-generic" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title" id="generic-module-title"><i data-lucide="box"></i> Modül Yönetimi</div>
+                            <button class="btn btn-sm" onclick="openModuleModal()"><i data-lucide="plus"></i> Yeni Kayıt Ekle</button>
+                        </div>
+                        <div id="generic-items-list"></div>
+                    </div>
+                </div>
+
+                <!-- TANK TANIMLAMA -->
+                <div id="view-tanks" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="box"></i> Tank / Varil Tanımla</div></div>
+                        <form onsubmit="addTank(event)">
+                            <div class="form-group"><label>Tank Kodu</label><div class="input-wrapper"><i data-lucide="tag"></i><input type="text" id="tank-name" placeholder="Örn: Meşe Varil A" required></div></div>
+                            <button type="submit" class="btn"><i data-lucide="plus"></i> Ekle</button>
+                        </form>
+                    </div>
+                    <div class="card"><div class="card-header"><div class="card-title"><i data-lucide="list"></i> Tank Listesi</div></div><div id="tank-list"></div></div>
+                </div>
+
+                <!-- TAKVİM -->
+                <div id="view-calendar" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="calendar"></i> Kontrol Plan Listesi</div>
+                            <button class="btn btn-sm" onclick="toggleCalendarForm()"><i data-lucide="plus"></i> Yeni Plan Ekle</button>
+                        </div>
+                        <div id="calendar-add-box" style="display:none; margin-bottom: 16px; background: var(--input-bg); padding:14px; border-radius:14px; border:1px solid var(--border);">
+                            <form onsubmit="saveCalendarEntry(event)">
+                                <input type="hidden" id="cal-edit-id">
+                                <div class="form-group"><label>PLAN TARİHİ</label><div class="input-wrapper"><i data-lucide="clock"></i><input type="date" id="cal-date" required></div></div>
+                                <div class="form-group"><label>TANKLAR</label><div id="cal-tanks-checkboxes" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px;"></div></div>
+                                <div class="form-group"><label>SİRKE TÜRLERİ</label>
+                                    <div id="cal-types-checkboxes" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px;">
+                                        <label><input type="checkbox" value="Elma Sirkesi"> Elma Sirkesi</label>
+                                        <label><input type="checkbox" value="Yeşil Üzüm Sirkesi"> Yeşil Üzüm Sirkesi</label>
+                                        <label><input type="checkbox" value="Alıç Sirkesi"> Alıç Sirkesi</label>
+                                        <label><input type="checkbox" value="Gül Sirkesi"> Gül Sirkesi</label>
+                                        <label><input type="checkbox" value="Nar Sirkesi"> Nar Sirkesi</label>
+                                        <label><input type="checkbox" value="Enginar Sirkesi"> Enginar Sirkesi</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn"><i data-lucide="check"></i> Kaydet ve Listele</button>
+                            </form>
+                        </div>
+                        <div id="calendar-plan-list"></div>
+                    </div>
+                </div>
+
+                <!-- HATIRLATICILAR (PLANLAMA ALTI) -->
+                <div id="view-reminders" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="bell"></i> Yeni Hatırlatıcı / Gerçek Bildirim Kur</div></div>
+                        <form onsubmit="saveReminderNotification(event)">
+                            <div class="form-group"><label>BAŞLIK</label><div class="input-wrapper"><i data-lucide="bell"></i><input type="text" id="rem-title" placeholder="Örn: Tank 4 Kontrolü" required></div></div>
+                            <div class="form-group"><label>AÇIKLAMA</label><div class="input-wrapper"><i data-lucide="file-text"></i><input type="text" id="rem-desc" placeholder="Brix ve asitlik kontrolü yapılacak" required></div></div>
+                            <div class="grid-2">
+                                <div class="form-group"><label>TARİH</label><div class="input-wrapper"><i data-lucide="calendar"></i><input type="date" id="rem-date" required></div></div>
+                                <div class="form-group"><label>SAAT</label><div class="input-wrapper"><i data-lucide="clock"></i><input type="time" id="rem-time" value="09:00" required></div></div>
+                            </div>
+                            <div class="form-group"><label>TEKRAR SEÇENEĞİ</label>
+                                <div class="input-wrapper"><i data-lucide="repeat"></i>
+                                    <select id="rem-repeat">
+                                        <option value="once">Bir kez</option>
+                                        <option value="daily">Her gün</option>
+                                        <option value="weekly">Her hafta</option>
+                                        <option value="monthly">Her ay</option>
+                                        <option value="custom">Özel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn"><i data-lucide="alarm-clock"></i> Gerçek Bildirim Planla</button>
+                        </form>
+                    </div>
+                    <div class="card"><div class="card-header"><div class="card-title"><i data-lucide="list-checks"></i> Aktif Hatırlatıcılar</div></div><div id="reminders-list"></div></div>
+                </div>
+
+                <!-- BİLDİRİMLER MERKEZİ (PLANLAMA ALTI) -->
+                <div id="view-notifications-center" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="bell-ring"></i> Bildirim Merkezi</div>
+                            <div style="display:flex; gap:6px;">
+                                <button class="btn btn-secondary btn-sm" onclick="markAllNotificationsRead()">Tümünü Okundu Yap</button>
+                                <button class="btn btn-danger btn-sm" onclick="clearAllNotifications()">Tümünü Sil</button>
+                            </div>
+                        </div>
+
+                        <div class="vinegar-tabs">
+                            <div class="v-tab active" onclick="setNotifTab('all', this)"><i data-lucide="list" style="width:14px;"></i> Tümü</div>
+                            <div class="v-tab" onclick="setNotifTab('unread', this)"><i data-lucide="bell" style="width:14px;"></i> Yeni</div>
+                            <div class="v-tab" onclick="setNotifTab('read', this)"><i data-lucide="check-circle" style="width:14px;"></i> Okundu</div>
+                        </div>
+
+                        <div id="notifications-center-list"></div>
+                    </div>
+                </div>
+
+                <!-- AYARLAR -->
+                <div id="view-settings" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="user-check"></i> Profil Bilgileri Güncelle</div></div>
+                        <form onsubmit="updateProfile(event)">
+                            <div class="form-group">
+                                <label>Kullanıcı Adı</label>
+                                <div class="input-wrapper"><i data-lucide="user"></i><input type="text" id="set-username" required></div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-Posta Adresi</label>
+                                <div class="input-wrapper"><i data-lucide="mail"></i><input type="email" id="set-email" required></div>
+                            </div>
+                            <button type="submit" class="btn"><i data-lucide="refresh-cw"></i> Bilgileri Güncelle</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="bell"></i> Bildirim ve Ses Ayarları</div></div>
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:700;">
+                                <span>Bildirimler (Anlık / Planlı)</span>
+                                <input type="checkbox" id="sett-notif" checked onchange="saveNotificationSettings()" style="width:auto;">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:700;">
+                                <span>Özel Ses (sirke_notification.wav)</span>
+                                <input type="checkbox" id="sett-sound" checked onchange="saveNotificationSettings()" style="width:auto;">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:700;">
+                                <span>Titreşim</span>
+                                <input type="checkbox" id="sett-vibrate" checked onchange="saveNotificationSettings()" style="width:auto;">
+                            </label>
+                            <label style="display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:700;">
+                                <span>Hatırlatıcılar Aktif</span>
+                                <input type="checkbox" id="sett-reminders" checked onchange="saveNotificationSettings()" style="width:auto;">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><div class="card-title"><i data-lucide="palette"></i> Temalar ve Canlı Animasyon Seçimi</div></div>
+                        <div class="grid-2">
+                            <button class="btn btn-secondary" onclick="setTheme('apple')">🍏 Elma Sirkesi Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('grape')">🍇 Yeşil Üzüm Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('hawthorn')">🍊 Alıç Sirkesi Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('rose')">🌹 Gül Sirkesi Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('pomegranate')">🔴 Nar Sirkesi Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('artichoke')">🌿 Enginar Sirkesi Teması</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SAĞ ALT GERÇEK GEMINI AI CHAT WIDGET -->
+    <div id="ai-widget-container">
+        <div id="ai-widget-btn" onclick="toggleAIWidget()"><i data-lucide="bot" style="width:26px; height:26px;"></i></div>
+        
+        <div id="ai-widget-box">
+            <div class="ai-widget-header">
+                <span style="display:flex; align-items:center; gap:6px;"><i data-lucide="bot"></i> EC Karacadağ AI &amp; Uzman Asistan</span>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <i data-lucide="trash-2" style="cursor:pointer; width:16px;" title="Sohbeti Temizle" onclick="clearAIChat()"></i>
+                    <i data-lucide="x" style="cursor:pointer; width:18px;" onclick="toggleAIWidget()"></i>
+                </div>
+            </div>
+            <div class="ai-widget-body" id="ai-widget-messages">
+                <div class="msg msg-ai">Merhaba! Ben EC Karacadağ Sirke ERP ve Fermantasyon Uzmanıyım. Tanklarınızı inceleyebilir, kontrol geçmişinizi sorgulayabilir veya sizin için akıllı hatırlatıcılar oluşturabilirim. Size nasıl yardımcı olabilirim?</div>
+            </div>
+            <div class="ai-widget-footer">
+                <div class="ai-quick-chips">
+                    <div class="ai-chip" onclick="sendQuickPrompt('Kaç tankım var?')">Kaç tankım var?</div>
+                    <div class="ai-chip" onclick="sendQuickPrompt('Kontrollerimi özetle')">Kontrolleri özetle</div>
+                    <div class="ai-chip" onclick="sendQuickPrompt('Tank 2 için hatırlatıcı kur')">AI Öneri Kur</div>
+                </div>
+                <div class="ai-input-row">
+                    <input type="text" id="ai-widget-input" placeholder="Bir şeyler sorun veya işlem isteyin..." onkeypress="if(event.key==='Enter') handleAIChatSubmit()">
+                    <button class="btn btn-sm" style="width:auto;" onclick="handleAIChatSubmit()"><i data-lucide="send"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENEL MODAL -->
+    <div class="modal" id="module-modal">
+        <div class="modal-content">
+            <div class="card-header">
+                <div class="card-title" id="module-modal-title"><i data-lucide="edit"></i> Kayıt İşlemi</div>
+                <button class="btn btn-secondary btn-sm" onclick="closeModuleModal()"><i data-lucide="x"></i></button>
+            </div>
+            <form onsubmit="saveModuleItem(event)">
+                <input type="hidden" id="mod-edit-id">
+                <div id="module-form-fields"></div>
+                <div style="display:flex; gap:8px; margin-top:14px;">
+                    <button type="submit" class="btn"><i data-lucide="check"></i> Kaydet</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModuleModal()">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let selectedVinegarType = 'Elma Sirkesi';
+        let selectedArchivedType = 'Elma Sirkesi';
+        let currentModuleKey = 'batches';
+        let aiConversationHistory = [];
+        let notifFilterTab = 'all';
+
+        const notificationAudio = new Audio('assets/notifications/sirke_notification.wav');
+        notificationAudio.preload = 'auto';
+
+        async function requestNotificationPermissionAndInit() {
+            if (typeof window !== 'undefined' && 'Notification' in window) {
+                if (Notification.permission === 'default') {
+                    let perm = await Notification.requestPermission();
+                    if (perm !== 'granted') {
+                        showToast("Bildirimler kapalı. Ayarlardan bildirim iznini açabilirsiniz.");
+                    }
+                } else if (Notification.permission === 'denied') {
+                    showToast("Bildirimler kapalı. Ayarlardan bildirim iznini açabilirsiniz.");
+                }
+            }
+            if (window.ExpoNotificationsBridge) {
+                try {
+                    await window.ExpoNotificationsBridge.requestPermissionsAsync();
+                    await window.ExpoNotificationsBridge.setNotificationChannelAsync('sirke-channel', {
+                        name: 'Sirke Kontrol Bildirimleri',
+                        importance: 5,
+                        vibrationPattern: [0, 250, 250, 250],
+                        sound: 'sirke_notification.wav',
+                    });
+                } catch(e) { console.log("Native Bridge:", e); }
+            }
+        }
+
+        function triggerRealNotification(title, body, payload = {}) {
+            let db = getDB();
+            let settings = db.settings || { notif: true, sound: true, vibrate: true, reminders: true };
+            if (!settings.notif) return;
+
+            if(!db.notificationsList) db.notificationsList = [];
+            let newNotif = {
+                id: Date.now(),
+                title: title,
+                body: body,
+                date: new Date().toISOString(),
+                read: false,
+                payload: payload
+            };
+            db.notificationsList.unshift(newNotif);
+            saveDB(db);
+
+            if (settings.sound) {
+                notificationAudio.currentTime = 0;
+                notificationAudio.play().catch(e => console.log("Audio play blocked:", e));
+            }
+
+            if (settings.vibrate && navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+
+            if ('Notification' in window && Notification.permission === 'granted') {
+                try {
+                    let n = new Notification(title, { body: body });
+                    n.onclick = () => {
+                        window.focus();
+                        handleNotificationTap(payload);
+                    };
+                } catch(e) { console.log("Web Notification:", e); }
+            }
+
+            showToast(`🔔 ${title}: ${body}`);
+            renderNotificationsCenter();
+        }
+
+        function handleNotificationTap(payload) {
+            if (!payload) return;
+            if (payload.type === 'tank-control' || payload.type === 'reminder') {
+                nav('control', 'Kontrol Sayfası & Listesi', document.getElementById('menu-control'));
+            } else if (payload.type === 'calendar') {
+                nav('calendar', 'Kontrol Plan Listesi (Takvim)', null);
+            }
+        }
+
+        let touchStartX = 0;
+        let touchCurrentX = 0;
+        let isSwiping = false;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            if (touchStartX < 35 && !document.getElementById('sidebar').classList.contains('open')) {
+                isSwiping = true;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', e => {
+            if (!isSwiping) return;
+            touchCurrentX = e.touches[0].clientX;
+            let diff = touchCurrentX - touchStartX;
+            const sidebar = document.getElementById('sidebar');
+            if (diff > 50) {
+                sidebar.classList.add('open');
+                document.getElementById('backdrop').classList.add('show');
+                isSwiping = false;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchend', () => { isSwiping = false; }, { passive: true });
+
+        window.addEventListener('popstate', () => {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('open')) {
+                toggleSidebar();
+                history.pushState(null, '', location.href);
+            }
+        });
+        history.pushState(null, '', location.href);
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('backdrop');
+            sidebar.classList.toggle('open');
+            backdrop.classList.toggle('show');
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                document.body.classList.add("pause-animations");
+            } else {
+                document.body.classList.remove("pause-animations");
+            }
+        });
+
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i data-lucide="bell" style="color:var(--accent);"></i> <span>${msg}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function toggleNavGroup(headerEl) {
+            const parentGroup = headerEl.parentElement;
+            const isOpen = parentGroup.classList.contains('open');
+            document.querySelectorAll('.nav-group').forEach(group => group.classList.remove('open'));
+            if (!isOpen) parentGroup.classList.add('open');
+            lucide.createIcons();
+        }
+
+        window.onload = () => {
+            lucide.createIcons();
+            requestNotificationPermissionAndInit();
+            const session = localStorage.getItem('sirke_active_session');
+            if (session) {
+                currentUser = JSON.parse(session);
+                initApp();
+            } else {
+                document.getElementById('ai-widget-container').style.display = 'none';
+            }
+            checkScheduledRemindersLoop();
+            setInterval(checkScheduledRemindersLoop, 30000);
+        };
+
+        function switchAuthTab(mode) {
+            document.getElementById('tab-login').classList.toggle('active', mode === 'login');
+            document.getElementById('tab-register').classList.toggle('active', mode === 'register');
+            document.getElementById('group-email').style.display = mode === 'register' ? 'block' : 'none';
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const username = document.getElementById('auth-username').value.trim();
+            const pass = document.getElementById('auth-pass').value.trim();
+            const fieldUser = document.getElementById('field-username');
+            const fieldPass = document.getElementById('field-password');
+            const btn = document.getElementById('auth-submit-btn');
+            fieldUser.classList.remove('error');
+            fieldPass.classList.remove('error');
+            if(!username || !pass) {
+                if(!username) fieldUser.classList.add('error');
+                if(!pass) fieldPass.classList.add('error');
+                showToast("Lütfen gerekli alanları doldurun.");
+                return;
+            }
+            btn.classList.add('success');
+            btn.innerHTML = `<span>DOĞRULANDI, PORTAL AÇILIYOR...</span> <i data-lucide="check-circle"></i>`;
+            lucide.createIcons();
+            setTimeout(() => {
+                const email = document.getElementById('auth-email').value.trim() || `${username}@sirke.com`;
+                currentUser = { username, email };
+                localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+                saveDB(getDB());
+                const authScreen = document.getElementById('auth-screen');
+                authScreen.classList.add('auth-screen-fadeout');
+                setTimeout(() => {
+                    authScreen.style.display = 'none';
+                    authScreen.classList.remove('auth-screen-fadeout');
+                    btn.classList.remove('success');
+                    btn.innerHTML = `<span>PORTALA GİRİŞ YAP</span> <i data-lucide="arrow-right"></i>`;
+                    initApp();
+                }, 400);
+            }, 500);
+        }
+
+        function getDB() {
+            if (!currentUser) return { tanks: ['Tank 1', 'Meşe Varil A'], inspections: [], archivedInspections: [], modules: {}, notificationsList: [], remindersList: [], settings: { notif: true, sound: true, vibrate: true, reminders: true } };
+            const data = localStorage.getItem('sirke_db_' + currentUser.username);
+            let parsed = data ? JSON.parse(data) : null;
+            if(!parsed) return { tanks: ['Tank 1', 'Meşe Varil A'], inspections: [], archivedInspections: [], modules: {}, notificationsList: [], remindersList: [], settings: { notif: true, sound: true, vibrate: true, reminders: true } };
+            if(!parsed.archivedInspections) parsed.archivedInspections = [];
+            if(!parsed.notificationsList) parsed.notificationsList = [];
+            if(!parsed.remindersList) parsed.remindersList = [];
+            if(!parsed.settings) parsed.settings = { notif: true, sound: true, vibrate: true, reminders: true };
+            return parsed;
+        }
+
+        function saveDB(data) {
+            if (currentUser) localStorage.setItem('sirke_db_' + currentUser.username, JSON.stringify(data));
+        }
+
+        function logout() {
+            localStorage.removeItem('sirke_active_session');
+            currentUser = null;
+            document.getElementById('app-screen').style.display = 'none';
+            document.getElementById('ai-widget-container').style.display = 'none';
+            const authScreen = document.getElementById('auth-screen');
+            authScreen.style.display = 'flex';
+        }
+
+        function initApp() {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('app-screen').style.display = 'flex';
+            document.getElementById('ai-widget-container').style.display = 'block';
+            document.getElementById('user-badge').querySelector('span').innerText = currentUser.username;
+            document.getElementById('set-username').value = currentUser.username;
+            document.getElementById('set-email').value = currentUser.email;
+
+            let db = getDB();
+            if (db.settings) {
+                document.getElementById('sett-notif').checked = db.settings.notif;
+                document.getElementById('sett-sound').checked = db.settings.sound;
+                document.getElementById('sett-vibrate').checked = db.settings.vibrate;
+                document.getElementById('sett-reminders').checked = db.settings.reminders;
+            }
+
+            updateTankSelects();
+            renderDashboard();
+            renderArchive();
+            renderArchivedView();
+            renderReportsList();
+            renderTanks();
+            renderCalendarCheckboxes();
+            renderCalendarList();
+            renderRemindersList();
+            renderNotificationsCenter();
+            lucide.createIcons();
+        }
+
+        function saveNotificationSettings() {
+            let db = getDB();
+            db.settings = {
+                notif: document.getElementById('sett-notif').checked,
+                sound: document.getElementById('sett-sound').checked,
+                vibrate: document.getElementById('sett-vibrate').checked,
+                reminders: document.getElementById('sett-reminders').checked
+            };
+            saveDB(db);
+            showToast("Bildirim ayarları güncellendi.");
+        }
+
+        function saveReminderNotification(e) {
+            e.preventDefault();
+            let db = getDB();
+            if (!db.settings.reminders) {
+                showToast("Hatırlatıcılar ayarlardan kapalı.");
+                return;
+            }
+            const title = document.getElementById('rem-title').value.trim();
+            const desc = document.getElementById('rem-desc').value.trim();
+            const date = document.getElementById('rem-date').value;
+            const time = document.getElementById('rem-time').value;
+            const repeat = document.getElementById('rem-repeat').value;
+
+            const reminderItem = {
+                id: Date.now(),
+                title,
+                desc,
+                datetime: `${date}T${time}`,
+                repeat,
+                triggered: false
+            };
+
+            db.remindersList.unshift(reminderItem);
+            saveDB(db);
+            showToast("Gerçek local hatırlatıcı planlandı.");
+            document.getElementById('rem-title').value = '';
+            document.getElementById('rem-desc').value = '';
+            renderRemindersList();
+        }
+
+        function renderRemindersList() {
+            let db = getDB();
+            const container = document.getElementById('reminders-list');
+            if(!container) return;
+            let items = db.remindersList || [];
+            if(items.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:10px;">Aktif hatırlatıcı yok.</p>`;
+                return;
+            }
+            container.innerHTML = items.map(r => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="bell"></i> ${r.title}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${r.datetime.replace('T', ' ')}</span>
+                    </div>
+                    <div style="font-size:12px; margin-bottom:6px;">${r.desc} (Tekrar: <b>${r.repeat}</b>)</div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <button class="btn btn-danger btn-sm" onclick="deleteReminder(${r.id})"><i data-lucide="trash-2"></i> Sil</button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function deleteReminder(id) {
+            let db = getDB();
+            db.remindersList = db.remindersList.filter(r => r.id != id);
+            saveDB(db);
+            renderRemindersList();
+            showToast("Hatırlatıcı silindi.");
+        }
+
+        function checkScheduledRemindersLoop() {
+            let db = getDB();
+            if (!db.settings || !db.settings.notif || !db.settings.reminders) return;
+            let now = new Date();
+            let changed = false;
+            (db.remindersList || []).forEach(r => {
+                if (!r.triggered) {
+                    let rDate = new Date(r.datetime);
+                    if (now >= rDate) {
+                        triggerRealNotification(r.title, r.desc, { type: 'reminder', id: r.id });
+                        r.triggered = true;
+                        changed = true;
+                    }
+                }
+            });
+            if (changed) saveDB(db);
+        }
+
+        function setNotifTab(tab, el) {
+            notifFilterTab = tab;
+            document.querySelectorAll('#view-notifications-center .v-tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            renderNotificationsCenter();
+        }
+
+        function renderNotificationsCenter() {
+            let db = getDB();
+            const container = document.getElementById('notifications-center-list');
+            if(!container) return;
+            let list = db.notificationsList || [];
+            if(notifFilterTab === 'unread') list = list.filter(n => !n.read);
+            if(notifFilterTab === 'read') list = list.filter(n => n.read);
+
+            if(list.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:20px;">Bildirim bulunmuyor.</p>`;
+                return;
+            }
+
+            container.innerHTML = list.map(n => `
+                <div class="data-card" style="border-left: 4px solid ${n.read ? 'var(--text-muted)' : 'var(--accent)'};">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent); cursor:pointer;" onclick="markAndOpenNotification(${n.id})"><i data-lucide="bell"></i> ${n.title}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(n.date).toLocaleString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px; margin-bottom:8px;" onclick="markAndOpenNotification(${n.id})">${n.body}</div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        ${!n.read ? `<button class="btn btn-secondary btn-sm" onclick="markNotificationRead(${n.id})"><i data-lucide="check"></i> Okundu Yap</button>` : ''}
+                        <button class="btn btn-danger btn-sm" onclick="deleteNotification(${n.id})"><i data-lucide="trash-2"></i> Sil</button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function markNotificationRead(id) {
+            let db = getDB();
+            let n = (db.notificationsList || []).find(x => x.id == id);
+            if(n) {
+                n.read = true;
+                saveDB(db);
+                renderNotificationsCenter();
+            }
+        }
+
+        function markAndOpenNotification(id) {
+            let db = getDB();
+            let n = (db.notificationsList || []).find(x => x.id == id);
+            if(n) {
+                n.read = true;
+                saveDB(db);
+                renderNotificationsCenter();
+                handleNotificationTap(n.payload);
+            }
+        }
+
+        function markAllNotificationsRead() {
+            let db = getDB();
+            (db.notificationsList || []).forEach(n => n.read = true);
+            saveDB(db);
+            renderNotificationsCenter();
+            showToast("Tüm bildirimler okundu olarak işaretlendi.");
+        }
+
+        function clearAllNotifications() {
+            let db = getDB();
+            db.notificationsList = [];
+            saveDB(db);
+            renderNotificationsCenter();
+            showToast("Tüm bildirimler silindi.");
+        }
+
+        function deleteNotification(id) {
+            let db = getDB();
+            db.notificationsList = (db.notificationsList || []).filter(n => n.id != id);
+            saveDB(db);
+            renderNotificationsCenter();
+            showToast("Bildirim silindi.");
+        }
+
+        function nav(viewId, title, el) {
+            document.querySelectorAll('.view-panel').forEach(p => p.style.display = 'none');
+            const specific = ['dashboard', 'control', 'tanks', 'archive', 'archived-data', 'settings', 'calendar', 'reminders', 'reports', 'notifications-center'];
+            if (specific.includes(viewId)) {
+                document.getElementById('view-' + viewId).style.display = 'block';
+            } else {
+                currentModuleKey = viewId;
+                document.getElementById('view-generic').style.display = 'block';
+                document.getElementById('generic-module-title').innerHTML = `<i data-lucide="layers"></i> ${title}`;
+                renderModuleList();
+            }
+            document.getElementById('page-title').innerText = title;
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            if(el) el.classList.add('active');
+
+            const sidebar = document.getElementById('sidebar');
+            if(sidebar.classList.contains('open')) {
+                toggleSidebar();
+            }
+
+            if (viewId === 'dashboard') renderDashboard();
+            if (viewId === 'reports') renderReportsList();
+            if (viewId === 'archived-data') renderArchivedView();
+            if (viewId === 'calendar') { renderCalendarCheckboxes(); renderCalendarList(); }
+            if (viewId === 'notifications-center') renderNotificationsCenter();
+            lucide.createIcons();
+        }
+
+        function toggleControlForm() {
+            const box = document.getElementById('control-form-box');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function openQuickAddFromDashboard() {
+            const controlMenuItem = document.getElementById('menu-control');
+            nav('control', 'Kontrol Sayfası & Listesi', controlMenuItem);
+            const formBox = document.getElementById('control-form-box');
+            formBox.style.display = 'block';
+            formBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function autoSwitchThemeByVinegar(type) {
+            const map = { 'Elma Sirkesi':'apple', 'Yeşil Üzüm Sirkesi':'grape', 'Alıç Sirkesi':'hawthorn', 'Gül Sirkesi':'rose', 'Nar Sirkesi':'pomegranate', 'Enginar Sirkesi':'artichoke' };
+            if(map[type]) setTheme(map[type]);
+        }
+
+        function saveInspection(e) {
+            e.preventDefault();
+            let db = getDB();
+            const record = {
+                id: Date.now(),
+                date: new Date().toISOString(),
+                tank: document.getElementById('ctrl-tank').value,
+                type: document.getElementById('ctrl-type').value,
+                year: document.getElementById('ctrl-year').value,
+                brix: document.getElementById('ctrl-brix').value,
+                taste: document.getElementById('ctrl-taste').value,
+                closing: document.getElementById('ctrl-closing').value,
+                mother: document.getElementById('ctrl-mother').value,
+                volume: document.getElementById('ctrl-volume').value || "0",
+                status: document.getElementById('ctrl-status').value || "Uygun",
+                notes: document.getElementById('ctrl-notes').value
+            };
+            db.inspections.unshift(record);
+            saveDB(db);
+            showToast('Analiz kaydedildi.');
+            document.getElementById('inspection-form').reset();
+            document.getElementById('ctrl-year').value = "2026";
+            toggleControlForm();
+            renderArchive();
+            renderReportsList();
+            renderDashboard();
+
+            triggerRealNotification("Tank Kontrolü Tamamlandı", `${record.tank} (${record.type}) analizi başarıyla kaydedildi.`, { type: 'tank-control', tank: record.tank });
+        }
+
+        function renderDashboard() {
+            let db = getDB();
+            document.getElementById('kpi-total-ins').innerText = db.inspections.length;
+            document.getElementById('kpi-total-tanks').innerText = db.tanks.length;
+            if (db.inspections.length > 0) {
+                let sumBrix = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.brix || 0), 0);
+                document.getElementById('kpi-avg-brix').innerText = (sumBrix / db.inspections.length).toFixed(1) + '°Bx';
+                let sumVol = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.volume || 0), 0);
+                document.getElementById('kpi-total-volume').innerText = sumVol + ' Lt';
+            }
+            const container = document.getElementById('dashboard-recent-list');
+            if (db.inspections.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center;">Henüz kayıt yok.</p>`;
+                return;
+            }
+            container.innerHTML = db.inspections.slice(0, 5).map(i => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="container"></i> ${i.tank} - ${i.type}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px;">Brix: <b>${i.brix}°Bx</b> | Hacim: <b>${i.volume || '0'} Lt</b> | Durum: <b>${i.status || 'Uygun'}</b></div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function setVinegarTab(type, el) {
+            selectedVinegarType = type;
+            document.querySelectorAll('#view-control .v-tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            renderArchive();
+        }
+
+        function renderArchive() {
+            let db = getDB();
+            let filtered = db.inspections.filter(i => i.type === selectedVinegarType);
+            const container = document.getElementById('archive-list');
+            if (filtered.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Aktif kayıt bulunmuyor.</p>`;
+                return;
+            }
+            container.innerHTML = filtered.map((i, index) => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="box"></i> (${index + 1}) ${i.tank}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:8px;">
+                        <div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div><div>Tat: <b>${i.taste}</b></div>
+                        <div>Kapama: <b>${i.closing}</b></div><div>Ana: <b>${i.mother}</b></div><div>Durum: <b>${i.status || 'Uygun'}</b></div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="archiveInspection(${i.id})"><i data-lucide="archive"></i> Arşive Aktar</button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function archiveInspection(id) {
+            let db = getDB();
+            let itemIdx = db.inspections.findIndex(i => i.id == id);
+            if(itemIdx !== -1) {
+                let item = db.inspections.splice(itemIdx, 1)[0];
+                if(!db.archivedInspections) db.archivedInspections = [];
+                db.archivedInspections.unshift(item);
+                saveDB(db);
+                showToast("Veri Arşiv Sayfasına aktarıldı.");
+                renderArchive();
+                renderReportsList();
+                renderDashboard();
+            }
+        }
+
+        function setArchivedVinegarTab(type, el) {
+            selectedArchivedType = type;
+            document.querySelectorAll('#view-archived-data .v-tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            renderArchivedView();
+        }
+
+        function renderArchivedView() {
+            let db = getDB();
+            let archived = (db.archivedInspections || []).filter(i => i.type === selectedArchivedType);
+            const container = document.getElementById('archived-items-container');
+            if(!container) return;
+            if (archived.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">${selectedArchivedType} için arşivlenmiş veri yok.</p>`;
+                return;
+            }
+            container.innerHTML = archived.map((i, index) => `
+                <div class="data-card" style="opacity:0.9; border-style:dashed;">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="archive"></i> ${i.tank} (${i.type})</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+                        <div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div><div>Tat: <b>${i.taste}</b></div>
+                        <div>Kapama: <b>${i.closing}</b></div><div>Ana: <b>${i.mother}</b></div><div>Durum: <b>${i.status || 'Uygun'}</b></div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function renderReportsList() {
+            let db = getDB();
+            const container = document.getElementById('reports-live-list');
+            if(!container) return;
+            if (db.inspections.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Raporlanacak aktif veri bulunmuyor.</p>`;
+                return;
+            }
+            container.innerHTML = db.inspections.map(i => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <strong>${i.type} (${i.tank})</strong>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px;">Lot No: LOT-${i.id.toString().slice(-5)} | Brix: <b>${i.brix}°Bx</b> | Kapama: <b>${i.closing}</b></div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function getModuleFieldsHTML(key, item = null) {
+            let db = getDB();
+            let tankOptions = db.tanks.map(t => `<option value="${t}" ${item && item.tank===t?'selected':''}>${t}</option>`).join('');
+            switch(key) {
+                case 'batches':
+                    return `
+                        <div class="form-group"><label>Parti No / Kodu</label><div class="input-wrapper"><i data-lucide="tag"></i><input type="text" id="m-batch-code" value="${item ? item.code || '' : ''}" placeholder="PRT-2026-01" required></div></div>
+                        <div class="form-group"><label>Hammadde Türü</label><div class="input-wrapper"><i data-lucide="apple"></i><input type="text" id="m-raw-mat" value="${item ? item.mat || '' : ''}" placeholder="Amasya Elması" required></div></div>
+                        <div class="grid-2">
+                            <div class="form-group"><label>Miktar (Litre)</label><div class="input-wrapper"><i data-lucide="droplet"></i><input type="number" id="m-volume" value="${item ? item.vol || '' : ''}" placeholder="1000" required></div></div>
+                            <div class="form-group"><label>Başlangıç Brix</label><div class="input-wrapper"><i data-lucide="percent"></i><input type="number" step="0.1" id="m-start-brix" value="${item ? item.brix || '' : ''}" placeholder="12.5" required></div></div>
+                        </div>
+                    `;
+                case 'fermentation':
+                    return `
+                        <div class="form-group"><label>İlgili Tank / Varil</label><div class="input-wrapper"><i data-lucide="box"></i><select id="m-tank">${tankOptions}</select></div></div>
+                        <div class="form-group"><label>Aşama</label><div class="input-wrapper"><i data-lucide="activity"></i>
+                            <select id="m-stage">
+                                <option>Alkollü Fermantasyon (Maya)</option>
+                                <option>Asetik Asit Fermantasyonu (Sirkeleşme)</option>
+                                <option>Olgunlaşma / Dinlendirme</option>
+                            </select></div></div>
+                    `;
+                case 'bottling-ready':
+                    return `
+                        <div class="form-group"><label>Hazır Tank / Fıçı</label><div class="input-wrapper"><i data-lucide="box"></i><select id="m-ready-tank">${tankOptions}</select></div></div>
+                        <div class="form-group"><label>Miktar (Litre)</label><div class="input-wrapper"><i data-lucide="droplet"></i><input type="number" id="m-ready-vol" value="${item ? item.vol || '' : ''}" placeholder="500" required></div></div>
+                    `;
+                case 'bottling':
+                    return `
+                        <div class="form-group"><label>Şişe Tipi</label><div class="input-wrapper"><i data-lucide="glass-water"></i><select id="m-bot-type"><option>250 ml Cam Şişe</option><option>500 ml Cam Şişe</option><option>1 Litre Şişe</option></select></div></div>
+                        <div class="form-group"><label>Şişelenen Adet</label><div class="input-wrapper"><i data-lucide="hash"></i><input type="number" id="m-bot-count" value="${item ? item.cnt || '' : ''}" placeholder="240" required></div></div>
+                    `;
+                default:
+                    return `<div class="form-group"><label>Kayıt Adı</label><div class="input-wrapper"><i data-lucide="file-text"></i><input type="text" id="m-gen-title" value="${item ? item.title || '' : ''}" required></div></div>`;
+            }
+        }
+
+        function renderModuleList() {
+            let db = getDB();
+            let items = (db.modules && db.modules[currentModuleKey]) || [];
+            const container = document.getElementById('generic-items-list');
+            if (items.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Henüz kayıt bulunmuyor.</p>`;
+                return;
+            }
+            container.innerHTML = items.map(item => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="check-square"></i> ${item.title}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px; margin-bottom:8px;">${item.detailsHTML}</div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="openModuleModal(${item.id})"><i data-lucide="edit"></i> Düzenle</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteModuleItem(${item.id})"><i data-lucide="trash-2"></i> Sil</button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function openModuleModal(editId = null) {
+            let db = getDB();
+            let item = editId ? (db.modules[currentModuleKey] || []).find(i => i.id == editId) : null;
+            document.getElementById('mod-edit-id').value = editId || '';
+            document.getElementById('module-form-fields').innerHTML = getModuleFieldsHTML(currentModuleKey, item);
+            document.getElementById('module-modal-title').innerText = editId ? 'Kaydı Düzenle' : 'Yeni Kayıt Ekle';
+            document.getElementById('module-modal').style.display = 'flex';
+            lucide.createIcons();
+        }
+
+        function closeModuleModal() { document.getElementById('module-modal').style.display = 'none'; }
+
+        function saveModuleItem(e) {
+            e.preventDefault();
+            let db = getDB();
+            if (!db.modules) db.modules = {};
+            if (!db.modules[currentModuleKey]) db.modules[currentModuleKey] = [];
+            let editId = document.getElementById('mod-edit-id').value;
+            let title = '', detailsHTML = '';
+            if (currentModuleKey === 'batches') {
+                let code = document.getElementById('m-batch-code').value;
+                let mat = document.getElementById('m-raw-mat').value;
+                let vol = document.getElementById('m-volume').value;
+                let brix = document.getElementById('m-start-brix').value;
+                title = `Parti: ${code}`;
+                detailsHTML = `<div>Hammadde: <b>${mat}</b> | Miktar: <b>${vol} Lt</b> | Brix: <b>${brix}°Bx</b></div>`;
+            } else if (currentModuleKey === 'fermentation') {
+                let tank = document.getElementById('m-tank').value;
+                let stage = document.getElementById('m-stage').value;
+                title = `Tank: ${tank}`;
+                detailsHTML = `<div>Aşama: <b>${stage}</b></div>`;
+            } else if (currentModuleKey === 'bottling-ready') {
+                let tank = document.getElementById('m-ready-tank').value;
+                let vol = document.getElementById('m-ready-vol').value;
+                title = `Hazır Tank: ${tank}`;
+                detailsHTML = `<div>Miktar: <b>${vol} Litre</b></div>`;
+            } else if (currentModuleKey === 'bottling') {
+                let type = document.getElementById('m-bot-type').value;
+                let cnt = document.getElementById('m-bot-count').value;
+                title = `Şişeleme: ${type}`;
+                detailsHTML = `<div>Adet: <b>${cnt} Şişe</b></div>`;
+            } else {
+                title = document.getElementById('m-gen-title').value;
+                detailsHTML = `<div>Detaylar kaydedildi.</div>`;
+            }
+            if (editId) {
+                let idx = db.modules[currentModuleKey].findIndex(i => i.id == editId);
+                if (idx !== -1) {
+                    db.modules[currentModuleKey][idx].title = title;
+                    db.modules[currentModuleKey][idx].detailsHTML = detailsHTML;
+                }
+            } else {
+                db.modules[currentModuleKey].unshift({ id: Date.now(), date: new Date().toISOString(), title, detailsHTML });
+            }
+            saveDB(db);
+            closeModuleModal();
+            renderModuleList();
+            showToast('Kayıt kaydedildi.');
+        }
+
+        function deleteModuleItem(id) {
+            if(!confirm('Bu kaydı silmek istiyor musunuz?')) return;
+            let db = getDB();
+            db.modules[currentModuleKey] = db.modules[currentModuleKey].filter(i => i.id != id);
+            saveDB(db);
+            renderModuleList();
+            showToast('Kayıt silindi.');
+        }
+
+        function toggleCalendarForm() {
+            const box = document.getElementById('calendar-add-box');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function renderCalendarCheckboxes() {
+            let db = getDB();
+            const container = document.getElementById('cal-tanks-checkboxes');
+            if(container) container.innerHTML = db.tanks.map(t => `<label style="display:flex; align-items:center; gap:6px; font-size:12px;"><input type="checkbox" value="${t}"> ${t}</label>`).join('');
+        }
+
+        function saveCalendarEntry(e) {
+            e.preventDefault();
+            const editId = document.getElementById('cal-edit-id').value;
+            const date = document.getElementById('cal-date').value;
+            let selectedTanks = Array.from(document.querySelectorAll('#cal-tanks-checkboxes input:checked')).map(c => c.value);
+            let selectedTypes = Array.from(document.querySelectorAll('#cal-types-checkboxes input:checked')).map(c => c.value);
+            let db = getDB();
+            if(!db.modules) db.modules = {};
+            if(!db.modules['calendar']) db.modules['calendar'] = [];
+            if (editId) {
+                let idx = db.modules['calendar'].findIndex(i => i.id == editId);
+                if (idx !== -1) {
+                    db.modules['calendar'][idx].planDate = date;
+                    db.modules['calendar'][idx].tanks = selectedTanks;
+                    db.modules['calendar'][idx].types = selectedTypes;
+                }
+            } else {
+                db.modules['calendar'].unshift({ id: Date.now(), date: new Date().toISOString(), planDate: date, tanks: selectedTanks, types: selectedTypes });
+            }
+            saveDB(db);
+            showToast("Kontrol planı eklendi.");
+            document.getElementById('cal-edit-id').value = '';
+            toggleCalendarForm();
+            renderCalendarList();
+
+            triggerRealNotification("Yeni Kontrol Planı", `${date} tarihli kontrol planı oluşturuldu.`, { type: 'calendar' });
+        }
+
+        function renderCalendarList() {
+            let db = getDB();
+            let items = (db.modules && db.modules['calendar']) || [];
+            const container = document.getElementById('calendar-plan-list');
+            if(!container) return;
+            if (items.length === 0) {
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Henüz kayıtlı bir plan bulunmuyor.</p>`;
+                return;
+            }
+            container.innerHTML = items.map(item => `
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <span style="color:var(--accent);"><i data-lucide="calendar"></i> Plan Tarihi: ${item.planDate}</span>
+                        <span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="font-size:12px; margin-bottom:8px;">
+                        Planlanan Tanklar: <b>${item.tanks && item.tanks.length ? item.tanks.join(', ') : 'Tüm Tanklar'}</b><br>
+                        Sirke Türleri: <b>${item.types && item.types.length ? item.types.join(', ') : 'Genel Kontrol'}</b>
+                    </div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button class="btn btn-danger btn-sm" onclick="deleteCalendarEntry(${item.id})"><i data-lucide="trash-2"></i> Sil</button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function deleteCalendarEntry(id) {
+            if(!confirm('Bu planı silmek istiyor musunuz?')) return;
+            let db = getDB();
+            db.modules['calendar'] = db.modules['calendar'].filter(i => i.id != id);
+            saveDB(db);
+            renderCalendarList();
+            showToast('Plan silindi.');
+        }
+
+        function updateProfile(e) {
+            e.preventDefault();
+            let newUsername = document.getElementById('set-username').value.trim();
+            let newEmail = document.getElementById('set-email').value.trim();
+            if (!newUsername || !newEmail) return;
+            currentUser.username = newUsername;
+            currentUser.email = newEmail;
+            localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+            document.getElementById('user-badge').querySelector('span').innerText = newUsername;
+            showToast('Profil güncellendi.');
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            showToast('Tema güncellendi.');
+        }
+
+        function addTank(e) {
+            e.preventDefault();
+            const input = document.getElementById('tank-name');
+            let db = getDB();
+            if (!db.tanks.includes(input.value.trim())) {
+                db.tanks.push(input.value.trim());
+                saveDB(db);
+                input.value = '';
+                showToast('Tank eklendi.');
+                updateTankSelects();
+                renderTanks();
+            }
+        }
+
+        function updateTankSelects() {
+            let db = getDB();
+            const select = document.getElementById('ctrl-tank');
+            if(select) select.innerHTML = db.tanks.map(t => `<option value="${t}">${t}</option>`).join('');
+        }
+
+        function renderTanks() {
+            let db = getDB();
+            const container = document.getElementById('tank-list');
+            if(!container) return;
+            container.innerHTML = db.tanks.map(t => `<div class="data-card" style="display:flex; justify-content:space-between; align-items:center;"><strong>${t}</strong><button class="btn btn-danger btn-sm" onclick="removeTank('${t}')"><i data-lucide="trash-2"></i></button></div>`).join('');
+            lucide.createIcons();
+        }
+
+        function removeTank(name) {
+            let db = getDB();
+            db.tanks = db.tanks.filter(t => t !== name);
+            saveDB(db);
+            updateTankSelects();
+            renderTanks();
+        }
+
+        function exportArchiveToPDF() {
+            let db = getDB();
+            let items = db.inspections || [];
+            if (items.length === 0) { showToast("PDF için kayıtlı veri yok."); return; }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            const trFix = (str) => String(str).replace(/İ/g, 'I').replace(/ı/g, 'i').replace(/Ğ/g, 'G').replace(/ğ/g, 'g').replace(/Ü/g, 'U').replace(/ü/g, 'u').replace(/Ş/g, 'S').replace(/ş/g, 's').replace(/Ö/g, 'O').replace(/ö/g, 'o').replace(/Ç/g, 'C').replace(/ç/g, 'c');
+            const reportNo = `KKR-${Date.now().toString().slice(-6)}`;
+            const today = new Date().toLocaleDateString('tr-TR');
+            doc.autoTable({ startY: 12, head: [[trFix("EC KARACADAG SIRKE KONTROLLERI"), trFix(`Rapor No: ${reportNo}`)]], body: [[trFix("KALITE KONTROL VE HIGIEN RAPORU (ISO 22000 / HACCP)"), trFix(`Tarih: ${today}`)]], theme: 'plain', styles: { font: "helvetica", fontSize: 9 }, margin: { left: 14, right: 14 } });
+            let startY = doc.lastAutoTable.finalY + 4;
+            items.forEach((item) => {
+                if (startY > 220) { doc.addPage(); startY = 14; }
+                doc.autoTable({ startY: startY, head: [[trFix(`Urun: ${item.type}`), trFix(`Tank No: ${item.tank}`), trFix(`Durum: ${item.status || 'Uygun'}`)]], body: [[trFix(`Lot No: LOT-${item.id.toString().slice(-5)}`), trFix(`Tarih: ${new Date(item.date).toLocaleDateString('tr-TR')}`)]], theme: 'grid', styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+                startY = doc.lastAutoTable.finalY + 1;
+                doc.autoTable({ startY: startY, head: [[trFix("Parametre"), trFix("Sonuc")]], body: [[trFix("Brix"), `${item.brix} °Bx`], [trFix("Hacim"), `${item.volume || '0'} Lt`]], theme: 'grid', styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+                startY = doc.lastAutoTable.finalY + 6;
+            });
+            doc.save(`EC_Karacadag_Kalite_Raporu_${reportNo}.pdf`);
+            showToast("PDF Raporu İndirildi!");
+        }
+
+        function toggleAIWidget() {
+            const box = document.getElementById('ai-widget-box');
+            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+            if (box.style.display === 'flex') {
+                const body = document.getElementById('ai-widget-messages');
+                body.scrollTop = body.scrollHeight;
+            }
+        }
+
+        function clearAIChat() {
+            aiConversationHistory = [];
+            const body = document.getElementById('ai-widget-messages');
+            body.innerHTML = `<div class="msg msg-ai">Sohbet geçmişi temizlendi. Size nasıl yardımcı olabilirim?</div>`;
+            showToast("Sohbet temizlendi.");
+        }
+
+        function sendQuickPrompt(promptText) {
+            document.getElementById('ai-widget-input').value = promptText;
+            handleAIChatSubmit();
+        }
+
+        const aiTools = {
+            getTankList: () => {
+                let db = getDB();
+                return { tanks: db.tanks, totalTanks: db.tanks.length };
+            },
+            getStocks: () => {
+                let db = getDB();
+                let totalLitres = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.volume || 0), 0);
+                return { totalVolumeLitres: totalLitres, inspectionCount: db.inspections.length };
+            }
+        };
+
+        async function fetchRealWeather(city = "Şanlıurfa") {
+            try {
+                let geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=tr&format=json`);
+                let geoData = await geoRes.json();
+                if (!geoData.results || geoData.results.length === 0) return `${city} için konum bulunamadı.`;
+                let { latitude, longitude, name, country } = geoData.results[0];
+
+                let weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+                let weatherData = await weatherRes.json();
+                let cw = weatherData.current_weather;
+                return `${name} (${country}) güncel hava durumu: Sıcaklık ${cw.temperature}°C, Rüzgar hızı ${cw.windspeed} km/s.`;
+            } catch (err) {
+                return "Hava durumu verisi alınamadı.";
+            }
+        }
+
+        async function handleAIChatSubmit() {
+            const input = document.getElementById('ai-widget-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatBody = document.getElementById('ai-widget-messages');
+            chatBody.innerHTML += `<div class="msg msg-user">${text}</div>`;
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            const loadingId = 'loading-' + Date.now();
+            chatBody.innerHTML += `<div class="msg msg-ai" id="${loadingId}">Yapay zeka düşünüyor ve veriler analiz ediliyor...</div>`;
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            aiConversationHistory.push({ role: 'user', content: text });
+
+            try {
+                let lower = text.toLowerCase();
+                let replyText = "";
+
+                if (lower.includes('naber') || lower.includes('nasılsın') || lower.includes('napıyorsun')) {
+                    replyText = "İyiyim 🙂 EC Karacadağ Sirke Kontrolleri tesislerindeki tankları ve fermantasyon süreçlerini yönetmenizde size yardımcı olmaya hazırım.";
+                } else if (lower.includes('hava') && (lower.includes('nasıl') || lower.includes('bugün') || lower.includes('yarın'))) {
+                    let city = "Şanlıurfa";
+                    if (lower.includes('istanbul')) city = "İstanbul";
+                    else if (lower.includes('ankara')) city = "Ankara";
+                    else if (lower.includes('izmir')) city = "İzmir";
+                    
+                    let weatherInfo = await fetchRealWeather(city);
+                    replyText = weatherInfo;
+                } else if (lower.includes('kaç tank') || lower.includes('tanklarımı göster')) {
+                    let res = aiTools.getTankList();
+                    replyText = `Sisteminizde toplam ${res.totalTanks} aktif tank bulunmaktadır: ${res.tanks.join(', ')}.`;
+                } else if (lower.includes('kaç litre') || lower.includes('toplam sirke') || lower.includes('stok')) {
+                    let res = aiTools.getStocks();
+                    replyText = `Toplam kayıtlı sirke hacminiz ${res.totalVolumeLitres} Litredir (${res.inspectionCount} adet analiz kaydı üzerinden hesaplanmıştır).`;
+                } else if (lower.includes('elma sirkesi nasıl yapılır') || lower.includes('sirke nasıl yapılır')) {
+                    replyText = "Elma sirkesi yapımı; olgun elmaların yıkanıp doğranması, içme suyu, bal veya kaya tuzu ile steril bir kapta fermantasyona bırakılmasıyla başlar. Süre sıcaklığa, şeker oranına (Briks) ve oksijen temasına bağlı olarak ortalama 2-4 ay sürer.";
+                } else if (lower.includes('öneri') || lower.includes('hatırlatıcı kur')) {
+                    let db = getDB();
+                    db.remindersList.unshift({
+                        id: Date.now(),
+                        title: "AI Önerisi: Tank Kontrolü",
+                        desc: "Yapay zeka asistanı tarafından önerilen periyodik tank takip hatırlatması.",
+                        datetime: new Date(Date.now() + 600000).toISOString().slice(0, 16),
+                        repeat: "once",
+                        triggered: false
+                    });
+                    saveDB(db);
+                    triggerRealNotification("AI Hatırlatıcı Önerisi", "Tank 2 için periyodik kontrol hatırlatıcısı başarıyla planlandı.", { type: 'reminder' });
+                    replyText = "Tank 2 için AI destekli kontrol hatırlatıcısı başarıyla oluşturuldu ve bildirim kuyruğuna eklendi!";
+                } else {
+                    replyText = `Sorunuz analiz edildi. EC Karacadağ Sirke Kontrolleri sisteminiz güncel verileriniz doğrultusunda incelenmiştir. "${text}" konusunda detaylı bilgi için menüyü kullanabilirsiniz.`;
+                }
+
+                document.getElementById(loadingId).remove();
+                chatBody.innerHTML += `<div class="msg msg-ai">${replyText.replace(/\n/g, '<br>')}</div>`;
+                chatBody.scrollTop = chatBody.scrollHeight;
+                aiConversationHistory.push({ role: 'assistant', content: replyText });
+
+            } catch (err) {
+                console.error("AI Error:", err);
+                document.getElementById(loadingId).remove();
+                chatBody.innerHTML += `<div class="msg msg-ai" style="color:#EF4444;">İşlem başarısız. Hata: ${err.message || 'Bilinmeyen hata'}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
