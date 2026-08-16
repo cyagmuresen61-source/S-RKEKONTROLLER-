@@ -940,16 +940,22 @@
             
             const rememberedUser = localStorage.getItem('sirke_remembered_user');
             if (rememberedUser) {
-                currentUser = JSON.parse(rememberedUser);
-                localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
-                initApp();
-                return;
+                try {
+                    currentUser = JSON.parse(rememberedUser);
+                    localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+                    initApp();
+                    return;
+                } catch(e) {}
             }
 
             const session = localStorage.getItem('sirke_active_session');
             if (session) {
-                currentUser = JSON.parse(session);
-                initApp();
+                try {
+                    currentUser = JSON.parse(session);
+                    initApp();
+                } catch(e) {
+                    document.getElementById('ai-widget-container').style.display = 'none';
+                }
             } else {
                 document.getElementById('ai-widget-container').style.display = 'none';
             }
@@ -1006,20 +1012,58 @@
             }, 500);
         }
 
+        function getCurrentUsername() {
+            if (currentUser && currentUser.username) return currentUser.username;
+            try {
+                let session = localStorage.getItem('sirke_active_session');
+                if (session) {
+                    let parsed = JSON.parse(session);
+                    if (parsed && parsed.username) {
+                        currentUser = parsed;
+                        return parsed.username;
+                    }
+                }
+            } catch(e) {}
+            return 'misafir_kullanici';
+        }
+
         function getDB() {
-            if (!currentUser) return { tanks: ['Tank 1', 'Meşe Varil A'], inspections: [], archivedInspections: [], modules: [], notificationsList: [], remindersList: [], settings: { notif: true, sound: true, vibrate: true, reminders: true } };
-            const data = localStorage.getItem('sirke_db_' + currentUser.username);
-            let parsed = data ? JSON.parse(data) : null;
-            if(!parsed) return { tanks: ['Tank 1', 'Meşe Varil A'], inspections: [], archivedInspections: [], modules: [], notificationsList: [], remindersList: [], settings: { notif: true, sound: true, vibrate: true, reminders: true } };
+            let username = getCurrentUsername();
+            const data = localStorage.getItem('sirke_db_' + username);
+            let parsed = null;
+            try {
+                parsed = data ? JSON.parse(data) : null;
+            } catch(e) {
+                parsed = null;
+            }
+
+            if(!parsed) {
+                return { 
+                    tanks: ['Tank 1', 'Meşe Varil A'], 
+                    inspections: [], 
+                    archivedInspections: [], 
+                    modules: {}, 
+                    notificationsList: [], 
+                    remindersList: [], 
+                    settings: { notif: true, sound: true, vibrate: true, reminders: true } 
+                };
+            }
             if(!parsed.archivedInspections) parsed.archivedInspections = [];
             if(!parsed.notificationsList) parsed.notificationsList = [];
             if(!parsed.remindersList) parsed.remindersList = [];
+            if(!parsed.modules) parsed.modules = {};
             if(!parsed.settings) parsed.settings = { notif: true, sound: true, vibrate: true, reminders: true };
             return parsed;
         }
 
         function saveDB(data) {
-            if (currentUser) localStorage.setItem('sirke_db_' + currentUser.username, JSON.stringify(data));
+            let username = getCurrentUsername();
+            try {
+                localStorage.setItem('sirke_db_' + username, JSON.stringify(data));
+            } catch(e) {
+                console.error("Kayıt hatası:", e);
+                showToast("Kayıt yapılamadı! Depolama alanı dolu veya kısıtlı.");
+            }
         }
 
         function logout() {
@@ -1486,6 +1530,7 @@
             let db = getDB();
             let items = (db.modules && db.modules[currentModuleKey]) || [];
             const container = document.getElementById('generic-items-list');
+            if(!container) return;
             if (items.length === 0) {
                 container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Henüz kayıt bulunmuyor.</p>`;
                 return;
@@ -1523,8 +1568,10 @@
             let db = getDB();
             if (!db.modules) db.modules = {};
             if (!db.modules[currentModuleKey]) db.modules[currentModuleKey] = [];
+            
             let editId = document.getElementById('mod-edit-id').value;
             let title = '', detailsHTML = '';
+            
             if (currentModuleKey === 'batches') {
                 let code = document.getElementById('m-batch-code').value;
                 let mat = document.getElementById('m-raw-mat').value;
@@ -1551,6 +1598,7 @@
                 title = document.getElementById('m-gen-title').value;
                 detailsHTML = `<div>Detaylar kaydedildi.</div>`;
             }
+
             if (editId) {
                 let idx = db.modules[currentModuleKey].findIndex(i => i.id == editId);
                 if (idx !== -1) {
@@ -1558,12 +1606,18 @@
                     db.modules[currentModuleKey][idx].detailsHTML = detailsHTML;
                 }
             } else {
-                db.modules[currentModuleKey].unshift({ id: Date.now(), date: new Date().toISOString(), title, detailsHTML });
+                db.modules[currentModuleKey].unshift({ 
+                    id: Date.now(), 
+                    date: new Date().toISOString(), 
+                    title, 
+                    detailsHTML 
+                });
             }
+
             saveDB(db);
             closeModuleModal();
             renderModuleList();
-            showToast('Kayıt kaydedildi.');
+            showToast('Kayıt başarıyla eklendi.');
         }
 
         function deleteModuleItem(id) {
