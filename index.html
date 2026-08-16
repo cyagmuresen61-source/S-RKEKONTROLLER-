@@ -1763,20 +1763,61 @@
             if (items.length === 0) { showToast("PDF için kayıtlı veri yok."); return; }
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-            const trFix = (str) => String(str).replace(/İ/g, 'I').replace(/ı/g, 'i').replace(/Ğ/g, 'G').replace(/ğ/g, 'g').replace(/Ü/g, 'U').replace(/ü/g, 'u').replace(/Ş/g, 'S').replace(/ş/g, 's').replace(/Ö/g, 'O').replace(/ö/g, 'o').replace(/Ç/g, 'C').replace(/ç/g, 'c');
+            const trFix = (str) => String(str || '').replace(/İ/g, 'I').replace(/ı/g, 'i').replace(/Ğ/g, 'G').replace(/ğ/g, 'g').replace(/Ü/g, 'U').replace(/ü/g, 'u').replace(/Ş/g, 'S').replace(/ş/g, 's').replace(/Ö/g, 'O').replace(/ö/g, 'o').replace(/Ç/g, 'C').replace(/ç/g, 'c');
             const reportNo = `KKR-${Date.now().toString().slice(-6)}`;
             const today = new Date().toLocaleDateString('tr-TR');
-            doc.autoTable({ startY: 12, head: [[trFix("EC KARACADAG SIRKE KONTROLLERI"), trFix(`Rapor No: ${reportNo}`)]], body: [[trFix("KALITE KONTROL VE HIGIEN RAPORU (ISO 22000 / HACCP)"), trFix(`Tarih: ${today}`)]], theme: 'plain', styles: { font: "helvetica", fontSize: 9 }, margin: { left: 14, right: 14 } });
+
+            doc.autoTable({ 
+                startY: 12, 
+                head: [[trFix("EC KARACADAG SIRKE KONTROLLERI"), trFix(`Rapor No: ${reportNo}`)]], 
+                body: [[trFix("KALITE KONTROL VE HIGIEN RAPORU (ISO 22000 / HACCP)"), trFix(`Tarih: ${today}`)]], 
+                theme: 'plain', 
+                styles: { font: "helvetica", fontSize: 9, fontStyle: 'bold' }, 
+                margin: { left: 14, right: 14 } 
+            });
+
             let startY = doc.lastAutoTable.finalY + 4;
             items.forEach((item) => {
                 if (startY > 220) { doc.addPage(); startY = 14; }
-                doc.autoTable({ startY: startY, head: [[trFix(`Urun: ${item.type}`), trFix(`Tank No: ${item.tank}`), trFix(`Durum: ${item.status || 'Uygun'}`)]], body: [[trFix(`Lot No: LOT-${item.id.toString().slice(-5)}`), trFix(`Tarih: ${new Date(item.date).toLocaleDateString('tr-TR')}`)]], theme: 'grid', styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+                
+                // Üst Başlık Tablosu
+                doc.autoTable({ 
+                    startY: startY, 
+                    head: [[trFix(`Urun: ${item.type}`), trFix(`Tank No: ${item.tank}`), trFix(`Durum: ${item.status || 'Uygun'}`)]], 
+                    body: [
+                        [trFix(`Lot No: LOT-${item.id.toString().slice(-5)}`), trFix(`Uretim Yili: ${item.year || '2026'}`), trFix(`Tarih: ${new Date(item.date).toLocaleDateString('tr-TR')}`)]
+                    ], 
+                    theme: 'grid', 
+                    headStyles: { fillColor: [59, 90, 92] },
+                    styles: { fontSize: 8 }, 
+                    margin: { left: 14, right: 14 } 
+                });
+
                 startY = doc.lastAutoTable.finalY + 1;
-                doc.autoTable({ startY: startY, head: [[trFix("Parametre"), trFix("Sonuc")]], body: [[trFix("Brix"), `${item.brix} °Bx`], [trFix("Hacim"), `${item.volume || '0'} Lt`]], theme: 'grid', styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
-                startY = doc.lastAutoTable.finalY + 6;
+
+                // Detay Parametre Tablosu (İkinci görseldeki tüm alanlar dahil edilmiştir)
+                doc.autoTable({ 
+                    startY: startY, 
+                    head: [[trFix("Analiz Parametresi"), trFix("Olcum / Gozlem Sonucu")]], 
+                    body: [
+                        [trFix("Brix Orani"), `${item.brix || '0'} °Bx`],
+                        [trFix("Tank Hacmi"), `${item.volume || '0'} Lt`],
+                        [trFix("Tat / Aroma"), trFix(item.taste || 'Bilinmiyor')],
+                        [trFix("Kapama Bicimi"), trFix(item.closing || 'Bilinmiyor')],
+                        [trFix("Sirke Anasi Durumu"), trFix(item.mother || 'Olusmadi')],
+                        [trFix("Ozel Notlar & Gozlemler"), trFix(item.notes || 'Not bulunmuyor.')]
+                    ], 
+                    theme: 'grid', 
+                    headStyles: { fillColor: [179, 125, 20] },
+                    styles: { fontSize: 8 }, 
+                    margin: { left: 14, right: 14 } 
+                });
+
+                startY = doc.lastAutoTable.finalY + 8;
             });
+
             doc.save(`EC_Karacadag_Kalite_Raporu_${reportNo}.pdf`);
-            showToast("PDF Raporu İndirildi!");
+            showToast("Kurumsal PDF Raporu İndirildi!");
         }
 
         function toggleAIWidget() {
