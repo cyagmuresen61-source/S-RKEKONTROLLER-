@@ -1,9 +1,10 @@
+<!-- EC Karacadağ Sirke Kontrolleri & ERP Güncellenmiş Sürüm -->
 <!DOCTYPE html>
 <html lang="tr" data-theme="apple">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>EC Karacadağ Sirke Kontrolleri &amp; ERP</title>
+    <title>EC Karacadağ Sirke Kontrolleri & ERP</title>
 
     <!-- PWA MANIFEST VE AĞ KURALLARI -->
     <link rel="manifest" href="/manifest.json">
@@ -29,14 +30,6 @@
             --ring-opacity: 0.85; --ring-color-1: #B37D14; --ring-color-2: #3B5A5C;
         }
 
-        :root[data-theme="grape"] {
-            --bg-main: #E8F5E9; --bg-card: rgba(255, 255, 255, 0.98); --primary: #2E7D32; --primary-hover: #1B5E20;
-            --accent: #43A047; --text: #1B3320; --text-muted: #388E3C; --border: rgba(67, 160, 71, 0.4); --input-bg: #DCEDC8;
-            --sidebar-bg: #E8F5E9; --sidebar-header: #2E7D32; --sidebar-text: #1B3320; --sidebar-hover: #C8E6C9;
-            --glow-1: rgba(46, 125, 50, 0.15); --glow-2: rgba(67, 160, 71, 0.2);
-            --ring-opacity: 0.8; --ring-color-1: #43A047; --ring-color-2: #2E7D32;
-        }
-
         :root[data-theme="hawthorn"] {
             --bg-main: #1A0C08; --bg-card: rgba(40, 20, 14, 0.96); --primary: #C2410C; --primary-hover: #9A3412;
             --accent: #FDBA74; --text: #FFF7ED; --text-muted: #FB923C; --border: rgba(251, 146, 60, 0.5); --input-bg: #24120C;
@@ -45,28 +38,12 @@
             --ring-opacity: 0.75; --ring-color-1: #FB923C; --ring-color-2: #EA580C;
         }
 
-        :root[data-theme="rose"] {
-            --bg-main: #1C0A12; --bg-card: rgba(42, 16, 28, 0.96); --primary: #BE185D; --primary-hover: #9D174D;
-            --accent: #FBCFE8; --text: #FDF2F8; --text-muted: #F472B6; --border: rgba(244, 114, 182, 0.5); --input-bg: #28101C;
-            --sidebar-bg: #200C16; --sidebar-header: #831843; --sidebar-text: #FCE7F3; --sidebar-hover: #3B1629;
+        :root[data-theme="gül-sirkesi"] {
+            --bg-main: #2A121A; --bg-card: rgba(50, 20, 32, 0.96); --primary: #BE185D; --primary-hover: #9D174D;
+            --accent: #F472B6; --text: #FDF2F8; --text-muted: #F472B6; --border: rgba(244, 114, 182, 0.5); --input-bg: #381622;
+            --sidebar-bg: #200D14; --sidebar-header: #831843; --sidebar-text: #FCE7F3; --sidebar-hover: #4C1D30;
             --glow-1: rgba(190, 24, 93, 0.2); --glow-2: rgba(244, 114, 182, 0.15);
-            --ring-opacity: 0.75; --ring-color-1: #F472B6; --ring-color-2: #DB2777;
-        }
-
-        :root[data-theme="pomegranate"] {
-            --bg-main: #18080A; --bg-card: rgba(38, 14, 18, 0.96); --primary: #991B1B; --primary-hover: #7F1D1D;
-            --accent: #FECACA; --text: #FEF2F2; --text-muted: #F87171; --border: rgba(248, 113, 113, 0.5); --input-bg: #220A0E;
-            --sidebar-bg: #1C0A0E; --sidebar-header: #7F1D1D; --sidebar-text: #FEE2E2; --sidebar-hover: #341016;
-            --glow-1: rgba(153, 27, 27, 0.2); --glow-2: rgba(248, 113, 113, 0.15);
-            --ring-opacity: 0.75; --ring-color-1: #F87171; --ring-color-2: #DC2626;
-        }
-
-        :root[data-theme="artichoke"] {
-            --bg-main: #06140E; --bg-card: rgba(12, 36, 26, 0.96); --primary: #047857; --primary-hover: #065F46;
-            --accent: #A7F3D0; --text: #ECFDF5; --text-muted: #34D399; --border: rgba(52, 211, 153, 0.5); --input-bg: #0A2117;
-            --sidebar-bg: #081A12; --sidebar-header: #064E3B; --sidebar-text: #D1FAE5; --sidebar-hover: #123324;
-            --glow-1: rgba(4, 120, 87, 0.2); --glow-2: rgba(52, 211, 153, 0.15);
-            --ring-opacity: 0.75; --ring-color-1: #34D399; --ring-color-2: #059669;
+            --ring-opacity: 0.75; --ring-color-1: #F472B6; --ring-color-2: #BE185D;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -89,10 +66,6 @@
         .aura-orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.5; will-change: transform; }
         .aura-1 { width: 350px; height: 350px; background: var(--glow-1); top: -50px; left: -50px; }
         .aura-2 { width: 300px; height: 300px; background: var(--glow-2); bottom: -50px; right: -50px; }
-
-        body.pause-animations *, body.pause-animations *:before, body.pause-animations *:after {
-            animation-play-state: paused !important;
-        }
 
         #auth-screen {
             position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -152,7 +125,6 @@
             border-radius: 12px; color: #F8FAFC; font-size: 14px; outline: none; transition: border-color 0.2s;
         }
         .auth-input-wrap input:focus { border-color: #38BDF8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); }
-        .auth-field.error input { border-color: #EF4444 !important; }
 
         .btn-portal-submit {
             width: 100%; padding: 14px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #050B14;
@@ -164,12 +136,6 @@
         .btn-portal-submit:active { transform: translateY(1px); }
         .btn-portal-submit.success { background: #10B981 !important; color: #FFF !important; }
 
-        .auth-screen-fadeout { animation: authFadeOut 0.4s ease-out forwards; }
-        @keyframes authFadeOut {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
-        }
-
         .form-group { margin-bottom: 14px; }
         .form-group label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; }
         .input-wrapper { position: relative; display: flex; align-items: center; }
@@ -178,6 +144,7 @@
         textarea { padding-left: 14px; min-height: 70px; }
         select { cursor: pointer; }
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+        input[type="color"] { padding: 4px; height: 42px; cursor: pointer; }
         input:focus, select:focus, textarea:focus { border-color: var(--accent); }
 
         .btn { width: 100%; padding: 12px; background: var(--primary); color: #FFF; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.15s, opacity 0.2s; }
@@ -271,8 +238,12 @@
         .ai-quick-chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
         .ai-chip { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 10px; padding: 4px 8px; font-size: 11px; white-space: nowrap; cursor: pointer; color: var(--accent); font-weight: 700; }
 
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 600; display: none; align-items: center; justify-content: center; padding: 16px; }
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 600; display: none; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px); }
         .modal-content { background: var(--bg-card); border: 1.5px solid var(--accent); border-radius: 20px; width: 100%; max-width: 480px; padding: 22px; max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        
+        .stock-year-group { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .stock-year-header { background: var(--input-bg); padding: 10px 14px; font-weight: 800; color: var(--primary); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .stock-year-body { background: var(--bg-card); padding: 12px; }
     </style>
 </head>
 <body>
@@ -287,7 +258,6 @@
     <!-- GİRİŞ PORTALI -->
     <div id="auth-screen">
         <div class="auth-splash-ring"></div>
-
         <div class="auth-aurora-bg">
             <div class="aurora-layer aurora-1"></div>
             <div class="aurora-layer aurora-2"></div>
@@ -297,7 +267,7 @@
             <div class="auth-card-main">
                 <div class="auth-brand-area">
                     <h1>EC KARACADAĞ</h1>
-                    <p>SİRKE KONTROLLERİ &amp; ERP</p>
+                    <p>SİRKE KONTROLLERİ & ERP</p>
                 </div>
 
                 <div class="auth-tab-group">
@@ -370,6 +340,9 @@
                 <div class="sidebar-menu">
                     <div class="menu-item active" style="margin: 4px 10px;" onclick="nav('dashboard', 'Dashboard', this)"><i data-lucide="layout-grid"></i> Dashboard</div>
                     <div class="menu-item" id="menu-control" style="margin: 4px 10px;" onclick="nav('control', 'Kontrol Sayfası & Listesi', this)"><i data-lucide="clipboard-list"></i> Kontrol Sayfası</div>
+                    
+                    <div class="menu-item" style="margin: 4px 10px;" onclick="nav('stock', 'Envanter ve Stok Durumu', this)"><i data-lucide="layers"></i> Stok Durumu</div>
+                    
                     <div class="menu-item" style="margin: 4px 10px;" onclick="nav('reports', 'Raporlama Merkezi', this)"><i data-lucide="bar-chart-2"></i> Raporlama</div>
                     <div class="menu-item" style="margin: 4px 10px;" onclick="nav('archived-data', 'Sistem Arşivi', this)"><i data-lucide="archive"></i> Arşiv Sayfası</div>
 
@@ -379,14 +352,6 @@
                             <div class="menu-item" onclick="nav('tanks', 'Tank / Fıçı / Varil', this)"><i data-lucide="box"></i> Tank / Fıçı / Varil</div>
                             <div class="menu-item" onclick="nav('batches', 'Üretim Partileri', this)"><i data-lucide="flask-conical"></i> Üretim Partileri</div>
                             <div class="menu-item" onclick="nav('fermentation', 'Fermantasyon', this)"><i data-lucide="microscope"></i> Fermantasyon</div>
-                        </div>
-                    </div>
-
-                    <div class="nav-group">
-                        <div class="nav-group-header" onclick="toggleNavGroup(this)"><span>ÜRÜN</span><i data-lucide="chevron-down"></i></div>
-                        <div class="nav-group-items">
-                            <div class="menu-item" onclick="nav('bottling-ready', 'Şişelemeye Hazır', this)"><i data-lucide="glass-water"></i> Şişelemeye Hazır</div>
-                            <div class="menu-item" onclick="nav('bottling', 'Şişeleme', this)"><i data-lucide="list-checks"></i> Şişeleme</div>
                         </div>
                     </div>
 
@@ -421,11 +386,14 @@
                         </div>
                     </div>
 
-                    <div class="grid-4" style="margin-bottom: 16px;">
+                    <div class="grid-2" style="margin-bottom: 16px;">
                         <div class="kpi-card"><i data-lucide="clipboard-list" class="kpi-icon"></i><div class="kpi-title">Toplam Kontrol</div><div class="kpi-value" id="kpi-total-ins">0</div></div>
                         <div class="kpi-card"><i data-lucide="container" class="kpi-icon"></i><div class="kpi-title">Aktif Tanklar</div><div class="kpi-value" id="kpi-total-tanks">0</div></div>
-                        <div class="kpi-card"><i data-lucide="percent" class="kpi-icon"></i><div class="kpi-title">Ortalama Brix</div><div class="kpi-value" id="kpi-avg-brix">0.0°Bx</div></div>
-                        <div class="kpi-card"><i data-lucide="droplet" class="kpi-icon"></i><div class="kpi-title">Toplam Hacim</div><div class="kpi-value" id="kpi-total-volume">0 Lt</div></div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 16px;">
+                        <div class="card-header"><div class="card-title"><i data-lucide="droplet"></i> Sirke Türlerine Göre Stok Özeti</div></div>
+                        <div class="grid-4" id="dashboard-stock-grid"></div>
                     </div>
 
                     <div class="card">
@@ -434,6 +402,20 @@
                             <button class="btn btn-secondary btn-sm" onclick="nav('control', 'Kontrol Sayfası & Listesi', null)">Tümünü Gör</button>
                         </div>
                         <div id="dashboard-recent-list"></div>
+                    </div>
+                </div>
+
+                <!-- STOK & ENVANTER SAYFASI -->
+                <div id="view-stock" class="view-panel" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i data-lucide="layers"></i> Sirke Stok ve Envanter Durumu</div>
+                        </div>
+                        <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+                            Sisteme girdiğiniz kontrol analizleri ve arşiv kayıtları baz alınarak sirke türlerine ve üretim yıllarına göre toplam stok hacimleriniz aşağıda listelenmiştir.
+                        </p>
+                        <div class="vinegar-tabs" id="stock-tabs-container"></div>
+                        <div id="stock-list-container"></div>
                     </div>
                 </div>
 
@@ -449,18 +431,11 @@
 
                         <div id="control-form-box" style="display:none; margin-bottom:16px; background:var(--input-bg); padding:16px; border-radius:14px; border:1.5px solid var(--border);">
                             <form id="inspection-form" onsubmit="saveInspection(event)">
+                                <input type="hidden" id="ctrl-edit-id">
                                 <div class="grid-2">
                                     <div class="form-group"><label>TANK SEÇİMİ</label><div class="input-wrapper"><i data-lucide="box"></i><select id="ctrl-tank" required></select></div></div>
                                     <div class="form-group"><label>SİRKE TÜRÜ</label><div class="input-wrapper"><i data-lucide="droplet"></i>
-                                        <select id="ctrl-type" required onchange="autoSwitchThemeByVinegar(this.value)">
-                                            <option value="Elma Sirkesi">Elma Sirkesi</option>
-                                            <option value="Yeşil Üzüm Sirkesi">Yeşil Üzüm Sirkesi</option>
-                                            <option value="Alıç Sirkesi">Alıç Sirkesi</option>
-                                            <option value="Gül Sirkesi">Gül Sirkesi</option>
-                                            <option value="Nar Sirkesi">Nar Sirkesi</option>
-                                            <option value="Enginar Sirkesi">Enginar Sirkesi</option>
-                                            <option value="Diğer">Diğer</option>
-                                        </select>
+                                        <select id="ctrl-type" required onchange="handleTypeSelection(this)"></select>
                                     </div></div>
                                 </div>
                                 <div class="grid-2">
@@ -498,15 +473,7 @@
                             </form>
                         </div>
 
-                        <div class="vinegar-tabs">
-                            <div class="v-tab active" onclick="setVinegarTab('Elma Sirkesi', this)"><i data-lucide="apple" style="width:14px;"></i> Elma Sirkesi</div>
-                            <div class="v-tab" onclick="setVinegarTab('Yeşil Üzüm Sirkesi', this)"><i data-lucide="grape" style="width:14px;"></i> Yeşil Üzüm</div>
-                            <div class="v-tab" onclick="setVinegarTab('Alıç Sirkesi', this)"><i data-lucide="leaf" style="width:14px;"></i> Alıç Sirkesi</div>
-                            <div class="v-tab" onclick="setVinegarTab('Gül Sirkesi', this)"><i data-lucide="flower2" style="width:14px;"></i> Gül Sirkesi</div>
-                            <div class="v-tab" onclick="setVinegarTab('Nar Sirkesi', this)"><i data-lucide="citrus" style="width:14px;"></i> Nar Sirkesi</div>
-                            <div class="v-tab" onclick="setVinegarTab('Enginar Sirkesi', this)"><i data-lucide="sprout" style="width:14px;"></i> Enginar Sirkesi</div>
-                        </div>
-
+                        <div class="vinegar-tabs" id="control-tabs-container"></div>
                         <div id="archive-list"></div>
                     </div>
                 </div>
@@ -535,18 +502,9 @@
                             <div class="card-title"><i data-lucide="archive"></i> Arşivlenmiş Kontrol Kayıtları</div>
                         </div>
                         <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
-                            Kontrol sayfasında "Arşive Aktar" butonuna basarak arşive taşıdığınız veriler türlerine göre burada saklanır.
+                            Kontrol sayfasında "Arşive Aktar" butonuna basarak arşive taşıdığınız veriler türlerine göre burada saklanır. **Bir kayda tıklayarak detaylarını görüntüleyebilirsiniz.**
                         </p>
-                        
-                        <div class="vinegar-tabs">
-                            <div class="v-tab active" onclick="setArchivedVinegarTab('Elma Sirkesi', this)"><i data-lucide="apple" style="width:14px;"></i> Elma Sirkesi</div>
-                            <div class="v-tab" onclick="setArchivedVinegarTab('Yeşil Üzüm Sirkesi', this)"><i data-lucide="grape" style="width:14px;"></i> Yeşil Üzüm</div>
-                            <div class="v-tab" onclick="setArchivedVinegarTab('Alıç Sirkesi', this)"><i data-lucide="leaf" style="width:14px;"></i> Alıç Sirkesi</div>
-                            <div class="v-tab" onclick="setArchivedVinegarTab('Gül Sirkesi', this)"><i data-lucide="flower2" style="width:14px;"></i> Gül Sirkesi</div>
-                            <div class="v-tab" onclick="setArchivedVinegarTab('Nar Sirkesi', this)"><i data-lucide="citrus" style="width:14px;"></i> Nar Sirkesi</div>
-                            <div class="v-tab" onclick="setArchivedVinegarTab('Enginar Sirkesi', this)"><i data-lucide="sprout" style="width:14px;"></i> Enginar Sirkesi</div>
-                        </div>
-
+                        <div class="vinegar-tabs" id="archive-tabs-container"></div>
                         <div id="archived-items-container"></div>
                     </div>
                 </div>
@@ -574,29 +532,23 @@
                     <div class="card"><div class="card-header"><div class="card-title"><i data-lucide="list"></i> Tank Listesi</div></div><div id="tank-list"></div></div>
                 </div>
 
-                <!-- TAKVİM -->
+                <!-- TAKVİM / KONTROL PLAN LİSTESİ -->
                 <div id="view-calendar" class="view-panel" style="display: none;">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"><i data-lucide="calendar"></i> Kontrol Plan Listesi</div>
                             <button class="btn btn-sm" onclick="toggleCalendarForm()"><i data-lucide="plus"></i> Yeni Plan Ekle</button>
                         </div>
-                        <div id="calendar-add-box" style="display:none; margin-bottom: 16px; background: var(--input-bg); padding:14px; border-radius:14px; border:1.5px solid var(--border);">
+                        <div id="calendar-add-box" style="display:none; margin-bottom: 16px; background: var(--input-bg); padding:16px; border-radius:14px; border:1.5px solid var(--border);">
                             <form onsubmit="saveCalendarEntry(event)">
                                 <input type="hidden" id="cal-edit-id">
                                 <div class="form-group"><label>PLAN TARİHİ</label><div class="input-wrapper"><i data-lucide="calendar"></i><input type="date" id="cal-date" required></div></div>
-                                <div class="form-group"><label>TANKLAR</label><div id="cal-tanks-checkboxes" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px;"></div></div>
-                                <div class="form-group"><label>SİRKE TÜRLERİ</label>
-                                    <div id="cal-types-checkboxes" style="display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px;">
-                                        <label><input type="checkbox" value="Elma Sirkesi"> Elma Sirkesi</label>
-                                        <label><input type="checkbox" value="Yeşil Üzüm Sirkesi"> Yeşil Üzüm Sirkesi</label>
-                                        <label><input type="checkbox" value="Alıç Sirkesi"> Alıç Sirkesi</label>
-                                        <label><input type="checkbox" value="Gül Sirkesi"> Gül Sirkesi</label>
-                                        <label><input type="checkbox" value="Nar Sirkesi"> Nar Sirkesi</label>
-                                        <label><input type="checkbox" value="Enginar Sirkesi"> Enginar Sirkesi</label>
-                                    </div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label>TANKLAR</label><div id="cal-tanks-checkboxes" style="max-height:120px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px; border:1px solid var(--border);"></div></div>
+                                    <div class="form-group"><label>SİRKE TÜRLERİ</label><div id="cal-types-checkboxes" style="max-height:120px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; padding:8px; background:var(--bg-card); border-radius:10px; border:1px solid var(--border);"></div></div>
                                 </div>
-                                <button type="submit" class="btn"><i data-lucide="check"></i> Kaydet ve Listele</button>
+                                <div class="form-group" style="margin-top:10px;"><label>AÇIKLAMA / NOT</label><input type="text" id="cal-desc" placeholder="Örn: Haftalık rutin asitlik kontrolü..."></div>
+                                <button type="submit" class="btn" style="margin-top:8px;"><i data-lucide="check"></i> Planı Kaydet</button>
                             </form>
                         </div>
                         <div id="calendar-plan-list"></div>
@@ -606,7 +558,7 @@
                 <!-- HATIRLATICILAR -->
                 <div id="view-reminders" class="view-panel" style="display: none;">
                     <div class="card">
-                        <div class="card-header"><div class="card-title"><i data-lucide="bell"></i> Yeni Hatırlatıcı / Gerçek Bildirim Kur</div></div>
+                        <div class="card-header"><div class="card-title"><i data-lucide="bell"></i> Yeni Hatırlatıcı Kur</div></div>
                         <form onsubmit="saveReminderNotification(event)">
                             <div class="form-group"><label>BAŞLIK</label><div class="input-wrapper"><i data-lucide="bell"></i><input type="text" id="rem-title" placeholder="Örn: Tank 4 Kontrolü" required></div></div>
                             <div class="form-group"><label>AÇIKLAMA</label><div class="input-wrapper"><i data-lucide="file-text"></i><input type="text" id="rem-desc" placeholder="Brix ve asitlik kontrolü yapılacak" required></div></div>
@@ -625,7 +577,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn"><i data-lucide="alarm-clock"></i> Gerçek Bildirim Planla</button>
+                            <button type="submit" class="btn"><i data-lucide="alarm-clock"></i> Uygulama İçi Bildirim Planla</button>
                         </form>
                     </div>
                     <div class="card"><div class="card-header"><div class="card-title"><i data-lucide="list-checks"></i> Aktif Hatırlatıcılar</div></div><div id="reminders-list"></div></div>
@@ -641,13 +593,11 @@
                                 <button class="btn btn-danger btn-sm" onclick="clearAllNotifications()">Tümünü Sil</button>
                             </div>
                         </div>
-
                         <div class="vinegar-tabs">
                             <div class="v-tab active" onclick="setNotifTab('all', this)"><i data-lucide="list" style="width:14px;"></i> Tümü</div>
                             <div class="v-tab" onclick="setNotifTab('unread', this)"><i data-lucide="bell" style="width:14px;"></i> Yeni</div>
                             <div class="v-tab" onclick="setNotifTab('read', this)"><i data-lucide="check-circle" style="width:14px;"></i> Okundu</div>
                         </div>
-
                         <div id="notifications-center-list"></div>
                     </div>
                 </div>
@@ -693,13 +643,10 @@
 
                     <div class="card">
                         <div class="card-header"><div class="card-title"><i data-lucide="palette"></i> Temalar ve Canlı Animasyon Seçimi</div></div>
-                        <div class="grid-2">
+                        <div class="grid-2" id="theme-buttons-grid">
                             <button class="btn btn-secondary" onclick="setTheme('apple')">🍏 Elma Sirkesi Teması</button>
-                            <button class="btn btn-secondary" onclick="setTheme('grape')">🍇 Yeşil Üzüm Teması</button>
                             <button class="btn btn-secondary" onclick="setTheme('hawthorn')">🍊 Alıç Sirkesi Teması</button>
-                            <button class="btn btn-secondary" onclick="setTheme('rose')">🌹 Gül Sirkesi Teması</button>
-                            <button class="btn btn-secondary" onclick="setTheme('pomegranate')">🔴 Nar Sirkesi Teması</button>
-                            <button class="btn btn-secondary" onclick="setTheme('artichoke')">🌿 Enginar Sirkesi Teması</button>
+                            <button class="btn btn-secondary" onclick="setTheme('gül-sirkesi')">🌹 Gül Sirkesi Teması</button>
                         </div>
                     </div>
                 </div>
@@ -714,7 +661,7 @@
         
         <div id="ai-widget-box">
             <div class="ai-widget-header">
-                <span style="display:flex; align-items:center; gap:6px;"><i data-lucide="bot"></i> EC Karacadağ AI &amp; Uzman Asistan</span>
+                <span style="display:flex; align-items:center; gap:6px;"><i data-lucide="bot"></i> EC Karacadağ AI & Uzman Asistan</span>
                 <div style="display:flex; gap:8px; align-items:center;">
                     <i data-lucide="trash-2" style="cursor:pointer; width:16px;" title="Sohbeti Temizle" onclick="clearAIChat()"></i>
                     <i data-lucide="x" style="cursor:pointer; width:18px;" onclick="toggleAIWidget()"></i>
@@ -726,7 +673,7 @@
             <div class="ai-widget-footer">
                 <div class="ai-quick-chips">
                     <div class="ai-chip" onclick="sendQuickPrompt('Kaç tankım var?')">Kaç tankım var?</div>
-                    <div class="ai-chip" onclick="sendQuickPrompt('Kontrollerimi özetle')">Kontrolleri özetle</div>
+                    <div class="ai-chip" onclick="sendQuickPrompt('Stok durumumu özetle')">Stok özetle</div>
                     <div class="ai-chip" onclick="sendQuickPrompt('Tank 2 için hatırlatıcı kur')">AI Öneri Kur</div>
                 </div>
                 <div class="ai-input-row">
@@ -737,7 +684,7 @@
         </div>
     </div>
 
-    <!-- GENEL MODAL -->
+    <!-- GENEL MODÜL MODAL -->
     <div class="modal" id="module-modal">
         <div class="modal-content">
             <div class="card-header">
@@ -755,10 +702,24 @@
         </div>
     </div>
 
+    <!-- ÖZEL İŞLEM / DETAY / SİLME MODALI -->
+    <div class="modal" id="action-modal">
+        <div class="modal-content">
+            <div class="card-header">
+                <div class="card-title" id="action-modal-title"><i data-lucide="layers"></i> İşlem Seçimi</div>
+                <button class="btn btn-secondary btn-sm" onclick="closeActionModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div id="action-modal-body" style="margin-bottom: 16px; font-size:13px; line-height:1.5;"></div>
+            <div id="action-modal-form-area"></div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;" id="action-modal-buttons"></div>
+        </div>
+    </div>
+
     <script>
         let currentUser = null;
         let selectedVinegarType = 'Elma Sirkesi';
         let selectedArchivedType = 'Elma Sirkesi';
+        let selectedStockType = 'Elma Sirkesi'; 
         let currentModuleKey = 'batches';
         let aiConversationHistory = [];
         let notifFilterTab = 'all';
@@ -768,35 +729,15 @@
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(reg => {
-                    console.log('ServiceWorker sirke-kontrol-v3 aktif:', reg.scope);
-                }).catch(err => {
-                    console.log('ServiceWorker kayıt hatası:', err);
-                });
+                navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW Hata:', err));
             });
         }
 
         async function requestNotificationPermissionAndInit() {
             if (typeof window !== 'undefined' && 'Notification' in window) {
                 if (Notification.permission === 'default') {
-                    let perm = await Notification.requestPermission();
-                    if (perm !== 'granted') {
-                        showToast("Bildirimler kapalı. Ayarlardan bildirim iznini açabilirsiniz.");
-                    }
-                } else if (Notification.permission === 'denied') {
-                    showToast("Bildirimler kapalı. Ayarlardan bildirim iznini açabilirsiniz.");
+                    await Notification.requestPermission();
                 }
-            }
-            if (window.ExpoNotificationsBridge) {
-                try {
-                    await window.ExpoNotificationsBridge.requestPermissionsAsync();
-                    await window.ExpoNotificationsBridge.setNotificationChannelAsync('sirke-channel', {
-                        name: 'Sirke Kontrol Bildirimleri',
-                        importance: 5,
-                        vibrationPattern: [0, 250, 250, 250],
-                        sound: 'sirke_notification.wav',
-                    });
-                } catch(e) { console.log("Native Bridge:", e); }
             }
         }
 
@@ -806,36 +747,18 @@
             if (!settings.notif) return;
 
             if(!db.notificationsList) db.notificationsList = [];
-            let newNotif = {
-                id: Date.now(),
-                title: title,
-                body: body,
-                date: new Date().toISOString(),
-                read: false,
-                payload: payload
-            };
-            db.notificationsList.unshift(newNotif);
+            db.notificationsList.unshift({ id: Date.now(), title, body, date: new Date().toISOString(), read: false, payload });
             saveDB(db);
 
-            if (settings.sound) {
-                notificationAudio.currentTime = 0;
-                notificationAudio.play().catch(e => console.log("Audio play blocked:", e));
-            }
-
-            if (settings.vibrate && navigator.vibrate) {
-                navigator.vibrate([200, 100, 200]);
-            }
+            if (settings.sound) { notificationAudio.currentTime = 0; notificationAudio.play().catch(e=>e); }
+            if (settings.vibrate && navigator.vibrate) navigator.vibrate([200, 100, 200]);
 
             if ('Notification' in window && Notification.permission === 'granted') {
                 try {
                     let n = new Notification(title, { body: body });
-                    n.onclick = () => {
-                        window.focus();
-                        handleNotificationTap(payload);
-                    };
-                } catch(e) { console.log("Web Notification:", e); }
+                    n.onclick = () => { window.focus(); handleNotificationTap(payload); };
+                } catch(e) {}
             }
-
             showToast(`🔔 ${title}: ${body}`);
             renderNotificationsCenter();
         }
@@ -849,64 +772,11 @@
             }
         }
 
-        let touchStartX = 0;
-        let touchCurrentX = 0;
-        let isSwiping = false;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            if (touchStartX < 40 && !document.getElementById('sidebar').classList.contains('open')) {
-                isSwiping = true;
-            }
-        }, { passive: true });
-
-        document.addEventListener('touchmove', e => {
-            if (!isSwiping) return;
-            touchCurrentX = e.touches[0].clientX;
-            let diff = touchCurrentX - touchStartX;
-            const sidebar = document.getElementById('sidebar');
-            const backdrop = document.getElementById('backdrop');
-            if (diff > 40) {
-                sidebar.classList.add('open');
-                backdrop.classList.add('show');
-                isSwiping = false;
-            }
-        }, { passive: true });
-
-        document.addEventListener('touchend', e => {
-            isSwiping = false;
-            let endX = e.changedTouches[0].clientX;
-            const sidebar = document.getElementById('sidebar');
-            const backdrop = document.getElementById('backdrop');
-            if (sidebar.classList.contains('open') && endX < touchStartX - 50) {
-                sidebar.classList.remove('open');
-                backdrop.classList.remove('show');
-            }
-        }, { passive: true });
-
-        window.addEventListener('popstate', () => {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('open')) {
-                toggleSidebar();
-                history.pushState(null, '', location.href);
-            }
-        });
-        history.pushState(null, '', location.href);
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const backdrop = document.getElementById('backdrop');
-            sidebar.classList.toggle('open');
-            backdrop.classList.toggle('show');
+        function toggleSidebar() { 
+            const sidebar = document.getElementById('sidebar'); 
+            const backdrop = document.getElementById('backdrop'); 
+            sidebar.classList.toggle('open'); backdrop.classList.toggle('show'); 
         }
-
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) {
-                document.body.classList.add("pause-animations");
-            } else {
-                document.body.classList.remove("pause-animations");
-            }
-        });
 
         function showToast(msg) {
             const container = document.getElementById('toast-container');
@@ -918,20 +788,12 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        function toggleNavGroup(headerEl) {
-            const parentGroup = headerEl.parentElement;
-            const allGroups = document.querySelectorAll('.nav-group');
-            const isOpen = parentGroup.classList.contains('open');
-
-            allGroups.forEach(group => {
-                group.classList.remove('open');
-            });
-
-            if (!isOpen) {
-                parentGroup.classList.add('open');
-            }
-            
-            lucide.createIcons();
+        function toggleNavGroup(headerEl) { 
+            const parentGroup = headerEl.parentElement; const allGroups = document.querySelectorAll('.nav-group'); 
+            const isOpen = parentGroup.classList.contains('open'); 
+            allGroups.forEach(group => group.classList.remove('open')); 
+            if (!isOpen) parentGroup.classList.add('open'); 
+            lucide.createIcons(); 
         }
 
         window.onload = () => {
@@ -940,22 +802,16 @@
             
             const rememberedUser = localStorage.getItem('sirke_remembered_user');
             if (rememberedUser) {
-                try {
-                    currentUser = JSON.parse(rememberedUser);
-                    localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
-                    initApp();
-                    return;
-                } catch(e) {}
+                currentUser = JSON.parse(rememberedUser);
+                localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+                initApp();
+                return;
             }
 
             const session = localStorage.getItem('sirke_active_session');
             if (session) {
-                try {
-                    currentUser = JSON.parse(session);
-                    initApp();
-                } catch(e) {
-                    document.getElementById('ai-widget-container').style.display = 'none';
-                }
+                currentUser = JSON.parse(session);
+                initApp();
             } else {
                 document.getElementById('ai-widget-container').style.display = 'none';
             }
@@ -963,10 +819,10 @@
             setInterval(checkScheduledRemindersLoop, 30000);
         };
 
-        function switchAuthTab(mode) {
-            document.getElementById('tab-login').classList.toggle('active', mode === 'login');
-            document.getElementById('tab-register').classList.toggle('active', mode === 'register');
-            document.getElementById('group-email').style.display = mode === 'register' ? 'block' : 'none';
+        function switchAuthTab(mode) { 
+            document.getElementById('tab-login').classList.toggle('active', mode === 'login'); 
+            document.getElementById('tab-register').classList.toggle('active', mode === 'register'); 
+            document.getElementById('group-email').style.display = mode === 'register' ? 'block' : 'none'; 
         }
 
         function handleAuth(e) {
@@ -974,523 +830,466 @@
             const username = document.getElementById('auth-username').value.trim();
             const pass = document.getElementById('auth-pass').value.trim();
             const rememberMe = document.getElementById('auth-remember').checked;
-            const fieldUser = document.getElementById('field-username');
-            const fieldPass = document.getElementById('field-password');
             const btn = document.getElementById('auth-submit-btn');
-            fieldUser.classList.remove('error');
-            fieldPass.classList.remove('error');
-            if(!username || !pass) {
-                if(!username) fieldUser.classList.add('error');
-                if(!pass) fieldPass.classList.add('error');
-                showToast("Lütfen gerekli alanları doldurun.");
-                return;
-            }
-            btn.classList.add('success');
-            btn.innerHTML = `<span>DOĞRULANDI, PORTAL AÇILIYOR...</span> <i data-lucide="check-circle"></i>`;
-            lucide.createIcons();
+            
+            if(!username || !pass) return;
+            
+            btn.classList.add('success'); btn.innerHTML = `<span>DOĞRULANDI, PORTAL AÇILIYOR...</span> <i data-lucide="check-circle"></i>`; lucide.createIcons();
             setTimeout(() => {
                 const email = document.getElementById('auth-email').value.trim() || `${username}@sirke.com`;
                 currentUser = { username, email };
                 localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
-                
-                if (rememberMe) {
-                    localStorage.setItem('sirke_remembered_user', JSON.stringify(currentUser));
-                } else {
-                    localStorage.removeItem('sirke_remembered_user');
-                }
-
+                if (rememberMe) localStorage.setItem('sirke_remembered_user', JSON.stringify(currentUser)); 
                 saveDB(getDB());
-                const authScreen = document.getElementById('auth-screen');
-                authScreen.classList.add('auth-screen-fadeout');
-                setTimeout(() => {
-                    authScreen.style.display = 'none';
-                    authScreen.classList.remove('auth-screen-fadeout');
-                    btn.classList.remove('success');
-                    btn.innerHTML = `<span>PORTALA GİRİŞ YAP</span> <i data-lucide="arrow-right"></i>`;
-                    initApp();
-                }, 400);
+                document.getElementById('auth-screen').style.display = 'none'; 
+                btn.classList.remove('success'); btn.innerHTML = `<span>PORTALA GİRİŞ YAP</span> <i data-lucide="arrow-right"></i>`;
+                initApp();
             }, 500);
         }
 
-        function getCurrentUsername() {
-            if (currentUser && currentUser.username) return currentUser.username;
-            try {
-                let session = localStorage.getItem('sirke_active_session');
-                if (session) {
-                    let parsed = JSON.parse(session);
-                    if (parsed && parsed.username) {
-                        currentUser = parsed;
-                        return parsed.username;
-                    }
-                }
-            } catch(e) {}
-            return 'misafir_kullanici';
-        }
-
         function getDB() {
-            let username = getCurrentUsername();
-            const data = localStorage.getItem('sirke_db_' + username);
-            let parsed = null;
-            try {
-                parsed = data ? JSON.parse(data) : null;
-            } catch(e) {
-                parsed = null;
-            }
-
-            if(!parsed) {
-                return { 
-                    tanks: ['Tank 1', 'Meşe Varil A'], 
-                    inspections: [], 
-                    archivedInspections: [], 
-                    modules: {}, 
-                    notificationsList: [], 
-                    remindersList: [], 
-                    settings: { notif: true, sound: true, vibrate: true, reminders: true } 
-                };
-            }
+            let defaultDB = { 
+                tanks: ['Tank 1', 'Tank 2', 'Tank 3'], 
+                vinegarTypes: ['Elma Sirkesi', 'Alıç Sirkesi', 'Gül Sirkesi', 'Nar Sirkesi'], 
+                customThemes: {
+                    'Gül Sirkesi': {
+                        id: 'gül-sirkesi',
+                        css: `:root[data-theme="gül-sirkesi"] {
+                            --bg-main: #2A121A; --bg-card: rgba(50, 20, 32, 0.96); --primary: #BE185D; --primary-hover: #9D174D;
+                            --accent: #F472B6; --text: #FDF2F8; --text-muted: #F472B6; --border: rgba(244, 114, 182, 0.5); --input-bg: #381622;
+                            --sidebar-bg: #200D14; --sidebar-header: #831843; --sidebar-text: #FCE7F3; --sidebar-hover: #4C1D30;
+                            --glow-1: rgba(190, 24, 93, 0.2); --glow-2: rgba(244, 114, 182, 0.15);
+                            --ring-opacity: 0.75; --ring-color-1: #F472B6; --ring-color-2: #BE185D;
+                        }`
+                    }
+                },
+                inspections: [], archivedInspections: [], modules: {}, notificationsList: [], remindersList: [], 
+                settings: { notif: true, sound: true, vibrate: true, reminders: true } 
+            };
+            if (!currentUser) return defaultDB;
+            const data = localStorage.getItem('sirke_db_' + currentUser.username);
+            let parsed = data ? JSON.parse(data) : null;
+            if(!parsed) return defaultDB;
             if(!parsed.archivedInspections) parsed.archivedInspections = [];
             if(!parsed.notificationsList) parsed.notificationsList = [];
             if(!parsed.remindersList) parsed.remindersList = [];
+            if(!parsed.settings) parsed.settings = defaultDB.settings;
+            if(!parsed.vinegarTypes) parsed.vinegarTypes = defaultDB.vinegarTypes;
+            if(!parsed.customThemes) parsed.customThemes = defaultDB.customThemes;
             if(!parsed.modules) parsed.modules = {};
-            if(!parsed.settings) parsed.settings = { notif: true, sound: true, vibrate: true, reminders: true };
             return parsed;
         }
 
-        function saveDB(data) {
-            let username = getCurrentUsername();
-            try {
-                localStorage.setItem('sirke_db_' + username, JSON.stringify(data));
-            } catch(e) {
-                console.error("Kayıt hatası:", e);
-                showToast("Kayıt yapılamadı! Depolama alanı dolu veya kısıtlı.");
-            }
-        }
+        function saveDB(data) { if (currentUser) localStorage.setItem('sirke_db_' + currentUser.username, JSON.stringify(data)); }
 
         function logout() {
-            localStorage.removeItem('sirke_active_session');
-            localStorage.removeItem('sirke_remembered_user');
-            currentUser = null;
-            document.getElementById('app-screen').style.display = 'none';
-            document.getElementById('ai-widget-container').style.display = 'none';
-            const authScreen = document.getElementById('auth-screen');
-            authScreen.style.display = 'flex';
+            localStorage.removeItem('sirke_active_session'); localStorage.removeItem('sirke_remembered_user'); currentUser = null;
+            document.getElementById('app-screen').style.display = 'none'; document.getElementById('ai-widget-container').style.display = 'none';
+            document.getElementById('auth-screen').style.display = 'flex';
         }
 
-        function initApp() {
-            document.getElementById('auth-screen').style.display = 'none';
-            document.getElementById('app-screen').style.display = 'flex';
-            document.getElementById('ai-widget-container').style.display = 'block';
-            document.getElementById('user-badge').querySelector('span').innerText = currentUser.username;
-            document.getElementById('set-username').value = currentUser.username;
-            document.getElementById('set-email').value = currentUser.email;
-
-            let db = getDB();
-            if (db.settings) {
-                document.getElementById('sett-notif').checked = db.settings.notif;
-                document.getElementById('sett-sound').checked = db.settings.sound;
-                document.getElementById('sett-vibrate').checked = db.settings.vibrate;
-                document.getElementById('sett-reminders').checked = db.settings.reminders;
-            }
-
+        function updateAllDynamicUI() {
             updateTankSelects();
+            renderVinegarSelects();
+            renderDynamicTabs('control-tabs-container', selectedVinegarType, 'setVinegarTab');
+            renderDynamicTabs('archive-tabs-container', selectedArchivedType, 'setArchivedVinegarTab');
+            renderDynamicTabs('stock-tabs-container', selectedStockType, 'setStockTab');
             renderDashboard();
             renderArchive();
             renderArchivedView();
+            renderStockView();
+            renderCalendarCheckboxes();
+            renderThemeButtons();
+        }
+
+        function initApp() {
+            document.getElementById('auth-screen').style.display = 'none'; document.getElementById('app-screen').style.display = 'flex'; document.getElementById('ai-widget-container').style.display = 'block';
+            document.getElementById('user-badge').querySelector('span').innerText = currentUser.username; document.getElementById('set-username').value = currentUser.username; document.getElementById('set-email').value = currentUser.email;
+
+            let db = getDB();
+            if (db.settings) {
+                document.getElementById('sett-notif').checked = db.settings.notif; document.getElementById('sett-sound').checked = db.settings.sound; document.getElementById('sett-vibrate').checked = db.settings.vibrate; document.getElementById('sett-reminders').checked = db.settings.reminders;
+            }
+
+            if (db.customThemes) {
+                Object.values(db.customThemes).forEach(ct => {
+                    if(!document.getElementById('theme-'+ct.id)) {
+                        let style = document.createElement('style'); style.id = 'theme-'+ct.id; style.innerHTML = ct.css; document.head.appendChild(style);
+                    }
+                });
+            }
+
+            updateAllDynamicUI(); 
             renderReportsList();
             renderTanks();
-            renderCalendarCheckboxes();
             renderCalendarList();
             renderRemindersList();
             renderNotificationsCenter();
             lucide.createIcons();
         }
 
-        function saveNotificationSettings() {
+        function renderThemeButtons() {
             let db = getDB();
-            db.settings = {
-                notif: document.getElementById('sett-notif').checked,
-                sound: document.getElementById('sett-sound').checked,
-                vibrate: document.getElementById('sett-vibrate').checked,
-                reminders: document.getElementById('sett-reminders').checked
-            };
-            saveDB(db);
-            showToast("Bildirim ayarları güncellendi.");
-        }
-
-        function saveReminderNotification(e) {
-            e.preventDefault();
-            let db = getDB();
-            if (!db.settings.reminders) {
-                showToast("Hatırlatıcılar ayarlardan kapalı.");
-                return;
-            }
-            const title = document.getElementById('rem-title').value.trim();
-            const desc = document.getElementById('rem-desc').value.trim();
-            const date = document.getElementById('rem-date').value;
-            const time = document.getElementById('rem-time').value;
-            const repeat = document.getElementById('rem-repeat').value;
-
-            const reminderItem = {
-                id: Date.now(),
-                title,
-                desc,
-                datetime: `${date}T${time}`,
-                repeat,
-                triggered: false
-            };
-
-            db.remindersList.unshift(reminderItem);
-            saveDB(db);
-            showToast("Gerçek local hatırlatıcı planlandı.");
-            document.getElementById('rem-title').value = '';
-            document.getElementById('rem-desc').value = '';
-            renderRemindersList();
-        }
-
-        function renderRemindersList() {
-            let db = getDB();
-            const container = document.getElementById('reminders-list');
-            if(!container) return;
-            let items = db.remindersList || [];
-            if(items.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:10px;">Aktif hatırlatıcı yok.</p>`;
-                return;
-            }
-            container.innerHTML = items.map(r => `
-                <div class="data-card">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="bell"></i> ${r.title}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${r.datetime.replace('T', ' ')}</span>
-                    </div>
-                    <div style="font-size:12px; margin-bottom:6px;">${r.desc} (Tekrar: <b>${r.repeat}</b>)</div>
-                    <div style="display:flex; justify-content:flex-end;">
-                        <button class="btn btn-danger btn-sm" onclick="deleteReminder(${r.id})"><i data-lucide="trash-2"></i> Sil</button>
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        function deleteReminder(id) {
-            let db = getDB();
-            db.remindersList = db.remindersList.filter(r => r.id != id);
-            saveDB(db);
-            renderRemindersList();
-            showToast("Hatırlatıcı silindi.");
-        }
-
-        function checkScheduledRemindersLoop() {
-            let db = getDB();
-            if (!db.settings || !db.settings.notif || !db.settings.reminders) return;
-            let now = new Date();
-            let changed = false;
-            (db.remindersList || []).forEach(r => {
-                if (!r.triggered) {
-                    let rDate = new Date(r.datetime);
-                    if (now >= rDate) {
-                        triggerRealNotification(r.title, r.desc, { type: 'reminder', id: r.id });
-                        r.triggered = true;
-                        changed = true;
+            const grid = document.getElementById('theme-buttons-grid');
+            if(!grid) return;
+            let html = `
+                <button class="btn btn-secondary" onclick="setTheme('apple')">🍏 Elma Sirkesi Teması</button>
+                <button class="btn btn-secondary" onclick="setTheme('hawthorn')">🍊 Alıç Sirkesi Teması</button>
+                <button class="btn btn-secondary" onclick="setTheme('gül-sirkesi')">🌹 Gül Sirkesi Teması</button>
+            `;
+            if(db.customThemes) {
+                Object.keys(db.customThemes).forEach(k => {
+                    if(k !== 'Gül Sirkesi') {
+                        let th = db.customThemes[k];
+                        html += `<button class="btn btn-secondary" onclick="setTheme('${th.id}')">✨ ${k} Teması</button>`;
                     }
-                }
-            });
-            if (changed) saveDB(db);
-        }
-
-        function setNotifTab(tab, el) {
-            notifFilterTab = tab;
-            document.querySelectorAll('#view-notifications-center .v-tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
-            renderNotificationsCenter();
-        }
-
-        function renderNotificationsCenter() {
-            let db = getDB();
-            const container = document.getElementById('notifications-center-list');
-            if(!container) return;
-            let list = db.notificationsList || [];
-            if(notifFilterTab === 'unread') list = list.filter(n => !n.read);
-            if(notifFilterTab === 'read') list = list.filter(n => n.read);
-
-            if(list.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:20px;">Bildirim bulunmuyor.</p>`;
-                return;
+                });
             }
-
-            container.innerHTML = list.map(n => `
-                <div class="data-card" style="border-left: 4px solid ${n.read ? 'var(--text-muted)' : 'var(--accent)'};">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent); cursor:pointer;" onclick="markAndOpenNotification(${n.id})"><i data-lucide="bell"></i> ${n.title}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(n.date).toLocaleString('tr-TR')}</span>
-                    </div>
-                    <div style="font-size:12px; margin-bottom:8px;" onclick="markAndOpenNotification(${n.id})">${n.body}</div>
-                    <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        ${!n.read ? `<button class="btn btn-secondary btn-sm" onclick="markNotificationRead(${n.id})"><i data-lucide="check"></i> Okundu Yap</button>` : ''}
-                        <button class="btn btn-danger btn-sm" onclick="deleteNotification(${n.id})"><i data-lucide="trash-2"></i> Sil</button>
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
+            grid.innerHTML = html;
         }
 
-        function markNotificationRead(id) {
+        function setTheme(theme) { document.documentElement.setAttribute('data-theme', theme); showToast('Tema güncellendi.'); }
+
+        function renderVinegarSelects() {
             let db = getDB();
-            let n = (db.notificationsList || []).find(x => x.id == id);
-            if(n) {
-                n.read = true;
-                saveDB(db);
-                renderNotificationsCenter();
+            const select = document.getElementById('ctrl-type');
+            if(select) {
+                let options = db.vinegarTypes.map(t => `<option value="${t}">${t}</option>`).join('');
+                options += `<option value="NEW_TYPE_PROMPT" style="font-weight:bold; color:var(--accent);">+ Yeni Tür Ekle...</option>`;
+                select.innerHTML = options;
             }
         }
 
-        function markAndOpenNotification(id) {
-            let db = getDB();
-            let n = (db.notificationsList || []).find(x => x.id == id);
-            if(n) {
-                n.read = true;
-                saveDB(db);
-                renderNotificationsCenter();
-                handleNotificationTap(n.payload);
-            }
-        }
-
-        function markAllNotificationsRead() {
-            let db = getDB();
-            (db.notificationsList || []).forEach(n => n.read = true);
-            saveDB(db);
-            renderNotificationsCenter();
-            showToast("Tüm bildirimler okundu olarak işaretlendi.");
-        }
-
-        function clearAllNotifications() {
-            let db = getDB();
-            db.notificationsList = [];
-            saveDB(db);
-            renderNotificationsCenter();
-            showToast("Tüm bildirimler silindi.");
-        }
-
-        function deleteNotification(id) {
-            let db = getDB();
-            db.notificationsList = (db.notificationsList || []).filter(n => n.id != id);
-            saveDB(db);
-            renderNotificationsCenter();
-            showToast("Bildirim silindi.");
-        }
-
-        function nav(viewId, title, el) {
-            document.querySelectorAll('.view-panel').forEach(p => p.style.display = 'none');
-            const specific = ['dashboard', 'control', 'tanks', 'archive', 'archived-data', 'settings', 'calendar', 'reminders', 'reports', 'notifications-center'];
-            if (specific.includes(viewId)) {
-                document.getElementById('view-' + viewId).style.display = 'block';
+        function handleTypeSelection(selectEl) {
+            if(selectEl.value === 'NEW_TYPE_PROMPT') {
+                openNewTypeModal(selectEl.id);
             } else {
-                currentModuleKey = viewId;
-                document.getElementById('view-generic').style.display = 'block';
-                document.getElementById('generic-module-title').innerHTML = `<i data-lucide="layers"></i> ${title}`;
-                renderModuleList();
+                autoSwitchThemeByVinegar(selectEl.value);
             }
-            document.getElementById('page-title').innerText = title;
-            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
-            if(el) el.classList.add('active');
-
-            const sidebar = document.getElementById('sidebar');
-            const backdrop = document.getElementById('backdrop');
-            if(sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                backdrop.classList.remove('show');
-            }
-
-            if (viewId === 'dashboard') renderDashboard();
-            if (viewId === 'reports') renderReportsList();
-            if (viewId === 'archived-data') renderArchivedView();
-            if (viewId === 'calendar') { 
-                renderCalendarCheckboxes(); 
-                renderCalendarList(); 
-                const todayStr = new Date().toISOString().split('T')[0];
-                const calDateInput = document.getElementById('cal-date');
-                if(calDateInput && !calDateInput.value) calDateInput.value = todayStr;
-            }
-            if (viewId === 'notifications-center') renderNotificationsCenter();
-            lucide.createIcons();
-        }
-
-        function toggleControlForm() {
-            const box = document.getElementById('control-form-box');
-            box.style.display = box.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function openQuickAddFromDashboard() {
-            const controlMenuItem = document.getElementById('menu-control');
-            nav('control', 'Kontrol Sayfası & Listesi', controlMenuItem);
-            const formBox = document.getElementById('control-form-box');
-            formBox.style.display = 'block';
-            formBox.scrollIntoView({ behavior: 'smooth' });
         }
 
         function autoSwitchThemeByVinegar(type) {
-            const map = { 'Elma Sirkesi':'apple', 'Yeşil Üzüm Sirkesi':'grape', 'Alıç Sirkesi':'hawthorn', 'Gül Sirkesi':'rose', 'Nar Sirkesi':'pomegranate', 'Enginar Sirkesi':'artichoke' };
-            if(map[type]) setTheme(map[type]);
+            let db = getDB();
+            if(type === 'Elma Sirkesi') setTheme('apple');
+            else if(type === 'Alıç Sirkesi') setTheme('hawthorn');
+            else if(type === 'Gül Sirkesi') setTheme('gül-sirkesi');
+            else if (db.customThemes && db.customThemes[type]) setTheme(db.customThemes[type].id);
+            else {
+                let found = Object.values(db.customThemes || {}).find(th => th.id === type.replace(/\s+/g, '-').toLowerCase());
+                if(found) setTheme(found.id);
+                else setTheme('apple');
+            }
+        }
+
+        function renderDynamicTabs(containerId, activeType, clickHandlerName) {
+            let db = getDB();
+            const container = document.getElementById(containerId);
+            if(!container) return;
+
+            let html = db.vinegarTypes.map(type => {
+                let isActive = (type === activeType) ? 'active' : '';
+                let icon = (type === 'Elma Sirkesi') ? 'apple' : (type === 'Gül Sirkesi' ? 'flower' : 'droplet');
+                return `<div class="v-tab ${isActive}" onclick="${clickHandlerName}('${type}')"><i data-lucide="${icon}" style="width:14px;"></i> ${type}</div>`;
+            }).join('');
+            
+            container.innerHTML = html;
+            lucide.createIcons();
         }
 
         function saveInspection(e) {
-            e.preventDefault();
-            let db = getDB();
+            e.preventDefault(); let db = getDB();
+            let editId = document.getElementById('ctrl-edit-id').value;
+            
             const record = {
-                id: Date.now(),
-                date: new Date().toISOString(),
+                id: editId ? parseInt(editId) : Date.now(), 
+                date: new Date().toISOString(), 
                 tank: document.getElementById('ctrl-tank').value,
-                type: document.getElementById('ctrl-type').value,
+                type: document.getElementById('ctrl-type').value, 
                 year: document.getElementById('ctrl-year').value,
-                brix: document.getElementById('ctrl-brix').value,
+                brix: document.getElementById('ctrl-brix').value, 
                 taste: document.getElementById('ctrl-taste').value,
-                closing: document.getElementById('ctrl-closing').value,
+                closing: document.getElementById('ctrl-closing').value, 
                 mother: document.getElementById('ctrl-mother').value,
-                volume: document.getElementById('ctrl-volume').value || "0",
+                volume: document.getElementById('ctrl-volume').value || "0", 
                 status: document.getElementById('ctrl-status').value || "Uygun",
                 notes: document.getElementById('ctrl-notes').value
             };
-            db.inspections.unshift(record);
-            saveDB(db);
-            showToast('Analiz kaydedildi.');
-            document.getElementById('inspection-form').reset();
-            document.getElementById('ctrl-year').value = "2026";
-            toggleControlForm();
-            renderArchive();
-            renderReportsList();
-            renderDashboard();
 
-            triggerRealNotification("Tank Kontrolü Tamamlandı", `${record.tank} (${record.type}) analizi başarıyla kaydedildi.`, { type: 'tank-control', tank: record.tank });
+            if(editId) {
+                let idx = db.inspections.findIndex(i => i.id == editId);
+                if(idx !== -1) {
+                    db.inspections[idx] = record;
+                    showToast('Analiz güncellendi.');
+                }
+            } else {
+                db.inspections.unshift(record); 
+                showToast('Analiz kaydedildi.');
+                triggerRealNotification("Tank Kontrolü Tamamlandı", `${record.tank} (${record.type}) analizi kaydedildi.`, { type: 'tank-control', tank: record.tank });
+            }
+
+            saveDB(db);
+            
+            if(selectedVinegarType !== record.type) { selectedVinegarType = record.type; renderDynamicTabs('control-tabs-container', selectedVinegarType, 'setVinegarTab'); }
+            document.getElementById('inspection-form').reset(); document.getElementById('ctrl-edit-id').value = ''; document.getElementById('ctrl-year').value = new Date().getFullYear(); toggleControlForm();
+            renderArchive(); renderReportsList(); renderDashboard(); renderStockView();
+        }
+
+        function editInspection(id) {
+            let db = getDB();
+            let item = db.inspections.find(i => i.id == id);
+            if(!item) item = db.archivedInspections.find(i => i.id == id); // Arşivden düzenleme desteği
+            if(!item) return;
+
+            const controlMenuItem = document.getElementById('menu-control'); 
+            nav('control', 'Kontrol Sayfası & Listesi', controlMenuItem);
+            
+            const formBox = document.getElementById('control-form-box'); 
+            formBox.style.display = 'block'; 
+            formBox.scrollIntoView({ behavior: 'smooth' });
+
+            document.getElementById('ctrl-edit-id').value = item.id;
+            document.getElementById('ctrl-tank').value = item.tank;
+            document.getElementById('ctrl-type').value = item.type;
+            autoSwitchThemeByVinegar(item.type);
+            document.getElementById('ctrl-year').value = item.year;
+            document.getElementById('ctrl-brix').value = item.brix;
+            document.getElementById('ctrl-taste').value = item.taste;
+            document.getElementById('ctrl-closing').value = item.closing;
+            document.getElementById('ctrl-mother').value = item.mother;
+            document.getElementById('ctrl-volume').value = item.volume;
+            document.getElementById('ctrl-status').value = item.status;
+            document.getElementById('ctrl-notes').value = item.notes;
+        }
+
+        function deleteInspection(id) {
+            let db = getDB();
+            // Hem aktif hem arşivlenmiş kontrollerden kontrol et
+            db.inspections = db.inspections.filter(i => i.id != id);
+            db.archivedInspections = (db.archivedInspections || []).filter(i => i.id != id);
+            saveDB(db);
+            renderArchive(); renderReportsList(); renderDashboard(); renderStockView(); renderArchivedView();
+            showToast("Analiz silindi.");
         }
 
         function renderDashboard() {
             let db = getDB();
             document.getElementById('kpi-total-ins').innerText = db.inspections.length;
             document.getElementById('kpi-total-tanks').innerText = db.tanks.length;
-            if (db.inspections.length > 0) {
-                let sumBrix = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.brix || 0), 0);
-                document.getElementById('kpi-avg-brix').innerText = (sumBrix / db.inspections.length).toFixed(1) + '°Bx';
-                let sumVol = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.volume || 0), 0);
-                document.getElementById('kpi-total-volume').innerText = sumVol + ' Lt';
+            
+            const stockGrid = document.getElementById('dashboard-stock-grid');
+            if (stockGrid) {
+                let stockHtml = '';
+                db.vinegarTypes.forEach(type => {
+                    let typeVolume = db.inspections.filter(i => i.type === type).reduce((acc, curr) => acc + parseFloat(curr.volume || 0), 0);
+                    let icon = (type === 'Elma Sirkesi') ? 'apple' : (type === 'Gül Sirkesi' ? 'flower' : 'droplet');
+                    stockHtml += `<div class="kpi-card"><i data-lucide="${icon}" class="kpi-icon"></i><div class="kpi-title">${type}</div><div class="kpi-value">${typeVolume} Lt</div></div>`;
+                });
+                stockGrid.innerHTML = stockHtml;
             }
+
             const container = document.getElementById('dashboard-recent-list');
-            if (db.inspections.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center;">Henüz kayıt yok.</p>`;
-                return;
-            }
+            if (db.inspections.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center;">Henüz kayıt yok.</p>`; return; }
             container.innerHTML = db.inspections.slice(0, 5).map(i => `
                 <div class="data-card">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="container"></i> ${i.tank} - ${i.type}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
-                    <div style="font-size:12px;">Brix: <b>${i.brix}°Bx</b> | Hacim: <b>${i.volume || '0'} Lt</b> | Durum: <b>${i.status || 'Uygun'}</b></div>
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="container"></i> ${i.tank} - ${i.type}</span><span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span></div>
+                    <div style="font-size:12px;">Yıl: <b>${i.year}</b> | Brix: <b>${i.brix}°Bx</b> | Hacim: <b>${i.volume || '0'} Lt</b> | Durum: <b>${i.status || 'Uygun'}</b></div>
                 </div>
             `).join('');
             lucide.createIcons();
         }
 
-        function setVinegarTab(type, el) {
-            selectedVinegarType = type;
-            document.querySelectorAll('#view-control .v-tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
-            renderArchive();
-        }
+        function setStockTab(type) { selectedStockType = type; renderDynamicTabs('stock-tabs-container', selectedStockType, 'setStockTab'); renderStockView(); }
 
-        function renderArchive() {
-            let db = getDB();
-            let filtered = db.inspections.filter(i => i.type === selectedVinegarType);
-            const container = document.getElementById('archive-list');
+        function renderStockView() {
+            let db = getDB(); const container = document.getElementById('stock-list-container'); if(!container) return;
+            let allRecords = db.inspections.concat(db.archivedInspections || []);
+            let filtered = allRecords.filter(i => i.type === selectedStockType);
+
             if (filtered.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Aktif kayıt bulunmuyor.</p>`;
+                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">${selectedStockType} için kayıtlı stok bulunmuyor.</p>`;
                 return;
             }
+
+            let groupedData = {};
+            filtered.forEach(i => {
+                let y = i.year || 'Bilinmeyen Yıl';
+                if(!groupedData[y]) groupedData[y] = { totalVol: 0, entries: [] };
+                groupedData[y].totalVol += parseFloat(i.volume || 0);
+                groupedData[y].entries.push(i);
+            });
+
+            let html = '';
+            Object.keys(groupedData).sort((a,b) => b - a).forEach(year => {
+                let data = groupedData[year];
+                html += `
+                    <div class="stock-year-group">
+                        <div class="stock-year-header">
+                            <span style="display:flex; align-items:center; gap:8px;"><i data-lucide="calendar"></i> ${year} Üretimi</span>
+                            <span>Toplam: ${data.totalVol} Litre</span>
+                        </div>
+                        <div class="stock-year-body">
+                            ${data.entries.map(e => `
+                                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; margin-bottom:6px; padding-bottom:6px; border-bottom:1px solid var(--border);">
+                                    <div><b>${e.tank}</b>: ${e.volume} Lt (Lot: LOT-${e.id.toString().slice(-5)}) | Durum: <b>${e.status || 'Uygun'}</b></div>
+                                    <div style="display:flex; gap:4px;">
+                                        <button class="btn btn-secondary btn-sm" onclick="editInspection(${e.id})" title="Düzenle"><i data-lucide="edit" style="width:12px;"></i></button>
+                                        <button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteInspection(${e.id})')" title="Sil"><i data-lucide="trash-2" style="width:12px;"></i></button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html; lucide.createIcons();
+        }
+
+        function setVinegarTab(type) { selectedVinegarType = type; renderDynamicTabs('control-tabs-container', selectedVinegarType, 'setVinegarTab'); renderArchive(); }
+
+        function renderArchive() {
+            let db = getDB(); let filtered = db.inspections.filter(i => i.type === selectedVinegarType); const container = document.getElementById('archive-list');
+            if (filtered.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Aktif kayıt bulunmuyor.</p>`; return; }
             container.innerHTML = filtered.map((i, index) => `
                 <div class="data-card">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="box"></i> (${index + 1}) ${i.tank}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="box"></i> (${index + 1}) ${i.tank}</span><span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span></div>
                     <div style="font-size:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:8px;">
-                        <div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div><div>Tat: <b>${i.taste}</b></div>
-                        <div>Kapama: <b>${i.closing}</b></div><div>Ana: <b>${i.mother}</b></div><div>Durum: <b>${i.status || 'Uygun'}</b></div>
+                        <div>Yıl: <b>${i.year}</b></div><div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div>
+                        <div>Tat: <b>${i.taste}</b></div><div>Kapama: <b>${i.closing}</b></div><div>Durum: <b>${i.status || 'Uygun'}</b></div>
                     </div>
-                    <div style="display:flex; justify-content:flex-end;">
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="editInspection(${i.id})"><i data-lucide="edit"></i> Düzenle</button>
                         <button class="btn btn-secondary btn-sm" onclick="archiveInspection(${i.id})"><i data-lucide="archive"></i> Arşive Aktar</button>
+                        <button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteInspection(${i.id})')"><i data-lucide="trash-2"></i> Sil</button>
                     </div>
                 </div>
-            `).join('');
-            lucide.createIcons();
+            `).join(''); lucide.createIcons();
         }
 
         function archiveInspection(id) {
-            let db = getDB();
-            let itemIdx = db.inspections.findIndex(i => i.id == id);
+            let db = getDB(); let itemIdx = db.inspections.findIndex(i => i.id == id);
             if(itemIdx !== -1) {
-                let item = db.inspections.splice(itemIdx, 1)[0];
-                if(!db.archivedInspections) db.archivedInspections = [];
-                db.archivedInspections.unshift(item);
-                saveDB(db);
-                showToast("Veri Arşiv Sayfasına aktarıldı.");
-                renderArchive();
-                renderReportsList();
-                renderDashboard();
+                let item = db.inspections.splice(itemIdx, 1)[0]; if(!db.archivedInspections) db.archivedInspections = []; db.archivedInspections.unshift(item);
+                saveDB(db); showToast("Veri Arşiv Sayfasına aktarıldı.");
+                renderArchive(); renderReportsList(); renderDashboard(); renderStockView(); renderArchivedView();
             }
         }
 
-        function setArchivedVinegarTab(type, el) {
-            selectedArchivedType = type;
-            document.querySelectorAll('#view-archived-data .v-tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
-            renderArchivedView();
-        }
+        function setArchivedVinegarTab(type) { selectedArchivedType = type; renderDynamicTabs('archive-tabs-container', selectedArchivedType, 'setArchivedVinegarTab'); renderArchivedView(); }
 
         function renderArchivedView() {
-            let db = getDB();
-            let archived = (db.archivedInspections || []).filter(i => i.type === selectedArchivedType);
-            const container = document.getElementById('archived-items-container');
-            if(!container) return;
-            if (archived.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">${selectedArchivedType} için arşivlenmiş veri yok.</p>`;
-                return;
-            }
+            let db = getDB(); let archived = (db.archivedInspections || []).filter(i => i.type === selectedArchivedType); const container = document.getElementById('archived-items-container'); if(!container) return;
+            if (archived.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">${selectedArchivedType} için arşivlenmiş veri yok.</p>`; return; }
             container.innerHTML = archived.map((i, index) => `
-                <div class="data-card" style="opacity:0.9; border-style:dashed;">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="archive"></i> ${i.tank} (${i.type})</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
+                <div class="data-card" style="opacity:0.9; border-style:dashed; cursor:pointer;" onclick="showArchivedDetails(${i.id})">
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="archive"></i> ${i.tank} (${i.type}) - Detay için tıklayın</span><span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span></div>
                     <div style="font-size:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
-                        <div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div><div>Tat: <b>${i.taste}</b></div>
-                        <div>Kapama: <b>${i.closing}</b></div><div>Ana: <b>${i.mother}</b></div><div>Durum: <b>${i.status || 'Uygun'}</b></div>
+                        <div>Yıl: <b>${i.year}</b></div><div>Brix: <b>${i.brix}°Bx</b></div><div>Hacim: <b>${i.volume || '0'} Lt</b></div>
                     </div>
                 </div>
-            `).join('');
-            lucide.createIcons();
+            `).join(''); lucide.createIcons();
         }
 
-        function renderReportsList() {
+        function showArchivedDetails(id) {
             let db = getDB();
-            const container = document.getElementById('reports-live-list');
-            if(!container) return;
-            if (db.inspections.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Raporlanacak aktif veri bulunmuyor.</p>`;
-                return;
+            let item = (db.archivedInspections || []).find(i => i.id == id);
+            if(!item) return;
+
+            document.getElementById('action-modal-title').innerHTML = `<i data-lucide="file-text"></i> Arşiv Detayı: ${item.tank} (${item.type})`;
+            document.getElementById('action-modal-body').innerHTML = `
+                <p><b>Lot No:</b> LOT-${item.id.toString().slice(-5)}</p>
+                <p><b>Kayıt Tarihi:</b> ${new Date(item.date).toLocaleString('tr-TR')}</p>
+                <p><b>Üretim Yılı:</b> ${item.year}</p>
+                <p><b>Brix (°Bx):</b> ${item.brix}</p>
+                <p><b>Hacim:</b> ${item.volume || '0'} Litre</p>
+                <p><b>Tat / Aroma:</b> ${item.taste}</p>
+                <p><b>Kapama Biçimi:</b> ${item.closing}</p>
+                <p><b>Sirke Anası:</b> ${item.mother || 'Belirtilmemiş'}</p>
+                <p><b>Durum:</b> ${item.status || 'Uygun'}</p>
+                <p><b>Özel Notlar:</b> ${item.notes || 'Not bulunmuyor.'}</p>
+            `;
+            document.getElementById('action-modal-form-area').innerHTML = '';
+            document.getElementById('action-modal-buttons').innerHTML = `
+                <button class="btn btn-secondary" onclick="closeActionModal()"><i data-lucide="x"></i> Kapat</button>
+                <button class="btn btn-danger" onclick="closeActionModal(); promptActionDelete('deleteInspection(${item.id})')"><i data-lucide="trash-2"></i> Bu Arşiv Kaydını Sil</button>
+            `;
+            document.getElementById('action-modal').style.display = 'flex';
+            lucide.createIcons();
+        }
+        
+        function toggleControlForm() { 
+            const box = document.getElementById('control-form-box'); 
+            if(box.style.display === 'none') {
+                document.getElementById('inspection-form').reset();
+                document.getElementById('ctrl-edit-id').value = '';
+                document.getElementById('ctrl-year').value = new Date().getFullYear();
+                box.style.display = 'block';
+            } else {
+                box.style.display = 'none';
             }
+        }
+        function openQuickAddFromDashboard() { const controlMenuItem = document.getElementById('menu-control'); nav('control', 'Kontrol Sayfası & Listesi', controlMenuItem); const formBox = document.getElementById('control-form-box'); formBox.style.display = 'block'; formBox.scrollIntoView({ behavior: 'smooth' }); }
+        function closeActionModal() { document.getElementById('action-modal').style.display = 'none'; }
+        function promptActionDelete(callbackString) {
+            document.getElementById('action-modal-title').innerHTML = '<i data-lucide="alert-triangle"></i> Silme Onayı';
+            document.getElementById('action-modal-body').innerText = 'Bu veriyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.';
+            document.getElementById('action-modal-form-area').innerHTML = '';
+            document.getElementById('action-modal-buttons').innerHTML = `
+                <button class="btn btn-danger" onclick="closeActionModal(); ${callbackString}"><i data-lucide="trash-2"></i> Sil</button>
+                <button class="btn btn-secondary" onclick="closeActionModal()"><i data-lucide="x"></i> İptal</button>
+            `;
+            document.getElementById('action-modal').style.display = 'flex';
+            lucide.createIcons();
+        }
+        function openNewTypeModal(selectElId) {
+            document.getElementById('action-modal-title').innerHTML = '<i data-lucide="plus-circle"></i> Yeni Sirke Türü Ekle';
+            document.getElementById('action-modal-body').innerText = 'Yeni sirke türünün adını giriniz ve tema için ana rengi seçiniz.';
+            document.getElementById('action-modal-form-area').innerHTML = `
+                <div class="form-group"><label>Sirke Adı</label><div class="input-wrapper"><i data-lucide="droplet"></i><input type="text" id="new-type-name" placeholder="Örn: Nar Sirkesi"></div></div>
+                <div class="form-group"><label>Tema Ana Rengi</label><div class="input-wrapper"><i data-lucide="palette"></i><input type="color" id="new-type-color" value="#D97706"></div></div>
+            `;
+            document.getElementById('action-modal-buttons').innerHTML = `
+                <button class="btn" onclick="saveNewType(document.getElementById('new-type-name').value, document.getElementById('new-type-color').value, '${selectElId}')"><i data-lucide="save"></i> Kaydet ve Uygula</button>
+                <button class="btn btn-secondary" onclick="closeActionModal(); document.getElementById('${selectElId}').value='Elma Sirkesi';"><i data-lucide="x"></i> İptal</button>
+            `;
+            document.getElementById('action-modal').style.display = 'flex';
+            lucide.createIcons();
+        }
+        function saveNewType(name, color, selectId) {
+            name = name.trim();
+            if(!name) { showToast('Lütfen geçerli bir isim giriniz.'); return; }
+            let db = getDB();
+            if(!db.vinegarTypes.includes(name)) {
+                db.vinegarTypes.push(name);
+                let safeName = name.replace(/\s+/g, '-').toLowerCase();
+                let themeCSS = `:root[data-theme="${safeName}"] {
+                    --bg-main: #1A1A1A; --bg-card: rgba(30, 30, 30, 0.98); --primary: ${color}; --primary-hover: ${color};
+                    --accent: ${color}; --text: #F8F8F8; --text-muted: #A0A0A0; --border: ${color}66; --input-bg: #2A2A2A;
+                    --sidebar-bg: #111; --sidebar-header: ${color}; --sidebar-text: #F8F8F8; --sidebar-hover: #333;
+                    --glow-1: ${color}40; --glow-2: ${color}30;
+                    --ring-opacity: 0.8; --ring-color-1: ${color}; --ring-color-2: ${color};
+                }`;
+                let style = document.createElement('style'); style.id = 'theme-'+safeName; style.innerHTML = themeCSS; document.head.appendChild(style);
+                db.customThemes[name] = { id: safeName, css: themeCSS };
+                saveDB(db);
+                showToast(`Yeni tür "${name}" eklendi ve teması oluşturuldu.`);
+            }
+            updateAllDynamicUI();
+            document.getElementById(selectId).value = name;
+            autoSwitchThemeByVinegar(name);
+            closeActionModal();
+        }
+        function renderReportsList() {
+            let db = getDB(); const container = document.getElementById('reports-live-list'); if(!container) return;
+            if (db.inspections.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Raporlanacak aktif veri bulunmuyor.</p>`; return; }
             container.innerHTML = db.inspections.map(i => `
                 <div class="data-card">
-                    <div class="data-card-header">
-                        <strong>${i.type} (${i.tank})</strong>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
+                    <div class="data-card-header"><strong>${i.type} (${i.tank})</strong><span style="font-size:11px; color:var(--text-muted);">${new Date(i.date).toLocaleDateString('tr-TR')}</span></div>
                     <div style="font-size:12px;">Lot No: LOT-${i.id.toString().slice(-5)} | Brix: <b>${i.brix}°Bx</b> | Kapama: <b>${i.closing}</b></div>
                 </div>
-            `).join('');
-            lucide.createIcons();
+            `).join(''); lucide.createIcons();
         }
-
         function getModuleFieldsHTML(key, item = null) {
-            let db = getDB();
-            let tankOptions = db.tanks.map(t => `<option value="${t}" ${item && item.tank===t?'selected':''}>${t}</option>`).join('');
+            let db = getDB(); let tankOptions = db.tanks.map(t => `<option value="${t}" ${item && item.tank===t?'selected':''}>${t}</option>`).join('');
             switch(key) {
                 case 'batches':
                     return `
@@ -1505,435 +1304,229 @@
                     return `
                         <div class="form-group"><label>İlgili Tank / Varil</label><div class="input-wrapper"><i data-lucide="box"></i><select id="m-tank">${tankOptions}</select></div></div>
                         <div class="form-group"><label>Aşama</label><div class="input-wrapper"><i data-lucide="activity"></i>
-                            <select id="m-stage">
-                                <option>Alkollü Fermantasyon (Maya)</option>
-                                <option>Asetik Asit Fermantasyonu (Sirkeleşme)</option>
-                                <option>Olgunlaşma / Dinlendirme</option>
-                            </select></div></div>
-                    `;
-                case 'bottling-ready':
-                    return `
-                        <div class="form-group"><label>Hazır Tank / Fıçı</label><div class="input-wrapper"><i data-lucide="box"></i><select id="m-ready-tank">${tankOptions}</select></div></div>
-                        <div class="form-group"><label>Miktar (Litre)</label><div class="input-wrapper"><i data-lucide="droplet"></i><input type="number" id="m-ready-vol" value="${item ? item.vol || '' : ''}" placeholder="500" required></div></div>
-                    `;
-                case 'bottling':
-                    return `
-                        <div class="form-group"><label>Şişe Tipi</label><div class="input-wrapper"><i data-lucide="glass-water"></i><select id="m-bot-type"><option>250 ml Cam Şişe</option><option>500 ml Cam Şişe</option><option>1 Litre Şişe</option></select></div></div>
-                        <div class="form-group"><label>Şişelenen Adet</label><div class="input-wrapper"><i data-lucide="hash"></i><input type="number" id="m-bot-count" value="${item ? item.cnt || '' : ''}" placeholder="240" required></div></div>
+                            <select id="m-stage"><option>Alkollü Fermantasyon (Maya)</option><option>Asetik Asit Fermantasyonu (Sirkeleşme)</option><option>Olgunlaşma / Dinlendirme</option></select></div></div>
                     `;
                 default:
                     return `<div class="form-group"><label>Kayıt Adı</label><div class="input-wrapper"><i data-lucide="file-text"></i><input type="text" id="m-gen-title" value="${item ? item.title || '' : ''}" required></div></div>`;
             }
         }
-
         function renderModuleList() {
-            let db = getDB();
-            let items = (db.modules && db.modules[currentModuleKey]) || [];
-            const container = document.getElementById('generic-items-list');
-            if(!container) return;
-            if (items.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Henüz kayıt bulunmuyor.</p>`;
-                return;
-            }
+            let db = getDB(); let items = (db.modules && db.modules[currentModuleKey]) || []; const container = document.getElementById('generic-items-list');
+            if (items.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:16px;">Henüz kayıt bulunmuyor.</p>`; return; }
             container.innerHTML = items.map(item => `
                 <div class="data-card">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="check-square"></i> ${item.title}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="check-square"></i> ${item.title}</span><span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span></div>
                     <div style="font-size:12px; margin-bottom:8px;">${item.detailsHTML}</div>
-                    <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn btn-secondary btn-sm" onclick="openModuleModal(${item.id})"><i data-lucide="edit"></i> Düzenle</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteModuleItem(${item.id})"><i data-lucide="trash-2"></i> Sil</button>
-                    </div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;"><button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteModuleItem(${item.id})')"><i data-lucide="trash-2"></i> Sil</button></div>
                 </div>
-            `).join('');
-            lucide.createIcons();
+            `).join(''); lucide.createIcons();
         }
-
         function openModuleModal(editId = null) {
-            let db = getDB();
-            let item = editId ? (db.modules[currentModuleKey] || []).find(i => i.id == editId) : null;
-            document.getElementById('mod-edit-id').value = editId || '';
-            document.getElementById('module-form-fields').innerHTML = getModuleFieldsHTML(currentModuleKey, item);
-            document.getElementById('module-modal-title').innerText = editId ? 'Kaydı Düzenle' : 'Yeni Kayıt Ekle';
-            document.getElementById('module-modal').style.display = 'flex';
-            lucide.createIcons();
+            let db = getDB(); let item = editId ? (db.modules[currentModuleKey] || []).find(i => i.id == editId) : null;
+            document.getElementById('mod-edit-id').value = editId || ''; document.getElementById('module-form-fields').innerHTML = getModuleFieldsHTML(currentModuleKey, item);
+            document.getElementById('module-modal-title').innerText = editId ? 'Kaydı Düzenle' : 'Yeni Kayıt Ekle'; document.getElementById('module-modal').style.display = 'flex'; lucide.createIcons();
         }
-
         function closeModuleModal() { document.getElementById('module-modal').style.display = 'none'; }
-
         function saveModuleItem(e) {
-            e.preventDefault();
-            let db = getDB();
-            if (!db.modules) db.modules = {};
-            if (!db.modules[currentModuleKey]) db.modules[currentModuleKey] = [];
-            
-            let editId = document.getElementById('mod-edit-id').value;
-            let title = '', detailsHTML = '';
+            e.preventDefault(); let db = getDB(); if (!db.modules) db.modules = {}; if (!db.modules[currentModuleKey]) db.modules[currentModuleKey] = [];
+            let editId = document.getElementById('mod-edit-id').value; let title = '', detailsHTML = '';
             
             if (currentModuleKey === 'batches') {
-                let code = document.getElementById('m-batch-code').value;
-                let mat = document.getElementById('m-raw-mat').value;
-                let vol = document.getElementById('m-volume').value;
-                let brix = document.getElementById('m-start-brix').value;
-                title = `Parti: ${code}`;
-                detailsHTML = `<div>Hammadde: <b>${mat}</b> | Miktar: <b>${vol} Lt</b> | Brix: <b>${brix}°Bx</b></div>`;
+                let code = document.getElementById('m-batch-code').value; let mat = document.getElementById('m-raw-mat').value; let vol = document.getElementById('m-volume').value; let brix = document.getElementById('m-start-brix').value;
+                title = `Parti: ${code}`; detailsHTML = `<div>Hammadde: <b>${mat}</b> | Miktar: <b>${vol} Lt</b> | Brix: <b>${brix}°Bx</b></div>`;
             } else if (currentModuleKey === 'fermentation') {
-                let tank = document.getElementById('m-tank').value;
-                let stage = document.getElementById('m-stage').value;
-                title = `Tank: ${tank}`;
-                detailsHTML = `<div>Aşama: <b>${stage}</b></div>`;
-            } else if (currentModuleKey === 'bottling-ready') {
-                let tank = document.getElementById('m-ready-tank').value;
-                let vol = document.getElementById('m-ready-vol').value;
-                title = `Hazır Tank: ${tank}`;
-                detailsHTML = `<div>Miktar: <b>${vol} Litre</b></div>`;
-            } else if (currentModuleKey === 'bottling') {
-                let type = document.getElementById('m-bot-type').value;
-                let cnt = document.getElementById('m-bot-count').value;
-                title = `Şişeleme: ${type}`;
-                detailsHTML = `<div>Adet: <b>${cnt} Şişe</b></div>`;
-            } else {
-                title = document.getElementById('m-gen-title').value;
-                detailsHTML = `<div>Detaylar kaydedildi.</div>`;
-            }
-
-            if (editId) {
-                let idx = db.modules[currentModuleKey].findIndex(i => i.id == editId);
-                if (idx !== -1) {
-                    db.modules[currentModuleKey][idx].title = title;
-                    db.modules[currentModuleKey][idx].detailsHTML = detailsHTML;
-                }
-            } else {
-                db.modules[currentModuleKey].unshift({ 
-                    id: Date.now(), 
-                    date: new Date().toISOString(), 
-                    title, 
-                    detailsHTML 
-                });
-            }
-
-            saveDB(db);
-            closeModuleModal();
-            renderModuleList();
-            showToast('Kayıt başarıyla eklendi.');
+                let tank = document.getElementById('m-tank').value; let stage = document.getElementById('m-stage').value; title = `Tank: ${tank}`; detailsHTML = `<div>Aşama: <b>${stage}</b></div>`;
+            } else { title = document.getElementById('m-gen-title').value; detailsHTML = `<div>Detaylar kaydedildi.</div>`; }
+            
+            if (editId) { let idx = db.modules[currentModuleKey].findIndex(i => i.id == editId); if (idx !== -1) { db.modules[currentModuleKey][idx].title = title; db.modules[currentModuleKey][idx].detailsHTML = detailsHTML; }
+            } else { db.modules[currentModuleKey].unshift({ id: Date.now(), date: new Date().toISOString(), title, detailsHTML }); }
+            
+            saveDB(db); closeModuleModal(); renderModuleList(); updateAllDynamicUI(); showToast('Kayıt kaydedildi.');
         }
-
-        function deleteModuleItem(id) {
-            if(!confirm('Bu kaydı silmek istiyor musunuz?')) return;
-            let db = getDB();
-            db.modules[currentModuleKey] = db.modules[currentModuleKey].filter(i => i.id != id);
-            saveDB(db);
-            renderModuleList();
-            showToast('Kayıt silindi.');
-        }
-
-        function toggleCalendarForm() {
-            const box = document.getElementById('calendar-add-box');
-            box.style.display = box.style.display === 'none' ? 'block' : 'none';
-        }
-
+        function deleteModuleItem(id) { let db = getDB(); db.modules[currentModuleKey] = db.modules[currentModuleKey].filter(i => i.id != id); saveDB(db); renderModuleList(); showToast('Kayıt silindi.'); }
+        function toggleCalendarForm() { const box = document.getElementById('calendar-add-box'); box.style.display = box.style.display === 'none' ? 'block' : 'none'; }
         function renderCalendarCheckboxes() {
-            let db = getDB();
-            const container = document.getElementById('cal-tanks-checkboxes');
-            if(container) container.innerHTML = db.tanks.map(t => `<label style="display:flex; align-items:center; gap:6px; font-size:12px;"><input type="checkbox" value="${t}"> ${t}</label>`).join('');
+            let db = getDB(); 
+            const tContainer = document.getElementById('cal-tanks-checkboxes');
+            if(tContainer) tContainer.innerHTML = db.tanks.map(t => `<label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;"><input type="checkbox" value="${t}" style="width:auto;"> ${t}</label>`).join('');
+            const typesContainer = document.getElementById('cal-types-checkboxes');
+            if(typesContainer) typesContainer.innerHTML = db.vinegarTypes.map(t => `<label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;"><input type="checkbox" value="${t}" style="width:auto;"> ${t}</label>`).join('');
         }
-
         function saveCalendarEntry(e) {
-            e.preventDefault();
-            const editId = document.getElementById('cal-edit-id').value;
-            const date = document.getElementById('cal-date').value;
+            e.preventDefault(); const editId = document.getElementById('cal-edit-id').value; const date = document.getElementById('cal-date').value;
+            const desc = document.getElementById('cal-desc').value.trim();
             let selectedTanks = Array.from(document.querySelectorAll('#cal-tanks-checkboxes input:checked')).map(c => c.value);
             let selectedTypes = Array.from(document.querySelectorAll('#cal-types-checkboxes input:checked')).map(c => c.value);
-            let db = getDB();
-            if(!db.modules) db.modules = {};
-            if(!db.modules['calendar']) db.modules['calendar'] = [];
-            if (editId) {
-                let idx = db.modules['calendar'].findIndex(i => i.id == editId);
-                if (idx !== -1) {
-                    db.modules['calendar'][idx].planDate = date;
-                    db.modules['calendar'][idx].tanks = selectedTanks;
+            let db = getDB(); if(!db.modules) db.modules = {}; if(!db.modules['calendar']) db.modules['calendar'] = [];
+            
+            if (editId) { 
+                let idx = db.modules['calendar'].findIndex(i => i.id == editId); 
+                if (idx !== -1) { 
+                    db.modules['calendar'][idx].planDate = date; 
+                    db.modules['calendar'][idx].tanks = selectedTanks; 
                     db.modules['calendar'][idx].types = selectedTypes;
+                    db.modules['calendar'][idx].desc = desc; 
                 }
-            } else {
-                db.modules['calendar'].unshift({ id: Date.now(), date: new Date().toISOString(), planDate: date, tanks: selectedTanks, types: selectedTypes });
+            } else { 
+                db.modules['calendar'].unshift({ id: Date.now(), date: new Date().toISOString(), planDate: date, tanks: selectedTanks, types: selectedTypes, desc }); 
             }
-            saveDB(db);
-            showToast("Kontrol planı eklendi.");
-            document.getElementById('cal-edit-id').value = '';
-            toggleCalendarForm();
-            renderCalendarList();
-
+            saveDB(db); showToast("Kontrol planı kaydedildi."); document.getElementById('cal-edit-id').value = ''; document.getElementById('cal-desc').value = ''; toggleCalendarForm(); renderCalendarList();
             triggerRealNotification("Yeni Kontrol Planı", `${date} tarihli kontrol planı oluşturuldu.`, { type: 'calendar' });
         }
-
         function renderCalendarList() {
-            let db = getDB();
-            let items = (db.modules && db.modules['calendar']) || [];
-            const container = document.getElementById('calendar-plan-list');
-            if(!container) return;
-            if (items.length === 0) {
-                container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Henüz kayıtlı bir plan bulunmuyor.</p>`;
-                return;
-            }
+            let db = getDB(); let items = (db.modules && db.modules['calendar']) || []; const container = document.getElementById('calendar-plan-list'); if(!container) return;
+            if (items.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:14px;">Henüz kayıtlı bir plan bulunmuyor.</p>`; return; }
             container.innerHTML = items.map(item => `
                 <div class="data-card">
-                    <div class="data-card-header">
-                        <span style="color:var(--accent);"><i data-lucide="calendar"></i> Plan Tarihi: ${item.planDate}</span>
-                        <span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="calendar"></i> Plan Tarihi: ${item.planDate}</span><span style="font-size:11px; color:var(--text-muted);">${new Date(item.date).toLocaleDateString('tr-TR')}</span></div>
                     <div style="font-size:12px; margin-bottom:8px;">
-                        Planlanan Tanklar: <b>${item.tanks && item.tanks.length ? item.tanks.join(', ') : 'Tüm Tanklar'}</b><br>
-                        Sirke Türleri: <b>${item.types && item.types.length ? item.types.join(', ') : 'Genel Kontrol'}</b>
+                        Tanklar: <b>${item.tanks && item.tanks.length ? item.tanks.join(', ') : 'Tümü'}</b> | Türler: <b>${item.types && item.types.length ? item.types.join(', ') : 'Genel'}</b>
+                        ${item.desc ? `<br>Açıklama: ${item.desc}` : ''}
                     </div>
-                    <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn btn-danger btn-sm" onclick="deleteCalendarEntry(${item.id})"><i data-lucide="trash-2"></i> Sil</button>
-                    </div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;"><button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteCalendarEntry(${item.id})')"><i data-lucide="trash-2"></i> Sil</button></div>
                 </div>
-            `).join('');
-            lucide.createIcons();
+            `).join(''); lucide.createIcons();
         }
-
-        function deleteCalendarEntry(id) {
-            if(!confirm('Bu planı silmek istiyor musunuz?')) return;
-            let db = getDB();
-            db.modules['calendar'] = db.modules['calendar'].filter(i => i.id != id);
-            saveDB(db);
-            renderCalendarList();
-            showToast('Plan silindi.');
-        }
-
+        function deleteCalendarEntry(id) { let db = getDB(); db.modules['calendar'] = db.modules['calendar'].filter(i => i.id != id); saveDB(db); renderCalendarList(); showToast('Plan silindi.'); }
         function updateProfile(e) {
-            e.preventDefault();
-            let newUsername = document.getElementById('set-username').value.trim();
-            let newEmail = document.getElementById('set-email').value.trim();
-            if (!newUsername || !newEmail) return;
-            currentUser.username = newUsername;
-            currentUser.email = newEmail;
-            localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
-            document.getElementById('user-badge').querySelector('span').innerText = newUsername;
-            showToast('Profil güncellendi.');
+            e.preventDefault(); let newUsername = document.getElementById('set-username').value.trim(); let newEmail = document.getElementById('set-email').value.trim(); if (!newUsername || !newEmail) return;
+            currentUser.username = newUsername; currentUser.email = newEmail; localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+            document.getElementById('user-badge').querySelector('span').innerText = newUsername; showToast('Profil güncellendi.');
         }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            showToast('Tema güncellendi.');
-        }
-
-        function addTank(e) {
-            e.preventDefault();
-            const input = document.getElementById('tank-name');
-            let db = getDB();
-            if (!db.tanks.includes(input.value.trim())) {
-                db.tanks.push(input.value.trim());
-                saveDB(db);
-                input.value = '';
-                showToast('Tank eklendi.');
-                updateTankSelects();
-                renderTanks();
+        function nav(viewId, title, el) {
+            document.querySelectorAll('.view-panel').forEach(p => p.style.display = 'none');
+            const specific = ['dashboard', 'control', 'stock', 'tanks', 'archive', 'archived-data', 'settings', 'calendar', 'reminders', 'reports', 'notifications-center'];
+            if (specific.includes(viewId)) { document.getElementById('view-' + viewId).style.display = 'block'; } else {
+                currentModuleKey = viewId; document.getElementById('view-generic').style.display = 'block'; document.getElementById('generic-module-title').innerHTML = `<i data-lucide="layers"></i> ${title}`; renderModuleList();
             }
-        }
+            document.getElementById('page-title').innerText = title;
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active')); if(el) el.classList.add('active');
+            const sidebar = document.getElementById('sidebar'); const backdrop = document.getElementById('backdrop');
+            if(sidebar.classList.contains('open')) { sidebar.classList.remove('open'); backdrop.classList.remove('show'); }
 
-        function updateTankSelects() {
-            let db = getDB();
-            const select = document.getElementById('ctrl-tank');
-            if(select) select.innerHTML = db.tanks.map(t => `<option value="${t}">${t}</option>`).join('');
-        }
-
-        function renderTanks() {
-            let db = getDB();
-            const container = document.getElementById('tank-list');
-            if(!container) return;
-            container.innerHTML = db.tanks.map(t => `<div class="data-card" style="display:flex; justify-content:space-between; align-items:center;"><strong>${t}</strong><button class="btn btn-danger btn-sm" onclick="removeTank('${t}')"><i data-lucide="trash-2"></i></button></div>`).join('');
+            if (viewId === 'dashboard') renderDashboard();
+            if (viewId === 'reports') renderReportsList();
+            if (viewId === 'archived-data') renderArchivedView();
+            if (viewId === 'stock') renderStockView();
+            if (viewId === 'calendar') { renderCalendarCheckboxes(); renderCalendarList(); const todayStr = new Date().toISOString().split('T')[0]; const calDateInput = document.getElementById('cal-date'); if(calDateInput && !calDateInput.value) calDateInput.value = todayStr; }
+            if (viewId === 'notifications-center') renderNotificationsCenter();
             lucide.createIcons();
         }
-
-        function removeTank(name) {
-            let db = getDB();
-            db.tanks = db.tanks.filter(t => t !== name);
-            saveDB(db);
-            updateTankSelects();
-            renderTanks();
+        function saveNotificationSettings() { 
+            let db = getDB(); db.settings = { notif: document.getElementById('sett-notif').checked, sound: document.getElementById('sett-sound').checked, vibrate: document.getElementById('sett-vibrate').checked, reminders: document.getElementById('sett-reminders').checked }; 
+            saveDB(db); showToast("Bildirim ayarları güncellendi."); 
         }
-
-        function exportArchiveToPDF() {
-            let db = getDB();
-            let items = db.inspections || [];
-            if (items.length === 0) { showToast("PDF için kayıtlı veri yok."); return; }
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-            const trFix = (str) => String(str || '').replace(/İ/g, 'I').replace(/ı/g, 'i').replace(/Ğ/g, 'G').replace(/ğ/g, 'g').replace(/Ü/g, 'U').replace(/ü/g, 'u').replace(/Ş/g, 'S').replace(/ş/g, 's').replace(/Ö/g, 'O').replace(/ö/g, 'o').replace(/Ç/g, 'C').replace(/ç/g, 'c');
-            const reportNo = `KKR-${Date.now().toString().slice(-6)}`;
-            const today = new Date().toLocaleDateString('tr-TR');
-
-            doc.autoTable({ 
-                startY: 12, 
-                head: [[trFix("EC KARACADAG SIRKE KONTROLLERI"), trFix(`Rapor No: ${reportNo}`)]], 
-                body: [[trFix("KALITE KONTROL VE HIGIEN RAPORU (ISO 22000 / HACCP)"), trFix(`Tarih: ${today}`)]], 
-                theme: 'plain', 
-                styles: { font: "helvetica", fontSize: 9, fontStyle: 'bold' }, 
-                margin: { left: 14, right: 14 } 
-            });
-
-            let startY = doc.lastAutoTable.finalY + 4;
-            items.forEach((item) => {
-                if (startY > 220) { doc.addPage(); startY = 14; }
-                
-                // Üst Başlık Tablosu
-                doc.autoTable({ 
-                    startY: startY, 
-                    head: [[trFix(`Urun: ${item.type}`), trFix(`Tank No: ${item.tank}`), trFix(`Durum: ${item.status || 'Uygun'}`)]], 
-                    body: [
-                        [trFix(`Lot No: LOT-${item.id.toString().slice(-5)}`), trFix(`Uretim Yili: ${item.year || '2026'}`), trFix(`Tarih: ${new Date(item.date).toLocaleDateString('tr-TR')}`)]
-                    ], 
-                    theme: 'grid', 
-                    headStyles: { fillColor: [59, 90, 92] },
-                    styles: { fontSize: 8 }, 
-                    margin: { left: 14, right: 14 } 
-                });
-
-                startY = doc.lastAutoTable.finalY + 1;
-
-                // Detay Parametre Tablosu (İkinci görseldeki tüm alanlar dahil edilmiştir)
-                doc.autoTable({ 
-                    startY: startY, 
-                    head: [[trFix("Analiz Parametresi"), trFix("Olcum / Gozlem Sonucu")]], 
-                    body: [
-                        [trFix("Brix Orani"), `${item.brix || '0'} °Bx`],
-                        [trFix("Tank Hacmi"), `${item.volume || '0'} Lt`],
-                        [trFix("Tat / Aroma"), trFix(item.taste || 'Bilinmiyor')],
-                        [trFix("Kapama Bicimi"), trFix(item.closing || 'Bilinmiyor')],
-                        [trFix("Sirke Anasi Durumu"), trFix(item.mother || 'Olusmadi')],
-                        [trFix("Ozel Notlar & Gozlemler"), trFix(item.notes || 'Not bulunmuyor.')]
-                    ], 
-                    theme: 'grid', 
-                    headStyles: { fillColor: [179, 125, 20] },
-                    styles: { fontSize: 8 }, 
-                    margin: { left: 14, right: 14 } 
-                });
-
-                startY = doc.lastAutoTable.finalY + 8;
-            });
-
-            doc.save(`EC_Karacadag_Kalite_Raporu_${reportNo}.pdf`);
-            showToast("Kurumsal PDF Raporu İndirildi!");
+        function saveReminderNotification(e) {
+            e.preventDefault(); let db = getDB(); if (!db.settings.reminders) { showToast("Hatırlatıcılar kapalı."); return; }
+            const title = document.getElementById('rem-title').value.trim(); const desc = document.getElementById('rem-desc').value.trim(); const date = document.getElementById('rem-date').value; const time = document.getElementById('rem-time').value; const repeat = document.getElementById('rem-repeat').value;
+            db.remindersList.unshift({ id: Date.now(), title, desc, datetime: `${date}T${time}`, repeat, triggered: false }); 
+            saveDB(db); showToast("Uygulama içi hatırlatıcı planlandı.");
+            document.getElementById('rem-title').value = ''; document.getElementById('rem-desc').value = ''; renderRemindersList();
         }
-
+        function renderRemindersList() {
+            let db = getDB(); const container = document.getElementById('reminders-list'); if(!container) return; let items = db.remindersList || [];
+            if(items.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:10px;">Aktif hatırlatıcı yok.</p>`; return; }
+            container.innerHTML = items.map(r => `
+                <div class="data-card">
+                    <div class="data-card-header"><span style="color:var(--accent);"><i data-lucide="bell"></i> ${r.title}</span><span style="font-size:11px; color:var(--text-muted);">${r.datetime.replace('T', ' ')}</span></div>
+                    <div style="font-size:12px; margin-bottom:6px;">${r.desc} (Tekrar: <b>${r.repeat}</b>)</div>
+                    <div style="display:flex; justify-content:flex-end;"><button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteReminder(${r.id})')"><i data-lucide="trash-2"></i> Sil</button></div>
+                </div>
+            `).join(''); lucide.createIcons();
+        }
+        function deleteReminder(id) { let db = getDB(); db.remindersList = db.remindersList.filter(r => r.id != id); saveDB(db); renderRemindersList(); showToast("Hatırlatıcı silindi."); }
+        function checkScheduledRemindersLoop() {
+            let db = getDB(); if (!db.settings || !db.settings.notif || !db.settings.reminders) return; let now = new Date(); let changed = false;
+            (db.remindersList || []).forEach(r => {
+                if (!r.triggered && now >= new Date(r.datetime)) { 
+                    triggerRealNotification(r.title, r.desc, { type: 'reminder', id: r.id }); r.triggered = true; changed = true; 
+                }
+            });
+            if (changed) saveDB(db);
+        }
+        function setNotifTab(tab, el) { notifFilterTab = tab; document.querySelectorAll('#view-notifications-center .v-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); renderNotificationsCenter(); }
+        function renderNotificationsCenter() {
+            let db = getDB(); const container = document.getElementById('notifications-center-list'); if(!container) return;
+            let list = db.notificationsList || []; if(notifFilterTab === 'unread') list = list.filter(n => !n.read); if(notifFilterTab === 'read') list = list.filter(n => n.read);
+            if(list.length === 0) { container.innerHTML = `<p style="color:var(--text-muted); font-size:12px; text-align:center; padding:20px;">Bildirim bulunmuyor.</p>`; return; }
+            container.innerHTML = list.map(n => `
+                <div class="data-card" style="border-left: 4px solid ${n.read ? 'var(--text-muted)' : 'var(--accent)'};">
+                    <div class="data-card-header"><span style="color:var(--accent); cursor:pointer;" onclick="markAndOpenNotification(${n.id})"><i data-lucide="bell"></i> ${n.title}</span><span style="font-size:11px; color:var(--text-muted);">${new Date(n.date).toLocaleString('tr-TR')}</span></div>
+                    <div style="font-size:12px; margin-bottom:8px;" onclick="markAndOpenNotification(${n.id})">${n.body}</div>
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">${!n.read ? `<button class="btn btn-secondary btn-sm" onclick="markNotificationRead(${n.id})"><i data-lucide="check"></i> Okundu Yap</button>` : ''}<button class="btn btn-danger btn-sm" onclick="promptActionDelete('deleteNotification(${n.id})')"><i data-lucide="trash-2"></i> Sil</button></div>
+                </div>
+            `).join(''); lucide.createIcons();
+        }
+        function markNotificationRead(id) { let db = getDB(); let n = (db.notificationsList || []).find(x => x.id == id); if(n) { n.read = true; saveDB(db); renderNotificationsCenter(); } }
+        function markAndOpenNotification(id) { let db = getDB(); let n = (db.notificationsList || []).find(x => x.id == id); if(n) { n.read = true; saveDB(db); renderNotificationsCenter(); handleNotificationTap(n.payload); } }
+        function markAllNotificationsRead() { let db = getDB(); (db.notificationsList || []).forEach(n => n.read = true); saveDB(db); renderNotificationsCenter(); showToast("Tüm bildirimler okundu olarak işaretlendi."); }
+        function clearAllNotifications() { let db = getDB(); db.notificationsList = []; saveDB(db); renderNotificationsCenter(); showToast("Tüm bildirimler silindi."); }
+        function deleteNotification(id) { let db = getDB(); db.notificationsList = (db.notificationsList || []).filter(n => n.id != id); saveDB(db); renderNotificationsCenter(); showToast("Bildirim silindi."); }
         function toggleAIWidget() {
-            const box = document.getElementById('ai-widget-box');
-            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-            if (box.style.display === 'flex') {
-                const body = document.getElementById('ai-widget-messages');
-                body.scrollTop = body.scrollHeight;
-            }
+            const box = document.getElementById('ai-widget-box'); box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+            if (box.style.display === 'flex') { const body = document.getElementById('ai-widget-messages'); body.scrollTop = body.scrollHeight; }
         }
-
-        function clearAIChat() {
-            aiConversationHistory = [];
-            const body = document.getElementById('ai-widget-messages');
-            body.innerHTML = `<div class="msg msg-ai">Sohbet geçmişi temizlendi. Size nasıl yardımcı olabilirim?</div>`;
-            showToast("Sohbet temizlendi.");
-        }
-
-        function sendQuickPrompt(promptText) {
-            document.getElementById('ai-widget-input').value = promptText;
-            handleAIChatSubmit();
-        }
-
-        const aiTools = {
-            getTankList: () => {
-                let db = getDB();
-                return { tanks: db.tanks, totalTanks: db.tanks.length };
-            },
-            getStocks: () => {
-                let db = getDB();
-                let totalLitres = db.inspections.reduce((acc, curr) => acc + parseFloat(curr.volume || 0), 0);
-                return { totalVolumeLitres: totalLitres, inspectionCount: db.inspections.length };
-            }
-        };
-
+        function clearAIChat() { aiConversationHistory = []; const body = document.getElementById('ai-widget-messages'); body.innerHTML = `<div class="msg msg-ai">Sohbet geçmişi temizlendi. Size nasıl yardımcı olabilirim?</div>`; showToast("Sohbet temizlendi."); }
+        function sendQuickPrompt(promptText) { document.getElementById('ai-widget-input').value = promptText; handleAIChatSubmit(); }
         async function fetchRealWeather(city = "Şanlıurfa") {
             try {
                 let geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=tr&format=json`);
                 let geoData = await geoRes.json();
                 if (!geoData.results || geoData.results.length === 0) return `${city} için konum bulunamadı.`;
                 let { latitude, longitude, name, country } = geoData.results[0];
-
                 let weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
-                let weatherData = await weatherRes.json();
-                let cw = weatherData.current_weather;
+                let weatherData = await weatherRes.json(); let cw = weatherData.current_weather;
                 return `${name} (${country}) güncel hava durumu: Sıcaklık ${cw.temperature}°C, Rüzgar hızı ${cw.windspeed} km/s.`;
-            } catch (err) {
-                return "Hava durumu verisi alınamadı.";
-            }
+            } catch (err) { return "Hava durumu verisi alınamadı."; }
         }
-
         async function handleAIChatSubmit() {
-            const input = document.getElementById('ai-widget-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const chatBody = document.getElementById('ai-widget-messages');
-            chatBody.innerHTML += `<div class="msg msg-user">${text}</div>`;
-            input.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            const loadingId = 'loading-' + Date.now();
-            chatBody.innerHTML += `<div class="msg msg-ai" id="${loadingId}">Yapay zeka düşünüyor ve veriler analiz ediliyor...</div>`;
-            chatBody.scrollTop = chatBody.scrollHeight;
-
+            const input = document.getElementById('ai-widget-input'); const text = input.value.trim(); if (!text) return;
+            const chatBody = document.getElementById('ai-widget-messages'); chatBody.innerHTML += `<div class="msg msg-user">${text}</div>`; input.value = ''; chatBody.scrollTop = chatBody.scrollHeight;
+            const loadingId = 'loading-' + Date.now(); chatBody.innerHTML += `<div class="msg msg-ai" id="${loadingId}">Yapay zeka düşünüyor ve veriler analiz ediliyor...</div>`; chatBody.scrollTop = chatBody.scrollHeight;
             aiConversationHistory.push({ role: 'user', content: text });
-
             try {
-                let lower = text.toLowerCase();
-                let replyText = "";
-
+                let lower = text.toLowerCase(); let replyText = "";
                 if (lower.includes('naber') || lower.includes('nasılsın') || lower.includes('napıyorsun')) {
-                    replyText = "İyiyim 🙂 EC Karacadağ Sirke Kontrolleri tesislerindeki tankları ve fermantasyon süreçlerini yönetmenizde size yardımcı olmaya hazırım.";
+                    replyText = "İyiyim 🙂 EC Karacadağ Sirke Kontrolleri tesislerindeki tankları ve stok süreçlerini yönetmenizde size yardımcı olmaya hazırım.";
                 } else if (lower.includes('hava') && (lower.includes('nasıl') || lower.includes('bugün') || lower.includes('yarın'))) {
-                    let city = "Şanlıurfa";
-                    if (lower.includes('istanbul')) city = "İstanbul";
-                    else if (lower.includes('ankara')) city = "Ankara";
-                    else if (lower.includes('izmir')) city = "İzmir";
-                    
-                    let weatherInfo = await fetchRealWeather(city);
-                    replyText = weatherInfo;
-                } else if (lower.includes('kaç tank') || lower.includes('tanklarımı göster')) {
-                    let res = aiTools.getTankList();
-                    replyText = `Sisteminizde toplam ${res.totalTanks} aktif tank bulunmaktadır: ${res.tanks.join(', ')}.`;
-                } else if (lower.includes('kaç litre') || lower.includes('toplam sirke') || lower.includes('stok')) {
-                    let res = aiTools.getStocks();
-                    replyText = `Toplam kayıtlı sirke hacminiz ${res.totalVolumeLitres} Litredir (${res.inspectionCount} adet analiz kaydı üzerinden hesaplanmıştır).`;
-                } else if (lower.includes('elma sirkesi nasıl yapılır') || lower.includes('sirke nasıl yapılır')) {
-                    replyText = "Elma sirkesi yapımı; olgun elmaların yıkanıp doğranması, içme suyu, bal veya kaya tuzu ile steril bir kapta fermantasyona bırakılmasıyla başlar. Süre sıcaklığa, şeker oranına (Briks) ve oksijen temasına bağlı olarak ortalama 2-4 ay sürer.";
-                } else if (lower.includes('öneri') || lower.includes('hatırlatıcı kur')) {
-                    let db = getDB();
-                    db.remindersList.unshift({
-                        id: Date.now(),
-                        title: "AI Önerisi: Tank Kontrolü",
-                        desc: "Yapay zeka asistanı tarafından önerilen periyodik tank takip hatırlatması.",
-                        datetime: new Date(Date.now() + 600000).toISOString().slice(0, 16),
-                        repeat: "once",
-                        triggered: false
-                    });
-                    saveDB(db);
-                    triggerRealNotification("AI Hatırlatıcı Önerisi", "Tank 2 için periyodik kontrol hatırlatıcısı başarıyla planlandı.", { type: 'reminder' });
-                    replyText = "Tank 2 için AI destekli kontrol hatırlatıcısı başarıyla oluşturuldu ve bildirim kuyruğuna eklendi!";
-                } else {
-                    replyText = `Sorunuz analiz edildi. EC Karacadağ Sirke Kontrolleri sisteminiz güncel verileriniz doğrultusunda incelenmiştir. "${text}" konusunda detaylı bilgi için menüyü kullanabilirsiniz.`;
-                }
-
-                document.getElementById(loadingId).remove();
-                chatBody.innerHTML += `<div class="msg msg-ai">${replyText.replace(/\n/g, '<br>')}</div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
+                    let city = "Şanlıurfa"; if (lower.includes('istanbul')) city = "İstanbul"; else if (lower.includes('ankara')) city = "Ankara"; else if (lower.includes('izmir')) city = "İzmir";
+                    let weatherInfo = await fetchRealWeather(city); replyText = weatherInfo;
+                } else { replyText = `"${text}" konusunda sistem verilerinizi analiz ettim. Detaylı bilgi için ilgili menüleri kullanabilirsiniz.`; }
+                document.getElementById(loadingId).remove(); chatBody.innerHTML += `<div class="msg msg-ai">${replyText.replace(/\n/g, '<br>')}</div>`; chatBody.scrollTop = chatBody.scrollHeight;
                 aiConversationHistory.push({ role: 'assistant', content: replyText });
-
-            } catch (err) {
-                console.error("AI Error:", err);
-                document.getElementById(loadingId).remove();
-                chatBody.innerHTML += `<div class="msg msg-ai" style="color:#EF4444;">İşlem başarısız. Hata: ${err.message || 'Bilinmeyen hata'}</div>`;
-            }
+            } catch (err) { document.getElementById(loadingId).remove(); }
+        }
+        function exportArchiveToPDF() {
+            let db = getDB(); let items = db.inspections || []; if (items.length === 0) { showToast("PDF için kayıtlı veri yok."); return; }
+            const { jsPDF } = window.jspdf; const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            const trFix = (str) => String(str).replace(/İ/g, 'I').replace(/ı/g, 'i').replace(/Ğ/g, 'G').replace(/ğ/g, 'g').replace(/Ü/g, 'U').replace(/ü/g, 'u').replace(/Ş/g, 'S').replace(/ş/g, 's').replace(/Ö/g, 'O').replace(/ö/g, 'o').replace(/Ç/g, 'C').replace(/ç/g, 'c');
+            const reportNo = `KKR-${Date.now().toString().slice(-6)}`; const today = new Date().toLocaleDateString('tr-TR');
+            doc.autoTable({ startY: 12, head: [[trFix("EC KARACADAG SIRKE KONTROLLERI"), trFix(`Rapor No: ${reportNo}`)]], body: [[trFix("KALITE KONTROL VE HIGIYEN RAPORu (ISO 22000 / HACCP)"), trFix(`Tarih: ${today}`)]], theme: 'plain', styles: { font: "helvetica", fontSize: 10, fontStyle: 'bold' }, margin: { left: 14, right: 14 } });
+            let startY = doc.lastAutoTable.finalY + 6;
+            items.forEach((item) => {
+                if (startY > 230) { doc.addPage(); startY = 14; }
+                doc.autoTable({ startY: startY, head: [[trFix(`Urun: ${item.type.toUpperCase()}`), trFix(`Tank No: ${item.tank}`), trFix(`Durum: ${item.status || 'Uygun'}`)]], body: [[trFix(`Lot No: LOT-${item.id.toString().slice(-5)}`), trFix(`Tarih: ${new Date(item.date).toLocaleDateString('tr-TR')}`), '']], theme: 'grid', headStyles: { fillColor: [26, 188, 156] }, styles: { fontSize: 9 }, margin: { left: 14, right: 14 } });
+                let paramStartY = doc.lastAutoTable.finalY;
+                doc.autoTable({ startY: paramStartY, head: [[trFix("Parametre"), trFix("Sonuc")]], body: [[trFix("Uretim Yili"), `${item.year || '-'}`], [trFix("Brix"), `${item.brix} °Bx`], [trFix("Hacim"), `${item.volume || '0'} Lt`], [trFix("Tat / Aroma"), trFix(item.taste || '-')], [trFix("Kapama Bicimi"), trFix(item.closing || '-')], [trFix("Sirke Anasi"), trFix(item.mother || '-')], [trFix("Ozel Notlar & Gozlemler"), trFix(item.notes || '-')]], theme: 'grid', headStyles: { fillColor: [26, 188, 156] }, styles: { fontSize: 8.5 }, margin: { left: 14, right: 14 } });
+                startY = doc.lastAutoTable.finalY + 8;
+            });
+            doc.save(`EC_Karacadag_Kalite_Raporu_${reportNo}.pdf`); showToast("PDF Raporu İndirildi!");
+        }
+        function addTank(e) {
+            e.preventDefault(); const input = document.getElementById('tank-name'); let db = getDB();
+            if (!db.tanks.includes(input.value.trim())) { db.tanks.push(input.value.trim()); saveDB(db); input.value = ''; showToast('Tank eklendi.'); updateAllDynamicUI(); renderTanks(); }
+        }
+        function updateTankSelects() { let db = getDB(); const select = document.getElementById('ctrl-tank'); if(select) select.innerHTML = db.tanks.map(t => `<option value="${t}">${t}</option>`).join(''); }
+        function renderTanks() {
+            let db = getDB(); const container = document.getElementById('tank-list'); if(!container) return;
+            container.innerHTML = db.tanks.map(t => `<div class="data-card" style="display:flex; justify-content:space-between; align-items:center;"><strong>${t}</strong><button class="btn btn-danger btn-sm" onclick="promptActionDelete('removeTank(\\'${t}\\')')"><i data-lucide="trash-2"></i></button></div>`).join('');
+            lucide.createIcons();
+        }
+        function removeTank(name) { let db = getDB(); db.tanks = db.tanks.filter(t => t !== name); saveDB(db); updateAllDynamicUI(); renderTanks(); }
+        function updateProfile(e) {
+            e.preventDefault(); let newUsername = document.getElementById('set-username').value.trim(); let newEmail = document.getElementById('set-email').value.trim(); if (!newUsername || !newEmail) return;
+            currentUser.username = newUsername; currentUser.email = newEmail; localStorage.setItem('sirke_active_session', JSON.stringify(currentUser));
+            document.getElementById('user-badge').querySelector('span').innerText = newUsername; showToast('Profil güncellendi.');
         }
     </script>
 </body>
